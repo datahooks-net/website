@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get a Free CRM Audit | Datahooks</title>
+  <meta name="description" content="Answer six quick questions about your CRM. If a free 45-minute audit is a fit, pick a time on the next screen." />
+  <link rel="canonical" href="https://datahooks.net/audit/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://datahooks.net/audit/" />
+  <meta property="og:title" content="Get a Free CRM Audit | Datahooks" />
+  <meta property="og:description" content="Answer six quick questions about your CRM. If a free 45-minute audit is a fit, pick a time on the next screen." />
+  <meta property="og:site_name" content="Datahooks" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Get a Free CRM Audit | Datahooks" />
+  <meta name="twitter:description" content="Answer six quick questions about your CRM. If a free 45-minute audit is a fit, pick a time on the next screen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
+  <style>
+    .audit { grid-template-columns: 7fr 5fr; }
+    .audit .window { position: sticky; top: 96px; }
+    @media (max-width: 900px) { .audit { grid-template-columns: 1fr; } .audit .window { position: static; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
+      </a>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/datahooks/">What's a datahook?</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/audit/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="page-head compact sig-head" data-signal="still">
+    <canvas class="signal" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="inner">
+        <h1>Get your free CRM audit.</h1>
+        <p class="lead">Six quick questions. If an audit is a fit, you pick a time on the next screen.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="split audit">
+        <div class="wiz panel panel-gray" id="wiz" aria-live="polite">
+          <div class="wiz-top">
+            <button type="button" class="wiz-back" id="wizBack" hidden>&larr; Back</button>
+            <span class="wiz-count" id="wizCount">Question 1 of 6</span>
+          </div>
+          <div class="wiz-bar" aria-hidden="true"><span id="wizBar"></span></div>
+
+        <fieldset class="wiz-step" data-key="crm" data-n="1" hidden>
+          <legend tabindex="-1">Which CRM does your team run on?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="HubSpot">HubSpot</button>
+            <button type="button" class="wiz-opt" data-value="Salesforce">Salesforce</button>
+            <button type="button" class="wiz-opt" data-value="HighLevel">HighLevel</button>
+            <button type="button" class="wiz-opt" data-value="Something else">Something else</button>
+            <button type="button" class="wiz-opt" data-value="No CRM yet">No CRM yet</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="pain" data-n="2" hidden>
+          <legend tabindex="-1">What's costing you the most right now?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="We can't tell which marketing works">We can't tell which marketing works</button>
+            <button type="button" class="wiz-opt" data-value="The forecast doesn't match finance">The forecast doesn't match finance</button>
+            <button type="button" class="wiz-opt" data-value="Records are duplicated or missing owners">Records are duplicated or missing owners</button>
+            <button type="button" class="wiz-opt" data-value="Nobody trusts the reports">Nobody trusts the reports</button>
+            <button type="button" class="wiz-opt" data-value="We want our data ready for AI">We want our data ready for AI</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="team" data-n="3" hidden>
+          <legend tabindex="-1">How many people work in sales and marketing?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="1 to 5">1 to 5</button>
+            <button type="button" class="wiz-opt" data-value="6 to 20">6 to 20</button>
+            <button type="button" class="wiz-opt" data-value="21 to 100">21 to 100</button>
+            <button type="button" class="wiz-opt" data-value="More than 100">More than 100</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="revenue" data-n="4" hidden>
+          <legend tabindex="-1">What's your annual revenue?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="Under $1M">Under $1M</button>
+            <button type="button" class="wiz-opt" data-value="$1M to $10M">$1M to $10M</button>
+            <button type="button" class="wiz-opt" data-value="$10M to $50M">$10M to $50M</button>
+            <button type="button" class="wiz-opt" data-value="More than $50M">More than $50M</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="timeline" data-n="5" hidden>
+          <legend tabindex="-1">When do you want this fixed?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="This month">This month</button>
+            <button type="button" class="wiz-opt" data-value="This quarter">This quarter</button>
+            <button type="button" class="wiz-opt" data-value="This year">This year</button>
+            <button type="button" class="wiz-opt" data-value="Just researching">Just researching</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="role" data-n="6" hidden>
+          <legend tabindex="-1">What's your role?</legend>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" data-value="Founder or CEO">Founder or CEO</button>
+            <button type="button" class="wiz-opt" data-value="Marketing">Marketing</button>
+            <button type="button" class="wiz-opt" data-value="Sales or RevOps">Sales or RevOps</button>
+            <button type="button" class="wiz-opt" data-value="Finance">Finance</button>
+            <button type="button" class="wiz-opt" data-value="Something else">Something else</button>
+          </div>
+        </fieldset>
+        <fieldset class="wiz-step" data-key="contact" data-n="7" hidden>
+          <legend tabindex="-1">Where should we send the details?</legend>
+          <form class="form" id="wizForm" novalidate>
+            <div class="form-row">
+              <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required /></div>
+              <div class="field"><label for="lastName">Last name</label><input id="lastName" name="lastName" autocomplete="family-name" required /></div>
+            </div>
+            <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" required /></div>
+            <p class="form-error" id="wizError" hidden>Please fill in all four fields with a valid work email.</p>
+            <button type="submit" class="btn btn-primary">See if an audit is a fit</button>
+          </form>
+        </fieldset>
+
+        <div class="wiz-step wiz-result" data-key="book" hidden>
+          <span class="pill tag-green">You're a fit</span>
+          <h2 tabindex="-1">Pick a time for your audit.</h2>
+          <p class="muted">45 minutes with us, screen shared, looking at your own CRM.</p>
+          <div class="wiz-cal" id="wizCal"></div>
+        </div>
+
+        <div class="wiz-step wiz-result" data-key="later" hidden>
+          <h2 tabindex="-1">Thanks. We'll be in touch.</h2>
+          <p class="muted" id="laterWhy">From your answers, a full audit may not be the best first step yet. We'll email you with a few things that will help, and you can always reach us through the contact page.</p>
+          <div class="hero-actions" style="justify-content:flex-start">
+            <a href="/whitepaper/" class="btn btn-primary">Read the whitepaper</a>
+            <a href="/contact/" class="btn btn-soft">Contact us</a>
+          </div>
+        </div>
+        </div>
+
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Audit / <b>What you get</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">Your free audit</div>
+            <div class="window-sub">45 minutes, no sales deck</div>
+            <ol class="seq">
+              <li><div><b>Answer six questions</b><span>So we come to the call already knowing your setup.</span></div></li>
+              <li><div><b>Pick a time</b><span>Book straight into our calendar on the next screen.</span></div></li>
+              <li><div><b>We look at your CRM with you</b><span>Where records, attribution, and pipeline break, and what it costs you.</span></div></li>
+              <li><div><b>You get now versus after</b><span>What your data looks like today, and what it will look like once it's fixed.</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>Signals that unlock growth.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/datahooks/">What is a datahook?</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
+    });
+
+    // Same Google Sheet as the contact form. Audit answers also go into "message" so they land even if the sheet only has the contact columns.
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxxzlUaGbsiLkibvj5hmJJSvkmjPthBZQ--kiS3t0qo1Dj7LoiE7cso_0A6Dnzq7ke89g/exec';
+
+    // Booking page shown to people who qualify (Calendly, HubSpot meetings, or a Google Calendar appointment schedule link).
+    // Leave empty to show the "we'll email you times" fallback instead.
+    const BOOKING_URL = '';
+
+    // Who gets the calendar. Anyone who answers one of these is routed to the "we'll be in touch" screen instead.
+    const NOT_A_FIT = {
+      crm: ['No CRM yet'],
+      revenue: ['Under $1M'],
+      timeline: ['Just researching']
+    };
+
+    (function () {
+      var steps = Array.prototype.slice.call(document.querySelectorAll('#wiz .wiz-step'));
+      var questions = steps.filter(function (s) { return s.dataset.n; });
+      var total = questions.length - 1;                 // the contact step isn't counted as a question
+      var answers = {}, at = 0, history = [];
+      var back = document.getElementById('wizBack'), count = document.getElementById('wizCount'), bar = document.getElementById('wizBar');
+
+      function show(i, push) {
+        if (push !== false) history.push(at);
+        at = i;
+        steps.forEach(function (s, k) { s.hidden = k !== i; });
+        var s = steps[i], n = +(s.dataset.n || 0);
+        back.hidden = !(n > 1 && n <= total + 1);
+        count.hidden = !n;
+        count.textContent = n <= total ? 'Question ' + n + ' of ' + total : 'Last step';
+        bar.style.width = (n ? Math.min(100, (n - 1) / total * 100) : 100) + '%';
+        // keep the top of the wizard in view, below the sticky nav
+        var wiz = document.getElementById('wiz'), top = wiz.getBoundingClientRect().top;
+        if (history.length > 1 && top < 72) window.scrollTo({ top: window.scrollY + top - 88, behavior: 'smooth' });
+        var focusEl = s.querySelector('legend, h2');
+        if (focusEl && history.length > 1) focusEl.focus({ preventScroll: true });
+      }
+
+      questions.forEach(function (s, i) {
+        s.querySelectorAll('.wiz-opt').forEach(function (b) {
+          b.addEventListener('click', function () {
+            s.querySelectorAll('.wiz-opt').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+            answers[s.dataset.key] = b.dataset.value;
+            setTimeout(function () { show(steps.indexOf(questions[i + 1])); }, 160);
+          });
+        });
+      });
+      back.addEventListener('click', function () { if (history.length > 1) show(history.pop(), false); });
+
+      function fits() {
+        return Object.keys(NOT_A_FIT).every(function (k) { return NOT_A_FIT[k].indexOf(answers[k]) === -1; });
+      }
+
+      document.getElementById('wizForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var form = e.target, err = document.getElementById('wizError');
+        if (!form.checkValidity()) { err.hidden = false; form.reportValidity(); return; }
+        err.hidden = true;
+        var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = 'One moment...';
+        var fit = fits();
+        var data = {
+          firstName: form.firstName.value.trim(), lastName: form.lastName.value.trim(),
+          email: form.email.value.trim(), company: form.company.value.trim(),
+          role: answers.role || '', size: answers.team || '',
+          message: 'Audit request (' + (fit ? 'qualified' : 'not a fit yet') + '). CRM: ' + answers.crm + '. Biggest problem: ' + answers.pain +
+            '. Revenue: ' + answers.revenue + '. Timeline: ' + answers.timeline + '.',
+          source: 'audit', qualified: fit ? 'yes' : 'no',
+          crm: answers.crm, pain: answers.pain, revenue: answers.revenue, timeline: answers.timeline
+        };
+        try {
+          var fd = new FormData(); Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
+          await fetch(GOOGLE_SHEETS_URL, { method: 'POST', body: fd });
+        } catch (x) { /* CORS error is expected; the row still lands in the sheet */ }
+
+        if (fit) {
+          var cal = document.getElementById('wizCal');
+          if (BOOKING_URL) {
+            var url = BOOKING_URL + (BOOKING_URL.indexOf('?') > -1 ? '&' : '?') +
+              'name=' + encodeURIComponent(data.firstName + ' ' + data.lastName) + '&email=' + encodeURIComponent(data.email);
+            cal.innerHTML = '<iframe src="' + url + '" title="Book your audit" loading="lazy"></iframe>';
+          } else {
+            cal.innerHTML = '<p>We will email <b></b> within one business day with times for your audit.</p>';
+            cal.querySelector('b').textContent = data.email;
+          }
+          show(steps.findIndex(function (s) { return s.dataset.key === 'book'; }));
+        } else {
+          show(steps.findIndex(function (s) { return s.dataset.key === 'later'; }));
+        }
+        history = [];
+        back.hidden = true;
+      });
+
+      show(0, false);
+    })();
+  </script>
+  <script src="/signals.js" defer></script>
+</body>
+</html>

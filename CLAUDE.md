@@ -35,6 +35,7 @@ The **datahooks-net/website** repo is the marketing website for **Datahooks** (d
 │   └── apple-touch-icon.png
 ├── about/index.html        # /about/ — Company about page
 ├── blog/index.html         # /blog/ — Blog listing page
+├── audit/index.html        # /audit/ — Free audit wizard: qualifying questions, contact details, then the calendar
 ├── contact/index.html      # /contact/ — Contact/lead capture form
 ├── datahooks/index.html    # /datahooks/ — What is a datahook? (defines the brand term)
 ├── solutions/index.html    # /solutions/ — What We Do / services page
@@ -120,6 +121,15 @@ This is a common source of bugs:
 The homepage uses relative paths because it sits at the root. All subdirectory pages must use root-relative paths (starting with `/`) or assets will 404.
 
 ---
+
+## Free Audit Wizard
+
+Every "Get a free audit" button goes to `/audit/`; "Contact" stays on `/contact/`. The audit page asks six one-tap questions (CRM, biggest problem, team size, revenue, timeline, role), then first name, last name, work email, and company, then routes:
+
+- **A fit**: sees the booking calendar from `BOOKING_URL` (embedded in an iframe, with name and email added to the URL). If `BOOKING_URL` is empty, it says we will email times within one business day.
+- **Not a fit yet** (any answer listed in `NOT_A_FIT`: no CRM, under $1M revenue, or just researching): sees a thank-you screen with links to the whitepaper and contact page.
+
+Both outcomes post to the same Google Sheet as the contact form. The answers also go into `message`, so they land even if the sheet only has the contact columns, along with `source=audit` and `qualified=yes|no`.
 
 ## Contact Form
 

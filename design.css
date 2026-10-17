@@ -563,3 +563,26 @@ html:not(.js) .tags { display: none; }
 /* Datahooks page: the search that finds a datahook (drawn by signals.js) */
 .finder { padding: 0; overflow: hidden; align-self: stretch; min-height: 340px; }
 .finder-canvas { display: block; width: 100%; height: 100%; min-height: 340px; }
+
+/* Free audit wizard (/audit/): one question per screen, then contact details, then the calendar */
+.wiz { padding: 40px; min-height: 460px; }
+.wiz-top { display: flex; align-items: center; justify-content: space-between; min-height: 28px; }
+.wiz-count { font-size: 14px; color: var(--ink-3); margin-left: auto; }
+.wiz-back { font: inherit; font-size: 14px; background: none; border: 0; padding: 4px 0; color: var(--ink-2); cursor: pointer; }
+.wiz-back:hover { color: var(--ink); }
+.wiz-bar { height: 4px; border-radius: 4px; background: rgba(26,26,46,.08); margin: 12px 0 32px; overflow: hidden; }
+.wiz-bar span { display: block; height: 100%; width: 0; background: var(--coral-btn); border-radius: 4px; transition: width .3s ease; }
+.wiz-step { border: 0; padding: 0; margin: 0; min-width: 0; }
+.wiz-step legend { font-size: clamp(24px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); margin-bottom: 24px; padding: 0; outline: none; }
+.wiz-hint { color: var(--ink-2); margin: -12px 0 20px; }
+.wiz-opts { display: grid; gap: 10px; }
+.wiz-opt { font: inherit; font-size: 16px; text-align: left; padding: 16px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; transition: border-color .15s ease, background .15s ease; }
+.wiz-opt:hover { border-color: var(--coral-btn); }
+.wiz-opt:focus-visible { outline: 3px solid var(--coral-tint); border-color: var(--coral-btn); }
+.wiz-opt[aria-pressed="true"] { border-color: var(--coral-btn); background: var(--coral-tint); color: var(--coral-ink); }
+.wiz-result h2 { font-size: clamp(26px, 3vw, 32px); margin: 14px 0 8px; outline: none; }
+.wiz-result .muted { color: var(--ink-2); }
+.wiz-cal { margin-top: 24px; }
+.wiz-cal iframe { width: 100%; height: 640px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.wiz-cal p { padding: 20px; border-radius: 10px; background: var(--paper); border: 1px solid var(--line); }
+@media (max-width: 760px) { .wiz { padding: 28px 20px; } .wiz-opt { padding: 14px 16px; } }
