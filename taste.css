@@ -90,10 +90,12 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; text-
 .hero { position: relative; min-height: 100svh; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
 .signal { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
 .hero-body { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 var(--margin) clamp(40px, 8vh, 88px); }
-.hero h1 { font-size: var(--step-display); line-height: 0.98; letter-spacing: -0.05em; max-width: 11em; }
+.hero h1 { font-size: var(--step-head); line-height: 1; letter-spacing: -0.04em; }
+.hero h1 .hw { display: inline-block; font-size: clamp(4.5rem, 11vw, 10rem); line-height: 0.9; letter-spacing: -0.05em; }
+.js .hero h1 .hw { opacity: 0; }
+.hero h1 .h-rest { display: block; margin-top: 0.08em; }
 .hero-sub { margin-top: 24px; max-width: 40ch; font-size: var(--step-lead); line-height: 1.35; }
 .hero-act { margin-top: 32px; }
-.hero-src { position: absolute; z-index: 1; right: var(--margin); bottom: clamp(40px, 8vh, 88px); max-width: 30ch; text-align: right; font-size: var(--step-small); color: var(--muted); }
 
 /* labels beside each cluster: the revenue the signal was missing credit for */
 .tags { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -267,12 +269,12 @@ html:not(.js) .tags { display: none; }
   .nav-links { display: none; }
   .nav-menu { display: inline; margin-left: auto; padding: 10px 2px; }
   .nav > .action { margin-left: 0; min-height: 40px; padding: 0 1em; font-size: 15px; }
-  .hero h1 { font-size: 11vw; }
+  .hero h1 { font-size: var(--step-head); }
+  .hero h1 .hw { font-size: 17vw; }
   .hero-sub { font-size: var(--step-lead); margin-top: 18px; }
   .hero-act { margin-top: 24px; }
   .hero-act .action { width: 100%; }
-  .hero-src { position: relative; right: auto; bottom: auto; text-align: left; max-width: none; padding: 0 var(--margin) 24px; }
-  .tag { width: 11.5rem; }
+    .tag { width: 11.5rem; }
   .tag b { font-size: 28px; }
   .run img { height: calc(var(--h, 48px) * .62); }
   .intro { height: auto; padding: 0 var(--margin); }

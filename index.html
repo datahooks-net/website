@@ -40,9 +40,9 @@
   <section class="hero">
     <canvas class="signal" id="signal" aria-hidden="true"></canvas>
     <div class="tags" id="tags">
-      <p class="tag" data-v="1.5"><b>+$1.5M</b><span class="t-name">Event attendees on partner deals</span><span class="t-was">Credited before: $0</span></p>
-      <p class="tag" data-v="1.3"><b>+$1.3M</b><span class="t-name">Event attendees on deals sales sourced</span><span class="t-was">Credited before: $0.2M</span></p>
-      <p class="tag left" data-v="0.3"><b>+$0.3M</b><span class="t-name">Website forms on won deals</span><span class="t-was">Credited before: $0</span></p>
+      <p class="tag" data-v="1.8"><b>+$1.8M</b><span class="t-name">Pipeline from one conference no one credited</span><span class="t-was">Visible before: $0.2M</span></p>
+      <p class="tag" data-v="0.9"><b>+$0.9M</b><span class="t-name">Expansion revenue split across duplicate accounts</span><span class="t-was">Visible before: $0</span></p>
+      <p class="tag left" data-v="0.6"><b>+$0.6M</b><span class="t-name">Demo requests lost at a broken form step</span><span class="t-was">Visible before: $0</span></p>
     </div>
 
     <nav class="nav" aria-label="Main">
@@ -58,11 +58,10 @@
     </nav>
 
     <div class="hero-body">
-      <h1>Growth is hiding in your CRM.</h1>
+      <h1 aria-label="Growth is hiding in your CRM."><span class="hw" id="hw" aria-hidden="true">Growth</span><span class="h-rest" aria-hidden="true">is hiding in your CRM.</span></h1>
       <p class="hero-sub">We fix your data and pipelines, so you can see the signals to win.</p>
       <div class="hero-act"><a href="/contact/" class="action">Get a free audit</a></div>
     </div>
-    <p class="hero-src">Figures from one client's HubSpot review, October 2026: closed-won revenue that was missing credit before the fix.</p>
   </section>
 
   <section class="proof" aria-label="Brands our team has worked with, and the systems we work in">
@@ -234,15 +233,53 @@
         copy.querySelectorAll('img').forEach(function (i) { i.alt = ''; });
       });
 
-      // hero: records drift as noise, then groups gather one at a time into
-      // clusters, and each is named with the revenue it was missing credit for
+      // hero, in three acts:
+      // 1. broken records: scattered, jittering, some hollow (missing values), some doubled (duplicates)
+      // 2. a scan sweeps across and fixes them: duplicates merge, hollows fill, everything settles into rows
+      // 3. in the clean data, some records turn coral where they sit, then gather into named clusters
       (function () {
         var cv = document.getElementById('signal');
         if (!cv || !cv.getContext) return;
         var c = cv.getContext('2d'), w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-        var on = true, N, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 9500, PER = 38;
+        var on = true, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 30000;
+        var CORAL = [201, 61, 98], INK = [26, 26, 46];
         var tags = Array.prototype.slice.call(document.querySelectorAll('#tags .tag'));
         var phone = function () { return w < 700; };
+
+        // the headline word: its dots hide in the noise, then spell the word as the results form,
+        // and reform into each word in turn while the results are held
+        var hw = document.getElementById('hw');
+        var WORDS = ['Growth', 'Efficiency', 'Revenue', 'Clarity', 'Vision'];
+        var wpts = [], targetCache = {}, shownWord = -1;
+        function seedWord() {
+          var count = phone() ? 700 : 1500; wpts = [];
+          for (var i = 0; i < count; i++) wpts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, ph: Math.random() * 6.283 });
+          targetCache = {};
+        }
+        function targets(word) {
+          if (targetCache[word]) return targetCache[word];
+          var cs = getComputedStyle(hw), fs = parseFloat(cs.fontSize);
+          var off = document.createElement('canvas'), oc = off.getContext('2d');
+          var font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+          oc.font = font; if ('letterSpacing' in oc) oc.letterSpacing = cs.letterSpacing;
+          var m = oc.measureText(word), asc = m.fontBoundingBoxAscent || fs * .8, desc = m.fontBoundingBoxDescent || fs * .25;
+          off.width = Math.ceil(m.width + 20); off.height = Math.ceil(asc + desc);
+          oc.font = font; if ('letterSpacing' in oc) oc.letterSpacing = cs.letterSpacing;
+          oc.fillStyle = '#000'; oc.fillText(word, 0, asc);
+          var data = oc.getImageData(0, 0, off.width, off.height).data, step = Math.max(3, Math.round(fs / 30)), out = [];
+          for (var y = 0; y < off.height; y += step) for (var x = 0; x < off.width; x += step) {
+            if (data[(y * off.width + x) * 4 + 3] > 140) out.push([x, y]);
+          }
+          // shuffle so each particle lands on a random spot in the letters
+          for (var i = out.length - 1; i > 0; i--) { var j = (Math.random() * (i + 1)) | 0, t = out[i]; out[i] = out[j]; out[j] = t; }
+          targetCache[word] = { pts: out, r: Math.max(1.3, step * .42), box: asc + desc };
+          return targetCache[word];
+        }
+        function wordOrigin() {
+          var a = hw.getBoundingClientRect(), b = cv.getBoundingClientRect();
+          return { x: a.left - b.left, y: a.top - b.top, h: a.height };
+        }
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { targetCache = {}; });
         function centres() {
           return phone()
             ? [{ x: .14, y: .19, side: 1 }, { x: .84, y: .4, side: -1 }, null]
@@ -253,18 +290,30 @@
           cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); c.setTransform(dpr, 0, 0, dpr, 0, 0);
         }
         function seed() {
-          N = phone() ? 700 : 1800; pts = [];
-          for (var i = 0; i < N; i++) pts.push({ x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .00024, vy: (Math.random() - .5) * .00024, r: .8 + Math.random() });
+          var gap = phone() ? 22 : 26, cols = Math.ceil(w / gap), rows = Math.ceil(h / gap);
+          var ox = (w - (cols - 1) * gap) / 2, oy = (h - (rows - 1) * gap) / 2;
+          pts = [];
+          for (var r = 0; r < rows; r++) for (var k = 0; k < cols; k++) {
+            var roll = Math.random();
+            pts.push({
+              tx: ox + k * gap, ty: oy + r * gap,                       // tidy home
+              mx: Math.random() * w, my: Math.random() * h,             // where the broken copy sits
+              vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+              hollow: roll < .22, dup: roll > .84,                      // missing value / duplicate
+              da: Math.random() * 6.283, ph: Math.random() * 6.283
+            });
+          }
         }
         var R = function () { return phone() ? 30 : 44; };
         function pick() {
           var used = {}; groups = [];
           centres().forEach(function (ct, gi) {
             var el = tags[gi];
+            el.classList.remove('on');
             if (!ct) { groups.push(null); el.hidden = true; return; }
             el.hidden = false;
-            var ids = [];
-            while (ids.length < PER) { var j = (Math.random() * N) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
+            var ids = [], per = phone() ? 30 : 38;
+            while (ids.length < per) { var j = (Math.random() * pts.length) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
             groups.push({ ct: ct, ids: ids });
             var gap = R() + 18;
             el.style.top = (ct.y * h - 22) + 'px';
@@ -272,8 +321,9 @@
             if (ct.side > 0) { el.style.left = (ct.x * w + gap) + 'px'; el.style.right = 'auto'; }
             else { el.style.right = (w - ct.x * w + gap) + 'px'; el.style.left = 'auto'; }
           });
+          pts.forEach(function (q) { q.g = -1; });
+          groups.forEach(function (gr, gi) { if (gr) gr.ids.forEach(function (id) { pts[id].g = gi; }); });
         }
-        // the figure counts up as its label appears
         function count(el) {
           var b = el.querySelector('b'), v = parseFloat(el.dataset.v), start = performance.now();
           if (reduce) { b.textContent = '+$' + v.toFixed(1) + 'M'; return; }
@@ -283,36 +333,109 @@
             if (t < 1 && el.classList.contains('on')) requestAnimationFrame(tick);
           })(start);
         }
-        var ease = function (t) { t = Math.max(0, Math.min(1, t)); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-        size(); seed(); pick();
-        window.addEventListener('resize', function () { size(); seed(); pick(); if (reduce) draw(performance.now()); });
+        var clamp = function (t) { return Math.max(0, Math.min(1, t)); };
+        var ease = function (t) { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+        var mix = function (a, b, t) { return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * t) + ',' + Math.round(a[1] + (b[1] - a[1]) * t) + ',' + Math.round(a[2] + (b[2] - a[2]) * t) + ')'; };
+        size(); seed(); seedWord(); pick();
+        window.addEventListener('resize', function () { size(); seed(); seedWord(); pick(); if (reduce) draw(performance.now()); });
         new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
+
+        // timeline, as fractions of the cycle
+        var SWEEP0 = .04, SWEEP1 = .19, FIX = .03, LIGHT0 = .2, LIGHT1 = .23, GATHER0 = .24, STAGGER = .045, GDUR = .1, HOLD = .94;
         function draw(now) {
-          var p = reduce ? .75 : ((now - t0) % CYCLE) / CYCLE;
+          var p = reduce ? .3 : ((now - t0) % CYCLE) / CYCLE;
           var n = Math.floor((now - t0) / CYCLE);
           if (!reduce && n !== cycle) { cycle = n; pick(); }
-          var out = p < .86 ? 0 : ease((p - .86) / .14);
+          var fadeIn = reduce ? 1 : ease(p / .03), fadeOut = p < HOLD ? 0 : ease((p - HOLD) / (1 - HOLD) * 1.4);
+          var scan = SWEEP0 + 0, sx = ((p - SWEEP0) / (SWEEP1 - SWEEP0)) * (w + 160) - 80;
           c.clearRect(0, 0, w, h);
-          c.fillStyle = 'rgba(26,26,46,.18)';
-          for (var i = 0; i < N; i++) {
-            var q = pts[i];
-            if (!reduce) { q.x += q.vx; q.y += q.vy; if (q.x < 0 || q.x > 1) q.vx *= -1; if (q.y < 0 || q.y > 1) q.vy *= -1; }
-            c.beginPath(); c.arc(q.x * w, q.y * h, q.r, 0, 6.283); c.fill();
+          c.globalAlpha = fadeIn * (1 - fadeOut);
+
+          // the scan line
+          if (p > SWEEP0 && p < SWEEP1 + .02) {
+            c.fillStyle = 'rgba(26,26,46,.35)';
+            c.fillRect(Math.round(sx), 0, 1, h);
           }
-          var live = 0, rad = R();
+          var live = 0, rad = R(), gStart = [];
+          groups.forEach(function (gr) { if (gr) { gStart.push(GATHER0 + live * STAGGER); live++; } else gStart.push(1); });
+
+          for (var i = 0; i < pts.length; i++) {
+            var q = pts[i];
+            if (!reduce && p < SWEEP1 + FIX) {
+              q.mx += q.vx; q.my += q.vy;
+              if (q.mx < 0 || q.mx > w) q.vx *= -1; if (q.my < 0 || q.my > h) q.vy *= -1;
+            }
+            // fixed once the scan has passed its tidy home
+            var passT = SWEEP0 + (SWEEP1 - SWEEP0) * clamp((q.tx + 80) / (w + 160));
+            var f = reduce ? 1 : ease((p - passT) / FIX);
+            var jit = (1 - f) * 2.6;
+            var x = q.mx + (q.tx - q.mx) * f + Math.sin(now / 120 + q.ph) * jit;
+            var y = q.my + (q.ty - q.my) * f + Math.cos(now / 140 + q.ph) * jit;
+
+            // signal records light up in place, then gather
+            var lit = 0, g = 0;
+            if (q.g >= 0) {
+              lit = ease((p - LIGHT0) / (LIGHT1 - LIGHT0));
+              g = ease((p - gStart[q.g]) / GDUR);
+              var gr = groups[q.g], k = gr.ids.indexOf(i), a = k * 2.39996;
+              var rr = rad * Math.sqrt((k + .5) / gr.ids.length) * (1 + Math.sin(now / 900 + k) * .04 * g);
+              x += (gr.ct.x * w + Math.cos(a) * rr - x) * g;
+              y += (gr.ct.y * h + Math.sin(a) * rr - y) * g;
+            }
+            var col = lit > 0 ? mix(INK, CORAL, lit) : 'rgb(26,26,46)';
+            var alpha = lit > 0 ? .28 + .72 * lit : .5 - f * .32;
+            var r = lit > 0 ? 1.6 + lit * .4 + g * 1 : 1.6 + (1 - f) * .6;
+
+            c.globalAlpha = fadeIn * (1 - fadeOut) * alpha;
+            if (q.hollow && f < 1) {
+              // missing value: an empty ring that fills as it is fixed
+              c.strokeStyle = col; c.lineWidth = 1.2;
+              c.beginPath(); c.arc(x, y, r + .6, 0, 6.283); c.stroke();
+              if (f > 0) { c.fillStyle = col; c.globalAlpha *= f; c.beginPath(); c.arc(x, y, r, 0, 6.283); c.fill(); }
+            } else {
+              c.fillStyle = col; c.beginPath(); c.arc(x, y, r, 0, 6.283); c.fill();
+            }
+            if (q.dup && f < 1) {
+              // duplicate: a second copy that slides back into the first
+              var d = (1 - f) * 7;
+              c.fillStyle = col; c.globalAlpha = fadeIn * (1 - fadeOut) * alpha * (1 - f);
+              c.beginPath(); c.arc(x + Math.cos(q.da) * d, y + Math.sin(q.da) * d, r, 0, 6.283); c.fill();
+            }
+          }
+          // the word
+          var SLOT = (HOLD - GATHER0) / WORDS.length, wk = p < GATHER0 ? -1 : Math.min(WORDS.length - 1, Math.floor((p - GATHER0) / SLOT));
+          if (reduce) wk = 0;
+          var lt = reduce ? .5 : wk < 0 ? 0 : (p - GATHER0 - wk * SLOT) / SLOT;
+          var morph = reduce ? 1 : ease(lt / .3);
+          var solid = reduce ? 1 : wk < 0 ? 0 : clamp((lt - .3) / .08) * (wk < WORDS.length - 1 ? 1 - clamp((lt - .9) / .08) : 1);
+          if (wk !== shownWord) { shownWord = wk; hw.textContent = WORDS[Math.max(0, wk)]; }
+          hw.style.opacity = (solid * (1 - fadeOut)).toFixed(3);
+          var o = wordOrigin(), cur = targets(WORDS[Math.max(0, wk)]), prev = wk > 0 ? targets(WORDS[wk - 1]) : null;
+          o.y += (o.h - cur.box) / 2;  // the glyphs sit centred in the line box
+          var dotA = (1 - solid) * (1 - fadeOut) * fadeIn;
+          c.fillStyle = '#1a1a2e';
+          for (var i = 0; i < wpts.length; i++) {
+            var q = wpts[i];
+            if (!reduce && wk < 0) { q.x += q.vx; q.y += q.vy; if (q.x < 0 || q.x > w) q.vx *= -1; if (q.y < 0 || q.y > h) q.vy *= -1; }
+            var tp = cur.pts.length ? cur.pts[i % cur.pts.length] : [0, 0], tx = o.x + tp[0], ty = o.y + tp[1];
+            var fx, fy;
+            if (prev && prev.pts.length) { var pp = prev.pts[i % prev.pts.length]; fx = o.x + pp[0]; fy = o.y + pp[1]; }
+            else { fx = q.x + Math.sin(now / 120 + q.ph) * 2.6; fy = q.y + Math.cos(now / 140 + q.ph) * 2.6; }
+            var m2 = wk < 0 ? 0 : morph;
+            var x = fx + (tx - fx) * m2, y = fy + (ty - fy) * m2;
+            c.globalAlpha = dotA * (wk < 0 ? .5 : .5 + .5 * m2);
+            c.beginPath(); c.arc(x, y, wk < 0 ? 1.6 : 1.6 + (cur.r - 1.6) * m2, 0, 6.283); c.fill();
+          }
+          // scatter the word's dots again, unseen, before the next loop
+          if (fadeOut > .99) wpts.forEach(function (q) { q.x = Math.random() * w; q.y = Math.random() * h; });
+
+          c.globalAlpha = 1;
+
           groups.forEach(function (gr, gi) {
             if (!gr) return;
-            var g = ease((p - (.08 + live * .14)) / .22) * (1 - out); live++;
-            var el = tags[gi], show = g > .92;
+            var el = tags[gi], show = p > gStart[gi] + GDUR * .85 && p < HOLD;
             if (show && !el.classList.contains('on')) { el.classList.add('on'); count(el); }
             else if (!show && el.classList.contains('on')) { el.classList.remove('on'); }
-            c.fillStyle = '#c93d62';
-            for (var k = 0; k < gr.ids.length; k++) {
-              var q = pts[gr.ids[k]];
-              var a = k * 2.39996, rr = rad * Math.sqrt((k + .5) / gr.ids.length) * (1 + Math.sin(now / 900 + k) * .04 * g);
-              var tx = gr.ct.x * w + Math.cos(a) * rr, ty = gr.ct.y * h + Math.sin(a) * rr;
-              c.beginPath(); c.arc(q.x * w + (tx - q.x * w) * g, q.y * h + (ty - q.y * h) * g, 1.6 + g * 1.4, 0, 6.283); c.fill();
-            }
           });
         }
         function frame(now) { requestAnimationFrame(frame); if (on) draw(now); }
