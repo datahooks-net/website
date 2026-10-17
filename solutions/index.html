@@ -8,317 +8,242 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What We Do | Datahooks</title>
-  <meta name="description" content="Datahooks aligns your teams around reliable data. Fix your dashboards, enable automations, and prepare for AI. All on a foundation that works." />
-    <link rel="canonical" href="https://datahooks.net/solutions/" />
+  <meta name="description" content="We align your teams, fix your CRM data, and build dashboards and automations that work, then stay on to keep them right." />
+  <link rel="canonical" href="https://datahooks.net/solutions/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/solutions/" />
   <meta property="og:title" content="What We Do | Datahooks" />
-  <meta property="og:description" content="We align your teams on what matters, fix your dashboards and reports, and get your data ready for automations and AI." />
+  <meta property="og:description" content="We align your teams, fix your CRM data, and build dashboards and automations that work, then stay on to keep them right." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="What We Do | Datahooks" />
-  <meta name="twitter:description" content="We align your teams on what matters, fix your dashboards and reports, and get your data ready for automations and AI." />
+  <meta name="twitter:description" content="We align your teams, fix your CRM data, and build dashboards and automations that work, then stay on to keep them right." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
+  <style>
+    .fpanel .checks { margin-top: 20px; }
+    .fpanel .window-body { padding-bottom: 36px; }
+    .after-note { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .after-note p { color: var(--ink-2); font-size: 15px; margin-top: 10px; }
+    .t td b { font-weight: 600; white-space: nowrap; }
+    .band .window { box-shadow: var(--shadow-window); }
+    @media (max-width: 760px) { .t td b { white-space: normal; } }
+  </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo">
-        <span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/solutions/" class="active">What We Do</a></li>
+      <ul class="nav-links">
+        <li><a href="/solutions/" class="active">What we do</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ===== PAGE HEADER ===== -->
-  <section class="page-header">
-    <div class="container">
-      <span class="section-label">What We Do</span>
-      <h1>We make your data <span class="gradient-text">work for your business</span></h1>
-      <p>Data problems look technical, but they start with people. We align your teams, fix the foundation, and build dashboards and automations that work.</p>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="inner">
+        <h1>We make your data work for your business</h1>
+        <p class="lead">Data problems look technical, but they start with people. We align your teams, fix the foundation, and build dashboards and automations that work.</p>
+        <div class="hero-actions">
+          <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+          <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ===== SERVICE 1: DATA CLEANING ===== -->
-  <section style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="value-prop-item fade-in" style="border:none; padding-top:0;">
-        <div class="value-prop-text">
-          <span class="section-label">The Starting Point</span>
-          <h3 style="font-size:2rem;">We Get Your Teams Aligned</h3>
-          <p style="margin-bottom:1.5rem;">Before we touch a single record, we get everyone in the room. Across Sales, Marketing, Operations, Finance. Whoever owns or depends on your data. We discover where definitions break down, where data gets duplicated or lost, and where your teams disagree. Then we fix it together.</p>
-          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">What that looks like in practice:</p>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.8rem; margin-top:0.8rem;">
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Align on what "customer" actually means to everyone
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Map where data lives and who owns it
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Find and fix the gaps: duplicates, contradictions, stale records
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Build trust that the data is right
-            </li>
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+
+      <div class="fpanel panel panel-coral">
+        <div class="feature-text">
+          <span class="tag">The starting point</span>
+          <h2>We get your teams aligned.</h2>
+          <p>Before we touch a single record, we get everyone in the room: Sales, Marketing, Operations, and Finance, whoever owns or depends on your data. We find where definitions break down, where data gets duplicated or lost, and where your teams disagree. Then we fix it together.</p>
+          <ul class="checks">
+            <li>Align on what "customer" actually means to everyone</li>
+            <li>Map where data lives and who owns it</li>
+            <li>Find and fix the gaps: duplicates, contradictions, and stale records</li>
+            <li>Build trust that the data is right</li>
           </ul>
         </div>
-        <div class="value-prop-visual">
-          <div style="width:100%;">
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em;">How we approach it</div>
-            <div style="display:flex; flex-direction:column; gap:0;">
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">01</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-bottom:0.2rem;">Discover what "right" looks like</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Workshops with your teams. What metrics matter? What counts as a customer? Where do definitions clash?</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">02</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-bottom:0.2rem;">Map and diagnose</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">We audit your sources and show you exactly where alignment breaks down. Read-only, no changes yet.</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">03</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-bottom:0.2rem;">Fix and verify</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Deduplicate, normalize, and validate. You sign off at every step. Build trust as we go.</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0;">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">04</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-bottom:0.2rem;">Monitor and maintain</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Quality checks catch drift before it becomes a problem. Your teams stay confident in the numbers.</div>
-                </div>
-              </div>
+        <div class="window">
+            <div class="window-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="window-crumb">Engagement / <b>How we approach it</b></span>
+            </div>
+            <div class="window-body">
+              <div class="window-title">How we approach it</div>
+              <div class="window-sub">You sign off at every step</div>
+              <ol class="seq">
+                <li><div><b>Discover what "right" looks like</b><span>Workshops with your teams. What metrics matter? What counts as a customer? Where do definitions clash?</span></div></li>
+                <li><div><b>Map and diagnose</b><span>We audit your sources and show you exactly where alignment breaks down. Read-only, no changes yet.</span></div></li>
+                <li><div><b>Fix and verify</b><span>Deduplicate, normalize, and validate. You sign off at every step, so trust builds as we go.</span></div></li>
+                <li><div><b>Monitor and maintain</b><span>Quality checks catch drift before it becomes a problem. Your teams stay confident in the numbers.</span></div></li>
+              </ol>
             </div>
           </div>
-        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== SERVICE 2: DATA UNIFICATION ===== -->
-  <section id="integrations">
-    <div class="container">
-      <div class="value-prop-item reverse fade-in" style="border:none;">
-        <div class="value-prop-text">
-          <span class="section-label">Bringing It Together</span>
-          <h3 style="font-size:2rem;">Your Dashboards and Reports Finally Work</h3>
-          <p style="margin-bottom:1.5rem;">Once alignment is real, we connect every source into a single view. Your teams stop jumping between tools. Decisions get faster. Everyone trusts the same numbers. No more arguments about which number is right.</p>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.8rem;">
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> One place where all your data lives
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Real-time dashboards everyone agrees on
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Teams stop maintaining duplicates
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Speed up from "how did we get that number?" to "here's the answer"
-            </li>
+      <div class="fpanel panel panel-navy">
+        <div class="feature-text">
+          <span class="tag">Bringing it together</span>
+          <h2>Your dashboards and reports finally work.</h2>
+          <p>Once alignment is real, we connect every source into a single view. Your teams stop jumping between tools, decisions get faster, and everyone trusts the same numbers. No more arguments about which number is right.</p>
+          <ul class="checks">
+            <li>One place where all your data lives</li>
+            <li>Real-time dashboards everyone agrees on</li>
+            <li>Teams stop maintaining duplicates</li>
+            <li>Go from "how did we get that number?" to "here is the answer"</li>
           </ul>
         </div>
-        <div class="value-prop-visual">
-          <div style="width:100%;">
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em;">A recent client had</div>
-            <div style="background:rgba(26,26,46,0.03); border:1px solid var(--border-color); border-radius:12px; padding:1.5rem; margin-bottom:1rem;">
-              <div style="font-size:0.95rem; color:var(--navy); line-height:1.7; font-style:italic;">"Our Sales team had one definition of 'closed deal', Finance had another, and Ops was reporting something else entirely. We couldn't trust any dashboard. Every meeting started with arguing about what the number actually was."</div>
+        <div class="window">
+            <div class="window-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="window-crumb">Clients / <b>Before and after</b></span>
             </div>
-            <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1.5rem;">
-              <div style="flex:1; height:1px; background:var(--border-color);"></div>
-              <div style="font-size:0.75rem; color:var(--text-muted); font-weight:600; white-space:nowrap;">After working with us</div>
-              <div style="flex:1; height:1px; background:var(--border-color);"></div>
-            </div>
-            <div style="background:var(--navy); color:#fff; border-radius:12px; padding:1.2rem 1.5rem;">
-              <div style="font-size:0.95rem; line-height:1.7;">Now they have one definition, one dashboard, one truth. Meetings focus on decisions, not defending the data. Everything updated in real-time.</div>
+            <div class="window-body">
+              <div class="window-title">A recent client</div>
+              <div class="window-sub">Sales, Finance, and Ops each had their own number</div>
+              <p class="pull">"Our Sales team had one definition of 'closed deal', Finance had another, and Ops was reporting something else entirely. We couldn't trust any dashboard. Every meeting started with arguing about what the number actually was."</p>
+              <div class="after-note">
+                <span class="tag tag-green">After working with us</span>
+                <p>Now they have one definition, one dashboard, and one truth. Meetings focus on decisions, not defending the data, and everything updates in real time.</p>
+              </div>
             </div>
           </div>
-        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== SERVICE 3: CORD CUTTING ===== -->
-  <section style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="value-prop-item fade-in" style="border:none;">
-        <div class="value-prop-text">
-          <span class="section-label">The End Game</span>
-          <h3 style="font-size:2rem;">Your Data Is Ready for What's Next</h3>
-          <p style="margin-bottom:1.5rem;">Clean data and aligned teams open the door to automations that work, AI that makes sense, and growth without surprises. We build infrastructure that supports all of it, and we stay as your partner to keep it running right.</p>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.8rem;">
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Run automations with confidence
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Feed AI models clean, reliable data
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Own your infrastructure, not rent it
-            </li>
-            <li style="display:flex; align-items:flex-start; gap:0.8rem; color:var(--text-secondary); font-size:0.95rem;">
-              <span style="color:var(--accent); font-weight:700;">✓</span> Scale without breaking what works
-            </li>
+      <div class="fpanel panel panel-sand">
+        <div class="feature-text">
+          <span class="tag">The end game</span>
+          <h2>Your data is ready for what's next.</h2>
+          <p>Clean data and aligned teams open the door to automations that work, AI that makes sense, and growth without surprises. We build infrastructure that supports all of it, and we stay as your partner to keep it running right.</p>
+          <ul class="checks">
+            <li>Run automations with confidence</li>
+            <li>Feed AI models clean, reliable data</li>
+            <li>Own your infrastructure, not rent it</li>
+            <li>Scale without breaking what works</li>
           </ul>
         </div>
-        <div class="value-prop-visual">
-          <div style="width:100%;">
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.2rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em;">What you get</div>
-            <div style="display:flex; flex-direction:column; gap:0;">
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">✓</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy);">Reliable automations</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Your workflows run on data you trust. No more surprises or failed triggers.</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">✓</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy);">AI-ready data</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Clean, consistent records that make sense to models. Feed your LLMs with confidence.</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0; border-bottom:1px solid var(--border-light);">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">✓</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy);">Documented and maintained</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">Your team understands what you have. We stay to keep it right as things change.</div>
-                </div>
-              </div>
-              <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem 0;">
-                <div style="min-width:24px; color:var(--accent); font-weight:700; font-size:1.1rem;">✓</div>
-                <div>
-                  <div style="font-size:0.88rem; font-weight:600; color:var(--navy);">A partner keeping it right</div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">An ongoing partnership that grows with you.</div>
-                </div>
-              </div>
+        <div class="window">
+            <div class="window-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="window-crumb">Deliverables / <b>What you get</b></span>
+            </div>
+            <div class="window-body">
+              <div class="window-title">What you get</div>
+              <div class="window-sub">Delivered, documented, and maintained</div>
+              <table class="t">
+                <tbody>
+                  <tr><td><b>Reliable automations</b></td><td>Your workflows run on data you trust. No more surprises or failed triggers.</td></tr>
+                  <tr><td><b>AI-ready data</b></td><td>Clean, consistent records that make sense to models, so you can feed your LLMs with confidence.</td></tr>
+                  <tr><td><b>Documented and maintained</b></td><td>Your team understands what you have. We stay to keep it right as things change.</td></tr>
+                  <tr><td><b>A partner keeping it right</b></td><td>An ongoing partnership that grows with you.</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-gray" id="process">
+    <div class="wrap">
+      <div class="split">
+        <div class="text">
+          <h2>How an engagement works</h2>
+          <p>We keep it simple and structured, so we get it right the first time.</p>
         </div>
+        <div class="window">
+            <div class="window-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="window-crumb">Engagement / <b>Timeline</b></span>
+            </div>
+            <div class="window-body">
+              <ol class="seq">
+                <li><div><b>We learn your business</b><span>Your data, your teams, your processes, and your definitions. We sit down with Sales, Finance, Ops, and everyone who touches the numbers.</span></div></li>
+                <li><div><b>We get everyone on the same page</b><span>We find where definitions clash, where data gets duplicated, and where trust breaks down. Then we build alignment before fixing anything.</span></div></li>
+                <li><div><b>We fix it fast</b><span>Dedupe, clean, unify, and integrate. You see progress weekly. We move fast, but never without your sign-off.</span></div></li>
+                <li><div><b>We keep it running</b><span>We stay as your partner with monitoring, maintenance, and documentation, growing with you as your business changes.</span></div></li>
+              </ol>
+            </div>
+          </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== OUR PROCESS ===== -->
-  <section id="process">
-    <div class="container">
-      <div style="text-align:center; margin-bottom:4rem;">
-        <span class="section-label">Our Process</span>
-        <h2>How an engagement works</h2>
-        <p class="section-subtitle">We keep it simple and structured. Get it right the first time.</p>
-      </div>
-
-      <div class="grid-4 fade-in">
-        <div class="card" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1.2rem; background:var(--accent-bg); color:var(--accent);">
-            <span style="font-size:1.3rem; font-weight:800;">01</span>
-          </div>
-          <h3>We Learn Your Business</h3>
-          <p>Your data, your teams, your processes, your definitions. We sit down with Sales, Finance, Ops, everyone who touches numbers.</p>
-        </div>
-        <div class="card" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1.2rem; background:var(--accent-bg); color:var(--accent);">
-            <span style="font-size:1.3rem; font-weight:800;">02</span>
-          </div>
-          <h3>We Get Everyone on the Same Page</h3>
-          <p>We find where definitions clash, where data gets duplicated, where trust breaks down. Then we build alignment before fixing anything.</p>
-        </div>
-        <div class="card" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1.2rem; background:var(--accent-bg); color:var(--accent);">
-            <span style="font-size:1.3rem; font-weight:800;">03</span>
-          </div>
-          <h3>We Fix It Fast</h3>
-          <p>Dedup, clean, unify, integrate. You see progress weekly. We move fast but never without your sign-off.</p>
-        </div>
-        <div class="card" style="text-align:center;">
-          <div class="card-icon" style="margin:0 auto 1.2rem; background:var(--accent-bg); color:var(--accent);">
-            <span style="font-size:1.3rem; font-weight:800;">04</span>
-          </div>
-          <h3>We Keep It Running</h3>
-          <p>We stay as your partner. Monitoring, maintenance, documentation. Growing with you as your business changes.</p>
-        </div>
+  <section class="closing">
+    <div class="wrap">
+      <h2>Ready to build your data moat?</h2>
+      <p class="lead">We'll look at your current setup and give you an honest assessment. Free, no strings attached.</p>
+      <div class="closing-actions">
+        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+        <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Ready to build your <span class="gradient-text">Data Moat</span>?</h2>
-        <p>We'll look at your current setup and give you an honest assessment. Free, no strings attached.</p>
-        <a href="/contact/" class="btn btn-primary">Let's Talk <span>→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-          <p>We align your teams, fix your data, and make sure your dashboards, automations, and AI actually work.</p>
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>We build CRMs that do the right thing, so your teams can focus on creating value.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/solutions/#integrations">Data Sources</a></li>
-            <li><a href="/solutions/#process">Our Process</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 
+  </script>
 </body>
 </html>

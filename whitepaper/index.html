@@ -7,658 +7,316 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your CRM Data Is Costing You More Than You Realize | Datahooks</title>
+  <title>Your CRM data is costing you more than you realize | Datahooks</title>
   <meta name="description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. This whitepaper breaks down the hidden costs, the AI risk, and what to do about it." />
   <link rel="canonical" href="https://datahooks.net/whitepaper/" />
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/whitepaper/" />
-  <meta property="og:title" content="Your CRM Data Is Costing You More Than You Realize | Datahooks" />
+  <meta property="og:title" content="Your CRM data is costing you more than you realize | Datahooks" />
   <meta property="og:description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. This whitepaper breaks down the hidden costs, the AI risk, and what to do about it." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Your CRM Data Is Costing You More Than You Realize | Datahooks" />
+  <meta name="twitter:title" content="Your CRM data is costing you more than you realize | Datahooks" />
   <meta name="twitter:description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. This whitepaper breaks down the hidden costs, the AI risk, and what to do about it." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
   <style>
-    /* Whitepaper-specific styles */
-    .wp-hero {
-      background: var(--navy);
-      color: #fff;
-      padding: 5rem 0 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .wp-hero::before {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 400px; height: 400px;
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 50%;
-    }
-    .wp-hero .container { max-width: 780px; }
-    .wp-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-    .wp-hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.15;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      color: #fff;
-    }
-    .wp-hero h1 em { font-style: italic; color: var(--accent); }
-    .wp-hero-sub {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.6);
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-    }
-    .wp-meta {
-      display: flex;
-      gap: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      flex-wrap: wrap;
-    }
-    .wp-meta-item {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.05em;
-    }
-    .wp-meta-item strong {
-      display: block;
-      font-weight: 600;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .wp-body {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .wp-section {
-      padding: 3.5rem 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .wp-section:last-child { border-bottom: none; }
-
-    .wp-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-    }
-
-    .wp-body h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: var(--navy);
-    }
-    .wp-body h2 em { font-style: italic; color: var(--accent); }
-
-    .wp-body h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 2rem 0 0.6rem;
-      color: var(--navy);
-    }
-
-    .wp-body p {
-      margin-bottom: 1.1rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-    }
-
-    .wp-pull {
-      border-left: 3px solid var(--accent);
-      padding: 1.2rem 1.5rem;
-      margin: 2rem 0;
-      background: var(--accent-bg);
-      border-radius: 0 8px 8px 0;
-    }
-    .wp-pull p {
-      font-size: 1.15rem;
-      line-height: 1.5;
-      font-weight: 600;
-      color: var(--navy);
-      margin: 0;
-    }
-
-    .wp-stat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.8rem;
-      margin: 2rem 0;
-    }
-    .wp-stat-card {
-      background: var(--navy);
-      border-radius: 10px;
-      padding: 1.4rem 1.2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .wp-stat-card::before {
-      content: '';
-      position: absolute;
-      bottom: -20px; right: -20px;
-      width: 70px; height: 70px;
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 50%;
-    }
-    .wp-stat-num {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .wp-stat-num span { color: var(--accent); }
-    .wp-stat-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.4;
-      letter-spacing: 0.03em;
-    }
-
-    .wp-calc {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      margin: 2rem 0;
-    }
-    .wp-calc h4 {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-    }
-    .wp-calc-controls { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1.5rem; }
-    .wp-calc-ctrl { flex: 1; min-width: 170px; }
-    .wp-calc-ctrl label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500; }
-    .wp-calc-ctrl input[type=range] { width: 100%; accent-color: var(--accent); height: 6px; }
-    .wp-calc-ctrl .val { font-size: 0.82rem; color: var(--navy); margin-top: 0.3rem; font-weight: 600; }
-    .wp-calc-output { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .wp-calc-out { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.2rem; }
-    .wp-calc-out-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    .wp-calc-out-val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
-    .wp-calc-out-val.ok { color: #00b894; }
-
-    .wp-threat {
-      background: var(--navy);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      margin: 2rem 0;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .wp-threat::before {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 200px; height: 200px;
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 50%;
-    }
-    .wp-threat .wp-eyebrow { margin-bottom: 1rem; }
-    .wp-threat h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 0 0 1rem;
-    }
-    .wp-threat p { color: rgba(255,255,255,0.6); margin-bottom: 0.8rem; }
-
-    .wp-failure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
-    .wp-failure-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-    .wp-fc-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-      font-weight: 700;
-    }
-    .wp-failure-card p { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin: 0; line-height: 1.5; }
-
-    .wp-framework { margin: 2rem 0; }
-    .wp-ws-item {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-color);
-      align-items: flex-start;
-    }
-    .wp-ws-item:last-child { border-bottom: none; }
-    .wp-ws-num {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1;
-      color: var(--border-color);
-      flex-shrink: 0;
-      width: 48px;
-      text-align: center;
-    }
-    .wp-ws-body h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
-    .wp-ws-body p { font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.65; }
-    .wp-ws-tag {
-      display: inline-block;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-    }
-    .wp-ws-tag.foundation { background: var(--accent-bg); color: var(--accent); }
-    .wp-ws-tag.pipeline { background: rgba(0,184,148,0.1); color: #00b894; }
-    .wp-ws-tag.analytics { background: rgba(24,95,165,0.1); color: #185fa5; }
-    .wp-ws-tag.marketing { background: rgba(186,117,23,0.1); color: #ba7517; }
-
-    .wp-timeline { margin: 2rem 0; }
-    .wp-tl-header { display: grid; grid-template-columns: 110px 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
-    .wp-tl-col {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 0 0.5rem 0.5rem;
-      font-weight: 600;
-    }
-    .wp-tl-row { display: grid; grid-template-columns: 110px 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
-    .wp-tl-label { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; padding-right: 0.5rem; }
-    .wp-tl-cell { height: 34px; border-radius: 4px; background: var(--bg-secondary); }
-    .wp-tl-cell.active { background: var(--accent); opacity: 0.85; }
-    .wp-tl-cell.active.teal { background: #00b894; }
-    .wp-tl-cell.active.blue { background: #185fa5; }
-    .wp-tl-cell.active.amber { background: #ba7517; }
-
-    .wp-cta-bar {
-      background: var(--accent);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      margin: 2rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .wp-cta-bar h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 0 0 0.4rem;
-    }
-    .wp-cta-bar p { color: rgba(255,255,255,0.75); margin: 0; font-size: 0.9rem; }
-    .wp-cta-btn {
-      background: #fff;
-      color: var(--accent);
-      border: none;
-      border-radius: 8px;
-      padding: 0.9rem 1.8rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.15s;
-    }
-    .wp-cta-btn:hover { opacity: 0.9; }
-
-    @media (max-width: 768px) {
-      .wp-calc-output { grid-template-columns: 1fr; }
-      .wp-failure-grid { grid-template-columns: 1fr; }
-      .wp-cta-bar { padding: 1.5rem; }
-      .wp-tl-header, .wp-tl-row { grid-template-columns: 80px 1fr 1fr 1fr; }
-      .wp-meta { gap: 1rem; }
-      .wp-ws-item { gap: 1rem; }
-      .wp-ws-num { font-size: 2rem; width: 36px; }
+    .wp-meta { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 28px; font-size: 14px; color: var(--ink-2); }
+    .wp-meta b { display: block; font-weight: 500; color: var(--ink-3); font-size: 13px; }
+    .doc .prose .window, .doc .prose .panel { margin: 32px 0; }
+    .doc .prose .window p, .doc .prose .panel p { font-size: 16px; }
+    .doc .prose .pull { margin: 40px 0; padding-left: 20px; border-left: 2px solid var(--coral); color: var(--ink); }
+    .doc .prose section + section { margin-top: 72px; }
+    .wp-stat { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--coral); white-space: nowrap; }
+    .wp-risk { padding: 32px; }
+    .wp-risk h3 { margin-top: 14px; }
+    .wp-calc { padding: 32px; }
+    .wp-calc h3 { color: #fff; margin: 0 0 6px; }
+    .wp-calc > p { color: rgba(255,255,255,.72) !important; margin-bottom: 24px; }
+    .seq .tag { font-size: 12px; padding: 3px 6px; margin-bottom: 6px; }
+    .gantt { display: grid; grid-template-columns: 150px repeat(3, 1fr); gap: 6px; font-size: 14px; align-items: center; }
+    .gantt .gh { color: var(--ink-3); font-size: 13px; }
+    .gantt .gl { color: var(--ink); }
+    .gantt i { display: block; height: 22px; border-radius: 4px; background: var(--paper-2); }
+    .gantt i.c { background: var(--coral); }
+    .gantt i.b { background: var(--tag-blue-ink); }
+    .gantt i.g { background: var(--tag-green-ink); }
+    .gantt i.y { background: #d9a520; }
+    @media (max-width: 760px) {
+      .wp-risk, .wp-calc { padding: 24px 20px; }
+      .wp-calc .calc { padding: 20px 16px; }
+      .gantt { grid-template-columns: 96px repeat(3, 1fr); font-size: 13px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/solutions/">What We Do</a></li>
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
+      </a>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/whitepaper/" class="active">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ===== WHITEPAPER HERO ===== -->
-  <section class="wp-hero">
-    <div class="container" style="max-width:780px;">
-      <div class="wp-eyebrow">Datahooks Whitepaper &middot; 2026</div>
-      <h1>Your CRM data is costing you more than you realize, and <em>AI is about to make it worse</em></h1>
-      <p class="wp-hero-sub">Most HubSpot and Salesforce instances are broken in ways that are not obvious until you look closely. Duplicate records, missing attribution, sequences nobody owns, marketing tools that were never turned on. That was manageable before. It is not anymore.</p>
-      <div class="wp-meta">
-        <div class="wp-meta-item"><strong>Prepared by</strong>Datahooks &middot; datahooks.net</div>
-        <div class="wp-meta-item"><strong>Published</strong>March 2026</div>
-        <div class="wp-meta-item"><strong>Audience</strong>CEOs &middot; CTOs &middot; CMOs</div>
+  <header class="page-head compact">
+    <div class="wrap">
+      <div class="inner">
+        <span class="tag tag-pink">Whitepaper</span>
+        <h1>Your CRM data is costing you more than you realize, and AI is about to make it worse</h1>
+        <p class="lead">Most HubSpot and Salesforce instances are broken in ways that are not obvious until you look closely. Duplicate records, missing attribution, sequences nobody owns, and marketing tools that were never turned on. That was manageable before. It is not anymore.</p>
+        <div class="wp-meta">
+          <div><b>Prepared by</b>Datahooks, datahooks.net</div>
+          <div><b>Published</b>March 2026</div>
+          <div><b>Audience</b>CEOs, CTOs, and CMOs</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="doc">
+      <nav class="toc" aria-label="Contents">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#problem">1. The problem</a></li>
+          <li><a href="#calculator">Revenue leakage estimator</a></li>
+          <li><a href="#ai-risk">2. The AI risk</a></li>
+          <li><a href="#approach">3. The approach</a></li>
+          <li><a href="#timeline">How the engagement runs</a></li>
+          <li><a href="#business-case">4. The business case</a></li>
+        </ol>
+      </nav>
+
+      <article class="prose">
+
+        <section id="problem">
+          <h2>The cost of bad CRM data is rarely visible, until it is</h2>
+          <p>Most revenue leaders know their CRM has issues. What they do not know is the number. Not because the data is hard to find, but because nobody has looked. The waste accumulates quietly: sales reps manually updating stages that should move automatically, marketing sending to lists that have not been cleaned in two years, and dashboards that leadership trusts but nobody can validate.</p>
+          <p>This is true whether the organization is running HubSpot, Salesforce, or both. The platforms are different. The underlying problem is the same: CRM data degrades over time, and most teams are not actively managing it. Gartner puts the average annual cost of poor data quality at $12.9M per organization. For a mid-market company, that number is smaller, but the ratio of waste to revenue is often worse.</p>
+
+          <p class="pull">The problem with bad CRM data is that it does not look like a problem. It looks like slow sales cycles, underperforming campaigns, and reports that never quite add up.</p>
+
+          <div class="window">
+            <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="window-crumb">Whitepaper / <b>What bad data costs</b></span></div>
+            <div class="window-body">
+              <div class="table-scroll">
+                <table class="t">
+                  <thead><tr><th>Figure</th><th>What it measures</th></tr></thead>
+                  <tbody>
+                    <tr><td class="wp-stat">30%</td><td>of CRM contacts go stale every year without active maintenance</td></tr>
+                    <tr><td class="wp-stat">27%</td><td>of sales rep time lost to manual work that should be automated</td></tr>
+                    <tr><td class="wp-stat">$12M</td><td>average annual cost of poor data quality per organization</td></tr>
+                    <tr><td class="wp-stat">2&times;</td><td>faster revenue growth for companies with clean, attributed pipeline data</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <h3>What bad data looks like in practice</h3>
+          <p>It is not just duplicate contacts. It is contacts with no lifecycle stage, deals with no source, and sequences that have been broken for months without anyone noticing. In Salesforce, it is opportunities sitting in stages they moved past six months ago, leads with no owner, and reports built on fields that nobody populates consistently. In HubSpot, it is a marketing team that licensed Marketing Hub Pro 18 months ago and has not sent a single nurture email because the segmentation is not ready yet.</p>
+          <p>These are not edge cases. They are the default state of most mid-market CRM instances that have not had dedicated attention.</p>
+
+          <div class="panel panel-dark wp-calc" id="calculator">
+            <h3>Revenue leakage estimator</h3>
+            <p>Move the sliders to estimate what bad data and manual overhead cost your sales team each year.</p>
+            <div class="calc">
+              <div class="calc-ctrl">
+                <label for="team-size">Sales team size <output id="team-size-val">12 reps</output></label>
+                <input type="range" min="2" max="50" value="12" id="team-size" />
+              </div>
+              <div class="calc-ctrl">
+                <label for="deal-val">Average deal value <output id="deal-val-val">$35,000</output></label>
+                <input type="range" min="5000" max="150000" step="5000" value="35000" id="deal-val" />
+              </div>
+              <div class="calc-ctrl">
+                <label for="deals-rep">Deals closed per rep per year <output id="deals-rep-val">12 deals</output></label>
+                <input type="range" min="4" max="40" value="12" id="deals-rep" />
+              </div>
+              <div class="calc-out">
+                <div><span>Estimated pipeline lost to bad data and manual overhead</span><strong class="accent" id="leak-val">$605K</strong></div>
+                <div><span>Recoverable revenue with a clean, automated CRM instance</span><strong id="recover-val">$454K</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ai-risk">
+          <h2>AI does not fix bad data. It amplifies it.</h2>
+          <p>Every sales tool, revenue intelligence platform, and internal assistant your team is building or buying runs on your CRM data. That should be a concern, not because the tools are unreliable, but because they are faithful to their inputs. Feed them bad data and they return confident-sounding bad answers.</p>
+
+          <div class="panel panel-coral wp-risk">
+            <span class="tag">The compounding problem</span>
+            <h3>The outputs look authoritative. The inputs are not.</h3>
+            <p>A sales rep using an AI assistant to prioritize her week does not know the lead scores are built on contacts with no source attribution. She trusts the list. A CMO reviewing an AI-generated campaign report does not know half the contacts have no lifecycle stage assigned. He sets next quarter&rsquo;s budget based on it.</p>
+            <p>This applies equally whether the CRM is HubSpot or Salesforce. The damage is not dramatic. Nobody gets an error message. The organization just makes worse decisions, with more confidence, faster.</p>
+          </div>
+
+          <div class="window">
+            <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="window-crumb">AI readiness / <b>Where it breaks</b></span></div>
+            <div class="window-body">
+              <div class="table-scroll">
+                <table class="t">
+                  <thead><tr><th>AI use</th><th>What goes wrong on bad data</th></tr></thead>
+                  <tbody>
+                    <tr><td><b>Lead scoring</b></td><td>Models trained on contacts with missing source data systematically misweight acquisition channels</td></tr>
+                    <tr><td><b>Revenue forecasting</b></td><td>Pipeline AI cannot distinguish active deals from stale ones if deal stages are not automated and maintained</td></tr>
+                    <tr><td><b>Internal assistants</b></td><td>Copilots surfacing contact or account history will surface duplicates, blank fields, and wrong attributions</td></tr>
+                    <tr><td><b>Personalization</b></td><td>Marketing tools generating outreach from incomplete profiles produce generic or factually wrong content</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <p>The companies getting real results from AI in their go-to-market are not the ones with the most sophisticated models. They are the ones whose data was in order before the models arrived. Data readiness is infrastructure. It is not a marketing operations project.</p>
+
+          <p class="pull">Clean data is not a prerequisite you get to eventually. It is the thing your AI strategy is already depending on, whether you have addressed it or not.</p>
+        </section>
+
+        <section id="approach">
+          <h2>Four workstreams. One system that compounds.</h2>
+          <p>Most CRM problems, whether in HubSpot or Salesforce, fall into four categories, and they are sequentially dependent. You cannot trust dashboards built on corrupted data. You cannot run effective campaigns without reliable analytics. You cannot deploy AI on top of a system that has not been cleaned up first. The sequence matters. It is the difference between building something that lasts and rebuilding it in 18 months.</p>
+
+          <div class="window">
+            <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="window-crumb">Engagement / <b>Workstreams</b></span></div>
+            <div class="window-body">
+              <ol class="seq">
+                <li><div><span class="tag tag-pink">Foundation</span><b>Data integrity</b><span>Audit and remediate contacts, companies, accounts, and deals. Deduplicate records, standardize field formats, correct source attribution, and establish UTM and campaign naming frameworks. Every other workstream depends on this being done first and done properly.</span></div></li>
+                <li><div><span class="tag tag-blue">Visibility</span><b>Actionable analytics</b><span>Build role-based dashboards that give leadership, sales, and marketing real numbers. Executive pipeline health, rep performance, marketing funnel, and campaign attribution, all validated against clean source records rather than assumptions. You cannot improve what you cannot measure.</span></div></li>
+                <li><div><span class="tag tag-green">Growth</span><b>Sales and marketing activation</b><span>Know where the best leads come from and move them through the funnel with automations that fire on their own. Launch nurture campaigns, sales sequences, and re-engagement flows that accelerate wins and eliminate waste. Built on clean data, informed by real analytics.</span></div></li>
+                <li><div><span class="tag tag-yellow">Scale</span><b>Automation and AI</b><span>With clean data, clear dashboards, and working sales and marketing processes in place, you are ready to layer on AI. Lead scoring, pipeline forecasting, intelligent routing, and internal assistants that produce answers you can trust because the inputs underneath them are reliable.</span></div></li>
+              </ol>
+            </div>
+          </div>
+
+          <h3 id="timeline">How the engagement runs</h3>
+          <div class="window">
+            <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="window-crumb">Engagement / <b>Timeline</b></span></div>
+            <div class="window-body">
+              <div class="gantt" role="table" aria-label="Engagement timeline by workstream">
+                <span></span><span class="gh">Month 1</span><span class="gh">Month 2</span><span class="gh">Months 3 to 4</span>
+                <span class="gl">Data integrity</span><i class="c" title="Active"></i><i class="c" title="Active"></i><i></i>
+                <span class="gl">Analytics</span><i class="b" title="Active"></i><i class="b" title="Active"></i><i class="b" title="Active"></i>
+                <span class="gl">Sales and marketing</span><i></i><i class="g" title="Active"></i><i class="g" title="Active"></i>
+                <span class="gl">Automation and AI</span><i></i><i></i><i class="y" title="Active"></i>
+              </div>
+            </div>
+          </div>
+          <p class="caption">Each workstream builds on the one before it. AI and automation come last because they only work when the foundation is solid.</p>
+        </section>
+
+        <section id="business-case">
+          <h2>What each member of your leadership team needs to hear</h2>
+          <h3>For the CEO</h3>
+          <p>Your go-to-market motion is only as reliable as the data underneath it. If your CRM, whether HubSpot, Salesforce, or a combination of both, cannot tell you where pipeline is coming from, how deals are progressing, or which marketing investments are generating returns, you are making decisions by feel. That works at seed. It becomes a liability when you are trying to scale, raise, or compete in a market where your peers are running on cleaner systems.</p>
+          <h3>For the CTO</h3>
+          <p>Every AI initiative your team is building or buying reads from your CRM. Lead scoring, pipeline forecasting, and internal assistants all depend on the quality of the data underneath them. If that data has not been remediated, you are running models on corrupted inputs. The outputs will be wrong in ways that are hard to detect and expensive to unwind. This is a data infrastructure problem, and it compounds the longer it goes unaddressed. It does not matter whether the system is HubSpot or Salesforce. Bad inputs produce bad outputs.</p>
+          <h3>For the CMO or CRO</h3>
+          <p>You need to know where your best leads come from, move them through the funnel without manual bottlenecks, and launch campaigns that accelerate wins rather than burn budget. Right now, most of that is guesswork. Attribution is incomplete, lead routing is inconsistent, sequences are half-built or broken, and segmentation never quite gets finished.</p>
+          <p>We fix the data first so you can trust it, then wire up the automations that move leads through the pipeline on their own. Sales sequences fire when they should. Nurture campaigns hit the right segments. Campaign attribution tells you what is working and what to cut. The result is a revenue engine focused on accelerating wins and eliminating waste, not a team spending hours on manual updates and one-off list pulls.</p>
+
+          <p class="pull">For most clients, the engagement pays for itself in recovered pipeline within the first quarter. That is what a properly automated sales process does when the data underneath it is clean.</p>
+        </section>
+
+      </article>
+    </div>
+  </div>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2>See what your CRM is worth.</h2>
+      <p class="lead">We start with a free 45-minute audit call. No deck, no pitch. Just a look at your instance and an honest assessment of what it would take to get it right.</p>
+      <div class="closing-actions">
+        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+        <a href="/solutions/" class="btn btn-soft">See what we do</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== WHITEPAPER BODY ===== -->
-  <div class="wp-body">
-
-    <!-- Section 1: The Problem -->
-    <div class="wp-section">
-      <div class="wp-label">01 &mdash; The Problem</div>
-      <h2>The cost of bad CRM data is rarely visible, until it is</h2>
-
-      <p>Most revenue leaders know their CRM has issues. What they do not know is the number. Not because the data is hard to find, but because nobody has looked. The waste accumulates quietly: sales reps manually updating stages that should move automatically, marketing sending to lists that have not been cleaned in two years, dashboards that leadership trusts but nobody can validate.</p>
-
-      <p>This is true whether the organization is running HubSpot, Salesforce, or both. The platforms are different. The underlying problem is the same: CRM data degrades over time, and most teams are not actively managing it. Gartner puts the average annual cost of poor data quality at $12.9M per organization. For a mid-market company, that number is smaller, but the ratio of waste to revenue is often worse.</p>
-
-      <div class="wp-pull">
-        <p>"The problem with bad CRM data is that it does not look like a problem. It looks like slow sales cycles, underperforming campaigns, and reports that never quite add up."</p>
-      </div>
-
-      <div class="wp-stat-grid">
-        <div class="wp-stat-card">
-          <div class="wp-stat-num"><span>30</span>%</div>
-          <div class="wp-stat-label">of CRM contacts go stale every year without active maintenance</div>
-        </div>
-        <div class="wp-stat-card">
-          <div class="wp-stat-num"><span>27</span>%</div>
-          <div class="wp-stat-label">of sales rep time lost to manual work that should be automated</div>
-        </div>
-        <div class="wp-stat-card">
-          <div class="wp-stat-num"><span>$12</span>M</div>
-          <div class="wp-stat-label">average annual cost of poor data quality per organization</div>
-        </div>
-        <div class="wp-stat-card">
-          <div class="wp-stat-num"><span>2&times;</span></div>
-          <div class="wp-stat-label">faster revenue growth for companies with clean, attributed pipeline data</div>
-        </div>
-      </div>
-
-      <h3>What bad data looks like in practice</h3>
-      <p>It is not just duplicate contacts. It is contacts with no lifecycle stage, deals with no source, sequences that have been broken for months and nobody noticed. In Salesforce, it is opportunities sitting in stages they moved past six months ago, leads with no owner, and reports built on fields that nobody populates consistently. In HubSpot, it is a marketing team that licensed Marketing Hub Pro 18 months ago and has not sent a single nurture email because the segmentation is not ready yet.</p>
-      <p>These are not edge cases. They are the default state of most mid-market CRM instances that have not had dedicated attention.</p>
-
-      <div class="wp-calc">
-        <h4>Revenue leakage estimator</h4>
-        <div class="wp-calc-controls">
-          <div class="wp-calc-ctrl">
-            <label>Sales team size</label>
-            <input type="range" min="2" max="50" value="12" id="team-size" oninput="calcLeak()">
-            <div class="val" id="team-size-val">12 reps</div>
-          </div>
-          <div class="wp-calc-ctrl">
-            <label>Average deal value</label>
-            <input type="range" min="5000" max="150000" step="5000" value="35000" id="deal-val" oninput="calcLeak()">
-            <div class="val" id="deal-val-val">$35,000</div>
-          </div>
-          <div class="wp-calc-ctrl">
-            <label>Deals closed per rep per year</label>
-            <input type="range" min="4" max="40" value="12" id="deals-rep" oninput="calcLeak()">
-            <div class="val" id="deals-rep-val">12 deals</div>
-          </div>
-        </div>
-        <div class="wp-calc-output">
-          <div class="wp-calc-out">
-            <div class="wp-calc-out-label">Estimated pipeline lost to bad data and manual overhead</div>
-            <div class="wp-calc-out-val" id="leak-val">$1.5M</div>
-          </div>
-          <div class="wp-calc-out">
-            <div class="wp-calc-out-label">Recoverable revenue with a clean, automated CRM instance</div>
-            <div class="wp-calc-out-val ok" id="recover-val">$1.1M</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 2: The AI Risk -->
-    <div class="wp-section">
-      <div class="wp-label">02 &mdash; The AI Risk</div>
-      <h2>AI does not fix bad data. It <em>amplifies</em> it.</h2>
-
-      <p>Every sales tool, revenue intelligence platform, and internal assistant your team is building or buying runs on your CRM data. That should be a concern, not because the tools are unreliable, but because they are faithful to their inputs. Feed them bad data and they return confident-sounding bad answers.</p>
-
-      <div class="wp-threat">
-        <div class="wp-eyebrow">The compounding problem</div>
-        <h3>The outputs look authoritative. The inputs are not.</h3>
-        <p>A sales rep using an AI assistant to prioritize her week does not know the lead scores are built on contacts with no source attribution. She trusts the list. A CMO reviewing an AI-generated campaign report does not know half the contacts have no lifecycle stage assigned. He sets next quarter's budget based on it.</p>
-        <p>This applies equally whether the CRM is HubSpot or Salesforce. The damage is not dramatic. Nobody gets an error message. The organization just makes worse decisions, with more confidence, faster.</p>
-        <div class="wp-failure-grid">
-          <div class="wp-failure-card">
-            <div class="wp-fc-label">Lead scoring</div>
-            <p>Models trained on contacts with missing source data systematically misweight acquisition channels</p>
-          </div>
-          <div class="wp-failure-card">
-            <div class="wp-fc-label">Revenue forecasting</div>
-            <p>Pipeline AI cannot distinguish active deals from stale ones if deal stages are not automated and maintained</p>
-          </div>
-          <div class="wp-failure-card">
-            <div class="wp-fc-label">Internal assistants</div>
-            <p>Copilots surfacing contact or account history will surface duplicates, blank fields, and wrong attributions</p>
-          </div>
-          <div class="wp-failure-card">
-            <div class="wp-fc-label">Personalization</div>
-            <p>Marketing tools generating outreach from incomplete profiles produce generic or factually wrong content</p>
-          </div>
-        </div>
-      </div>
-
-      <p>The companies getting real results from AI in their go-to-market are not the ones with the most sophisticated models. They are the ones whose data was in order before the models arrived. Data readiness is infrastructure. It is not a marketing operations project.</p>
-
-      <div class="wp-pull">
-        <p>"Clean data is not a prerequisite you get to eventually. It is the thing your AI strategy is already depending on, whether you have addressed it or not."</p>
-      </div>
-    </div>
-
-    <!-- Section 3: The Approach -->
-    <div class="wp-section">
-      <div class="wp-label">03 &mdash; The Approach</div>
-      <h2>Four workstreams. One system that compounds.</h2>
-      <p>Most CRM problems, whether in HubSpot or Salesforce, fall into four categories, and they are sequentially dependent. You cannot trust dashboards built on corrupted data. You cannot run effective campaigns without reliable analytics. You cannot deploy AI on top of a system that has not been cleaned up first. The sequence matters. It is the difference between building something that lasts and rebuilding it in 18 months.</p>
-
-      <div class="wp-framework">
-        <div class="wp-ws-item">
-          <div class="wp-ws-num">1</div>
-          <div class="wp-ws-body">
-            <div class="wp-ws-tag foundation">Foundation</div>
-            <h3>Data Integrity</h3>
-            <p>Audit and remediate contacts, companies, accounts, and deals. Deduplicate records, standardize field formats, correct source attribution, and establish UTM and campaign naming frameworks. Every other workstream depends on this being done first and done properly.</p>
-          </div>
-        </div>
-        <div class="wp-ws-item">
-          <div class="wp-ws-num">2</div>
-          <div class="wp-ws-body">
-            <div class="wp-ws-tag analytics">Visibility</div>
-            <h3>Actionable Analytics</h3>
-            <p>Build role-based dashboards that give leadership, sales, and marketing real numbers. Executive pipeline health, rep performance, marketing funnel, campaign attribution, all validated against clean source records rather than assumptions. You cannot improve what you cannot measure.</p>
-          </div>
-        </div>
-        <div class="wp-ws-item">
-          <div class="wp-ws-num">3</div>
-          <div class="wp-ws-body">
-            <div class="wp-ws-tag pipeline">Growth</div>
-            <h3>Sales &amp; Marketing Activation</h3>
-            <p>Know where the best leads come from and move them through the funnel with automations that fire on their own. Launch nurture campaigns, sales sequences, and re-engagement flows that accelerate wins and eliminate waste. Built on clean data, informed by real analytics.</p>
-          </div>
-        </div>
-        <div class="wp-ws-item">
-          <div class="wp-ws-num">4</div>
-          <div class="wp-ws-body">
-            <div class="wp-ws-tag marketing">Scale</div>
-            <h3>Automation &amp; AI</h3>
-            <p>With clean data, clear dashboards, and working sales and marketing processes in place, you are ready to layer on AI. Lead scoring, pipeline forecasting, intelligent routing, and internal assistants that produce answers you can trust because the inputs underneath them are reliable.</p>
-          </div>
-        </div>
-      </div>
-
-      <h3>How the engagement runs</h3>
-      <div class="wp-timeline">
-        <div class="wp-tl-header">
-          <div></div>
-          <div class="wp-tl-col">Month 1</div>
-          <div class="wp-tl-col">Month 2</div>
-          <div class="wp-tl-col">Month 3&ndash;4</div>
-        </div>
-        <div class="wp-tl-row">
-          <div class="wp-tl-label">Data Integrity</div>
-          <div class="wp-tl-cell active"></div>
-          <div class="wp-tl-cell active"></div>
-          <div class="wp-tl-cell"></div>
-        </div>
-        <div class="wp-tl-row">
-          <div class="wp-tl-label">Analytics</div>
-          <div class="wp-tl-cell active blue"></div>
-          <div class="wp-tl-cell active blue"></div>
-          <div class="wp-tl-cell active blue"></div>
-        </div>
-        <div class="wp-tl-row">
-          <div class="wp-tl-label">Sales &amp; Marketing</div>
-          <div class="wp-tl-cell"></div>
-          <div class="wp-tl-cell active teal"></div>
-          <div class="wp-tl-cell active teal"></div>
-        </div>
-        <div class="wp-tl-row">
-          <div class="wp-tl-label">Automation &amp; AI</div>
-          <div class="wp-tl-cell"></div>
-          <div class="wp-tl-cell"></div>
-          <div class="wp-tl-cell active amber"></div>
-        </div>
-      </div>
-      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">Each workstream builds on the one before it. AI and automation come last because they only work when the foundation is solid.</p>
-    </div>
-
-    <!-- Section 4: The Business Case -->
-    <div class="wp-section">
-      <div class="wp-label">04 &mdash; The Business Case</div>
-      <h2>What each member of your leadership team needs to hear</h2>
-
-      <h3>For the CEO</h3>
-      <p>Your go-to-market motion is only as reliable as the data underneath it. If your CRM, whether HubSpot, Salesforce, or a combination of both, cannot tell you where pipeline is coming from, how deals are progressing, or which marketing investments are generating returns, you are making decisions by feel. That works at seed. It becomes a liability when you are trying to scale, raise, or compete in a market where your peers are running on cleaner systems.</p>
-
-      <h3>For the CTO</h3>
-      <p>Every AI initiative your team is building or buying reads from your CRM. Lead scoring, pipeline forecasting, internal assistants, they all depend on the quality of the data underneath them. If that data has not been remediated, you are running models on corrupted inputs. The outputs will be wrong in ways that are hard to detect and expensive to unwind. This is a data infrastructure problem, and it compounds the longer it goes unaddressed. It does not matter whether the system is HubSpot or Salesforce. Bad inputs produce bad outputs.</p>
-
-      <h3>For the CMO / CRO</h3>
-      <p>You need to know where your best leads come from, move them through the funnel without manual bottlenecks, and launch campaigns that accelerate wins rather than burn budget. Right now, most of that is guesswork. Attribution is incomplete, lead routing is inconsistent, sequences are half-built or broken, and segmentation never quite gets finished. We fix the data first so you can trust it, then wire up the automations that move leads through the pipeline on their own. Sales sequences fire when they should. Nurture campaigns hit the right segments. Campaign attribution tells you what is working and what to cut. The result is a revenue engine focused on accelerating wins and eliminating waste, not a team spending hours on manual updates and one-off list pulls.</p>
-
-      <div class="wp-pull">
-        <p>"For most clients, the engagement pays for itself in recovered pipeline within the first quarter. That is what a properly automated sales process does when the data underneath it is clean."</p>
-      </div>
-    </div>
-
-    <div class="wp-cta-bar">
-      <div>
-        <h3>See what your CRM is worth</h3>
-        <p>We start with a free 45-minute audit call. No deck, no pitch. Just a look at your instance and an honest assessment of what it would take to get it right.</p>
-      </div>
-      <a class="wp-cta-btn" href="/contact/">Talk to Datahooks</a>
-    </div>
-
-  </div>
-
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-          <p>We align your teams, fix your data, and make sure your dashboards, automations, and AI work.</p>
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>We build CRMs that do the right thing, so your teams can focus on creating value.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/solutions/#integrations">Data Sources</a></li>
-            <li><a href="/solutions/#process">Our Process</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    function fmt(n) {
-      if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
-      if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
-      return '$' + Math.round(n);
-    }
-    function calcLeak() {
-      var team = parseInt(document.getElementById('team-size').value);
-      var deal = parseInt(document.getElementById('deal-val').value);
-      var deals = parseInt(document.getElementById('deals-rep').value);
-      document.getElementById('team-size-val').textContent = team + ' reps';
-      document.getElementById('deal-val-val').textContent = '$' + deal.toLocaleString();
-      document.getElementById('deals-rep-val').textContent = deals + ' deals';
-      var total = team * deal * deals;
-      var leak = Math.round(total * 0.12);
-      var recover = Math.round(leak * 0.75);
-      document.getElementById('leak-val').textContent = fmt(leak);
-      document.getElementById('recover-val').textContent = fmt(recover);
-    }
-    calcLeak();
+    (function () {
+      var team = document.getElementById('team-size');
+      var deal = document.getElementById('deal-val');
+      var deals = document.getElementById('deals-rep');
+      function fmt(n) {
+        if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+        return '$' + Math.round(n);
+      }
+      function calcLeak() {
+        var t = parseInt(team.value, 10);
+        var d = parseInt(deal.value, 10);
+        var n = parseInt(deals.value, 10);
+        document.getElementById('team-size-val').textContent = t + ' reps';
+        document.getElementById('deal-val-val').textContent = '$' + d.toLocaleString();
+        document.getElementById('deals-rep-val').textContent = n + ' deals';
+        var total = t * d * n;
+        var leak = Math.round(total * 0.12);
+        var recover = Math.round(leak * 0.75);
+        document.getElementById('leak-val').textContent = fmt(leak);
+        document.getElementById('recover-val').textContent = fmt(recover);
+      }
+      [team, deal, deals].forEach(function (el) { el.addEventListener('input', calcLeak); });
+      calcLeak();
+    })();
   </script>
-
 </body>
 </html>

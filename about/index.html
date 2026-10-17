@@ -8,157 +8,171 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Datahooks</title>
-  <meta name="description" content="Learn about Datahooks, the team helping companies take control of their data in the age of AI." />
-    <link rel="canonical" href="https://datahooks.net/about/" />
+  <meta name="description" content="Datahooks bridges the gap between your teams and your data, so the dashboards, automations, and AI you build actually work." />
+  <link rel="canonical" href="https://datahooks.net/about/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/about/" />
-  <meta property="og:title" content="About Datahooks" />
-  <meta property="og:description" content="Learn about Datahooks, the team helping companies take control of their data in the age of AI." />
+  <meta property="og:title" content="About | Datahooks" />
+  <meta property="og:description" content="Datahooks bridges the gap between your teams and your data, so the dashboards, automations, and AI you build actually work." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="About Datahooks" />
-  <meta name="twitter:description" content="Learn about Datahooks, the team helping companies take control of their data in the age of AI." />
+  <meta name="twitter:title" content="About | Datahooks" />
+  <meta name="twitter:description" content="Datahooks bridges the gap between your teams and your data, so the dashboards, automations, and AI you build actually work." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
+  <style>
+    .values .text { position: sticky; top: 104px; }
+    .value-list > div { padding: 28px 0; border-top: 1px solid var(--line); }
+    .value-list > div:first-child { padding-top: 0; border-top: 0; }
+    .value-list h3 { font-size: 22px; margin-bottom: 8px; }
+    .value-list p { color: var(--ink-2); }
+    @media (max-width: 900px) { .values .text { position: static; } }
+  </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/solutions/">What We Do</a></li>
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
+      </a>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/" class="active">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ===== PAGE HEADER ===== -->
-  <section class="page-header">
-    <div class="container">
-      <span class="section-label">About Us</span>
-      <h1>We believe data should work <span class="gradient-text">for you</span></h1>
-      <p>Datahooks was built on a simple idea: data problems look technical, but they're really people problems. Different teams have different definitions of what the data should do. We bridge that gap.</p>
-    </div>
-  </section>
-
-  <!-- ===== MISSION ===== -->
-  <section style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="fade-in" style="max-width:720px; margin:0 auto;">
-        <span class="section-label">Our Mission</span>
-        <h2 style="margin-bottom:1.5rem;">Make data a team sport</h2>
-        <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; margin-bottom:1.5rem;">
-          Your marketing team wants customer data yesterday. Finance needs accountability on every number. Sales can't trust what they see. And everyone's using different definitions of the same metric.
-        </p>
-        <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
-          We bridge the gap between your teams and your data. We align everyone on what needs to happen, fix the data that's broken, and make sure the dashboards, automations, and AI your team is building work. You get a partner who stays accountable.
-        </p>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="inner">
+        <h1>We believe data should work for you</h1>
+        <p class="lead">Datahooks was built on a simple idea: data problems look technical, but they're really people problems. Different teams have different definitions of what the data should do. We bridge that gap.</p>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ===== VALUES ===== -->
-  <section>
-    <div class="container">
-      <div style="text-align:center; margin-bottom:4rem;">
-        <span class="section-label">Our Values</span>
-        <h2>What drives us</h2>
-      </div>
-
-      <div class="grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon" style="background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:1.1rem;">
-            01
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="fpanel panel panel-coral">
+        <div class="feature-text">
+          <span class="tag">Our mission</span>
+          <h2>Make data a team sport.</h2>
+          <p>Your marketing team wants customer data yesterday. Finance needs accountability on every number. Sales can't trust what they see. And everyone is using different definitions of the same metric.</p>
+          <p style="margin-top:12px">We bridge the gap between your teams and your data. We align everyone on what needs to happen, fix the data that's broken, and make sure the dashboards, automations, and AI your team is building actually work. You get a partner who stays accountable.</p>
+        </div>
+        <div class="window">
+            <div class="window-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="window-crumb">Teams / <b>Who needs what</b></span>
+            </div>
+            <div class="window-body">
+              <div class="window-title">Who needs what</div>
+              <div class="window-sub">Same data, four different expectations</div>
+              <table class="t">
+                <thead><tr><th>Team</th><th>What they need from the data</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="pill tag-pink">Marketing</span></td><td>Customer data, yesterday</td></tr>
+                  <tr><td><span class="pill tag-blue">Finance</span></td><td>Accountability on every number</td></tr>
+                  <tr><td><span class="pill tag-yellow">Sales</span></td><td>Records they can actually trust</td></tr>
+                  <tr><td><span class="pill tag-green">Everyone</span></td><td>One definition of the same metric</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <h3>Alignment Before Action</h3>
-          <p>We don't touch anything until every stakeholder agrees on what needs to happen. Your marketing, finance, and engineering teams are on the same page before we do a single thing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split values">
+        <div class="text">
+          <h2>What drives us</h2>
         </div>
-        <div class="card">
-          <div class="card-icon" style="background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:1.1rem;">
-            02
+        <div class="value-list">
+          <div>
+            <h3>Alignment before action</h3>
+            <p>We don't touch anything until every stakeholder agrees on what needs to happen. Your marketing, finance, and engineering teams are on the same page before we do a single thing.</p>
           </div>
-          <h3>Built to Last</h3>
-          <p>We're your ongoing partner. When something breaks, we're the ones who fix it. Your success is our success, and we stay accountable to that.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" style="background:var(--accent-bg); color:var(--accent); font-weight:800; font-size:1.1rem;">
-            03
+          <div>
+            <h3>Built to last</h3>
+            <p>We're your ongoing partner. When something breaks, we're the ones who fix it. Your success is our success, and we stay accountable to that.</p>
           </div>
-          <h3>Your Business, Our Accountability</h3>
-          <p>We're on the hook for results, not just deliverables. When something breaks, we own the fix. When your dashboards or automations aren't working, we don't hand off a ticket. We make it right.</p>
+          <div>
+            <h3>Your business, our accountability</h3>
+            <p>We're on the hook for results, not just deliverables. When your dashboards or automations aren't working, we don't hand off a ticket. We own the fix and make it right.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Want to work together?</h2>
-        <p>Tell us about your data challenges. We'll tell you exactly how we can help. No pressure, no pitch deck.</p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-          <a href="/contact/" class="btn btn-primary">Start a Conversation <span>→</span></a>
-        </div>
+  <section class="closing">
+    <div class="wrap">
+      <h2>Want to work together?</h2>
+      <p class="lead">Tell us about your data challenges. We'll tell you exactly how we can help. No pressure, no pitch deck.</p>
+      <div class="closing-actions">
+        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+        <a href="/solutions/" class="btn btn-soft">See what we do</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-          <p>We align your teams, fix your data, and make sure your dashboards, automations, and AI actually work.</p>
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>We build CRMs that do the right thing, so your teams can focus on creating value.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/solutions/#integrations">Data Sources</a></li>
-            <li><a href="/solutions/#process">Our Process</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 
+  </script>
 </body>
 </html>

@@ -8,8 +8,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service | Datahooks</title>
-  <link rel="stylesheet" href="/styles.css" />
-    <link rel="canonical" href="https://datahooks.net/terms/" />
+  <meta name="description" content="Datahooks terms of service governing the use of our consulting and data services." />
+  <link rel="canonical" href="https://datahooks.net/terms/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/terms/" />
   <meta property="og:title" content="Terms of Service | Datahooks" />
@@ -19,169 +19,149 @@
   <meta name="twitter:title" content="Terms of Service | Datahooks" />
   <meta name="twitter:description" content="Datahooks terms of service governing the use of our consulting and data services." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
   <style>
-    .legal-content {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    .legal-content h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #111;
-    }
-
-    .legal-content h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      color: #222;
-    }
-
-    .legal-content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      color: #555;
-    }
-
-    .legal-content ul {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .legal-content li {
-      margin-bottom: 0.5rem;
-      color: #555;
-      line-height: 1.6;
-    }
+    .doc .prose h2 { scroll-margin-top: 88px; }
+    .doc .prose h2:first-child { margin-top: 0; }
+    .doc .prose ul + p { margin-top: 14px; }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/solutions/">What We Do</a></li>
+
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
+      </a>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <section class="page-header">
-    <div class="container">
-      <span class="section-label">Legal</span>
-      <h1>Terms of Service</h1>
-      <p>Last updated: March 2026</p>
+  <section class="page-head compact">
+    <div class="wrap">
+      <div class="inner">
+        <h1>Terms of Service</h1>
+        <p class="doc-meta">Last updated: March 2026</p>
+      </div>
     </div>
   </section>
 
-  <section class="legal-content">
-    <h2>1. Acceptance of Terms</h2>
-    <p>By accessing and using the Datahooks website and services, you agree to be bound by these Terms of Service. If you do not agree to any part of these terms, you may not use our services. Datahooks reserves the right to modify these terms at any time, and your continued use of our services constitutes acceptance of any changes.</p>
-
-    <h2>2. Services</h2>
-    <p>Datahooks provides data cleaning, unification, and management services to help organizations improve the quality and usability of their data. Our services may include data integration, data quality assessment, data transformation, and related consulting services as outlined in client agreements.</p>
-    <p>We deliver these services through our platform and professional team to ensure your data is accurate, unified, and ready for AI and automated workflows.</p>
-
-    <h2>3. Client Responsibilities</h2>
-    <p>As a client, you agree to:</p>
-    <ul>
-      <li>Provide accurate and complete information necessary for us to deliver services</li>
-      <li>Ensure you have the legal right to share data with Datahooks</li>
-      <li>Maintain appropriate security measures for your account credentials</li>
-      <li>Comply with all applicable laws and regulations regarding data usage</li>
-      <li>Promptly notify us of any unauthorized access or security concerns</li>
-      <li>Use our services only for lawful purposes and in compliance with these terms</li>
-    </ul>
-
-    <h2>4. Intellectual Property</h2>
-    <p>Datahooks retains all intellectual property rights to its platform, tools, methodologies, and any improvements or modifications developed during service delivery. You retain ownership of your data provided to Datahooks.</p>
-    <p>You grant Datahooks a limited license to use your data solely for the purpose of delivering the contracted services. This license does not extend to any other uses without your explicit written consent.</p>
-    <p>You may not reproduce, distribute, or transmit any content from our website or services without our prior written permission.</p>
-
-    <h2>5. Confidentiality</h2>
-    <p>Both parties agree to maintain the confidentiality of any proprietary or sensitive information shared during the course of our relationship. Datahooks will implement industry-standard security measures to protect your data and maintain its confidentiality.</p>
-    <p>Datahooks will not disclose your data to third parties except as required by law or with your explicit written consent. Any subcontractors or service providers engaged by Datahooks will be bound by similar confidentiality obligations.</p>
-
-    <h2>6. Limitation of Liability</h2>
-    <p>To the fullest extent permitted by law, Datahooks shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services, including but not limited to loss of data, loss of profits, or business interruption, even if Datahooks has been advised of the possibility of such damages.</p>
-    <p>Datahooks's total liability for any claim arising from these terms or our services shall not exceed the total fees paid by you in the twelve months preceding the claim.</p>
-
-    <h2>7. Service Interruptions</h2>
-    <p>While we strive to maintain uninterrupted service, Datahooks does not guarantee that our platform will be available at all times. We are not liable for any service interruptions due to maintenance, updates, or circumstances beyond our reasonable control.</p>
-
-    <h2>8. Termination</h2>
-    <p>Either party may terminate the service relationship by providing written notice as specified in your service agreement. Upon termination, you are responsible for retrieving your data within the specified period. Datahooks may delete data after the retention period outlined in your agreement.</p>
-    <p>Datahooks reserves the right to terminate services immediately if you violate these terms or engage in unlawful activity.</p>
-
-    <h2>9. Governing Law</h2>
-    <p>These Terms of Service are governed by and construed in accordance with the laws of the jurisdiction specified in your service agreement, without regard to its conflict of law principles. Any legal action or proceeding arising under these terms shall be brought exclusively in the courts of that jurisdiction.</p>
-
-    <h2>10. Changes to Terms</h2>
-    <p>Datahooks may update these Terms of Service periodically. We will notify you of material changes via email or through our website. Your continued use of our services following notification of changes constitutes your acceptance of the revised terms.</p>
-
-    <h2>11. Contact</h2>
-    <p>For questions or concerns regarding these Terms of Service, please use the contact form on our website or reach out to us through the contact information provided in our about section.</p>
-
-  </section>
+  <div class="wrap">
+    <div class="doc">
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#acceptance-of-terms">1. Acceptance of terms</a></li>
+          <li><a href="#services">2. Services</a></li>
+          <li><a href="#client-responsibilities">3. Client responsibilities</a></li>
+          <li><a href="#intellectual-property">4. Intellectual property</a></li>
+          <li><a href="#confidentiality">5. Confidentiality</a></li>
+          <li><a href="#limitation-of-liability">6. Limitation of liability</a></li>
+          <li><a href="#service-interruptions">7. Service interruptions</a></li>
+          <li><a href="#termination">8. Termination</a></li>
+          <li><a href="#governing-law">9. Governing law</a></li>
+          <li><a href="#changes-to-terms">10. Changes to terms</a></li>
+          <li><a href="#contact">11. Contact</a></li>
+        </ol>
+      </nav>
+      <article class="prose">
+        <h2 id="acceptance-of-terms">1. Acceptance of terms</h2>
+        <p>By accessing and using the Datahooks website and services, you agree to be bound by these Terms of Service. If you do not agree to any part of these terms, you may not use our services. Datahooks reserves the right to modify these terms at any time, and your continued use of our services constitutes acceptance of any changes.</p>
+        <h2 id="services">2. Services</h2>
+        <p>Datahooks provides data cleaning, unification, and management services to help organizations improve the quality and usability of their data. Our services may include data integration, data quality assessment, data transformation, and related consulting services as outlined in client agreements.</p>
+        <p>We deliver these services through our platform and professional team to ensure your data is accurate, unified, and ready for AI and automated workflows.</p>
+        <h2 id="client-responsibilities">3. Client responsibilities</h2>
+        <p>As a client, you agree to:</p>
+        <ul>
+          <li>Provide accurate and complete information necessary for us to deliver services</li>
+          <li>Ensure you have the legal right to share data with Datahooks</li>
+          <li>Maintain appropriate security measures for your account credentials</li>
+          <li>Comply with all applicable laws and regulations regarding data usage</li>
+          <li>Promptly notify us of any unauthorized access or security concerns</li>
+          <li>Use our services only for lawful purposes and in compliance with these terms</li>
+        </ul>
+        <h2 id="intellectual-property">4. Intellectual property</h2>
+        <p>Datahooks retains all intellectual property rights to its platform, tools, methodologies, and any improvements or modifications developed during service delivery. You retain ownership of your data provided to Datahooks.</p>
+        <p>You grant Datahooks a limited license to use your data solely for the purpose of delivering the contracted services. This license does not extend to any other uses without your explicit written consent.</p>
+        <p>You may not reproduce, distribute, or transmit any content from our website or services without our prior written permission.</p>
+        <h2 id="confidentiality">5. Confidentiality</h2>
+        <p>Both parties agree to maintain the confidentiality of any proprietary or sensitive information shared during the course of our relationship. Datahooks will implement industry-standard security measures to protect your data and maintain its confidentiality.</p>
+        <p>Datahooks will not disclose your data to third parties except as required by law or with your explicit written consent. Any subcontractors or service providers engaged by Datahooks will be bound by similar confidentiality obligations.</p>
+        <h2 id="limitation-of-liability">6. Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, Datahooks shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services, including but not limited to loss of data, loss of profits, or business interruption, even if Datahooks has been advised of the possibility of such damages.</p>
+        <p>Datahooks's total liability for any claim arising from these terms or our services shall not exceed the total fees paid by you in the twelve months preceding the claim.</p>
+        <h2 id="service-interruptions">7. Service interruptions</h2>
+        <p>While we strive to maintain uninterrupted service, Datahooks does not guarantee that our platform will be available at all times. We are not liable for any service interruptions due to maintenance, updates, or circumstances beyond our reasonable control.</p>
+        <h2 id="termination">8. Termination</h2>
+        <p>Either party may terminate the service relationship by providing written notice as specified in your service agreement. Upon termination, you are responsible for retrieving your data within the specified period. Datahooks may delete data after the retention period outlined in your agreement.</p>
+        <p>Datahooks reserves the right to terminate services immediately if you violate these terms or engage in unlawful activity.</p>
+        <h2 id="governing-law">9. Governing law</h2>
+        <p>These Terms of Service are governed by and construed in accordance with the laws of the jurisdiction specified in your service agreement, without regard to its conflict of law principles. Any legal action or proceeding arising under these terms shall be brought exclusively in the courts of that jurisdiction.</p>
+        <h2 id="changes-to-terms">10. Changes to terms</h2>
+        <p>Datahooks may update these Terms of Service periodically. We will notify you of material changes via email or through our website. Your continued use of our services following notification of changes constitutes your acceptance of the revised terms.</p>
+        <h2 id="contact">11. Contact</h2>
+        <p>For questions or concerns regarding these Terms of Service, please use the contact form on our website or reach out to us through the contact information provided in our about section.</p>
+      </article>
+    </div>
+  </div>
 
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-          <p>We align your teams, fix your data, and make sure your dashboards, automations, and AI actually work.</p>
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>We build CRMs that do the right thing, so your teams can focus on creating value.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/solutions/#integrations">Data Sources</a></li>
-            <li><a href="/solutions/#process">Our Process</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
   </script>
 </body>
 </html>

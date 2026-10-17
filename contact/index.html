@@ -7,161 +7,94 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let's Talk | Datahooks</title>
-  <meta name="description" content="Talk to Datahooks. We align your teams, fix your data, and make sure your dashboards and AI actually work." />
-    <link rel="canonical" href="https://datahooks.net/contact/" />
+  <title>Contact | Datahooks</title>
+  <meta name="description" content="Tell us what you're dealing with. We'll set up a free 45-minute audit call and give you an honest assessment of your CRM data." />
+  <link rel="canonical" href="https://datahooks.net/contact/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/contact/" />
-  <meta property="og:title" content="Contact Datahooks" />
-  <meta property="og:description" content="Tell us about your data challenges. We'll tell you exactly how we can help. No pressure, no pitch deck." />
+  <meta property="og:title" content="Contact | Datahooks" />
+  <meta property="og:description" content="Tell us what you're dealing with. We'll set up a free 45-minute audit call and give you an honest assessment of your CRM data." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Contact Datahooks" />
-  <meta name="twitter:description" content="Tell us about your data challenges. We'll tell you exactly how we can help. No pressure, no pitch deck." />
+  <meta name="twitter:title" content="Contact | Datahooks" />
+  <meta name="twitter:description" content="Tell us what you're dealing with. We'll set up a free 45-minute audit call and give you an honest assessment of your CRM data." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/design.css" />
   <style>
-    .contact-layout {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .contact-info-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-    }
-    .contact-info-card h3 { margin-bottom: 1rem; }
-    .contact-info-card p { color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8; }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-    .contact-detail-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(108,92,231,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .form-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gradient-1);
-    }
-    .form-card h2 { margin-bottom: 0.5rem; font-size: 1.6rem; }
-    .form-card > p { color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem; }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 480px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-    .form-success.show { display: block; }
-    .form-success .checkmark {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--gradient-1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin: 0 auto 1.5rem;
-    }
+    .contact { grid-template-columns: 7fr 5fr; }
+    .contact-form h2 { font-size: 28px; }
+    .contact-form .muted { margin: 8px 0 28px; }
+    .form-error { color: var(--coral-ink); font-size: 14px; }
+    .form-done { padding: 40px 0; }
+    .form-done h2 { margin: 16px 0 8px; }
+    .form-done .btn { margin-top: 24px; }
+    .contact .window { position: sticky; top: 96px; }
+    @media (max-width: 900px) { .contact { grid-template-columns: 1fr; } .contact .window { position: static; } }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/solutions/">What We Do</a></li>
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+        Datahooks
+      </a>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary active" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ===== PAGE HEADER ===== -->
-  <section class="page-header" style="padding-bottom:2rem;">
-    <div class="container">
-      <span class="section-label">Get In Touch</span>
-      <h1>Let's talk about <span class="gradient-text">your data</span></h1>
-      <p>Tell us what you're dealing with. We'll hop on a call and give you an honest assessment. No sales deck, no pressure.</p>
+  <header class="page-head compact">
+    <div class="wrap">
+      <div class="inner">
+        <h1>Let's talk about your data</h1>
+        <p class="lead">Tell us what you're dealing with. We'll hop on a call and give you an honest assessment. No sales deck, no pressure.</p>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ===== CONTACT FORM + INFO ===== -->
-  <section style="padding-top:2rem;">
-    <div class="container">
-      <div class="contact-layout">
-
-        <!-- Form -->
-        <div class="form-card fade-in">
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="split contact">
+        <div class="contact-form">
           <div id="formContent">
             <h2>Tell us about your data</h2>
-            <p>Fill out the form and we'll reach out to set up a call.</p>
-
-            <form id="demoForm" onsubmit="handleSubmit(event)">
+            <p class="muted">Fill out the form and we'll reach out to set up a call.</p>
+            <form id="demoForm" class="form" novalidate>
               <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName">First Name *</label>
-                  <input type="text" id="firstName" class="form-input" placeholder="Jane" required />
+                <div class="field">
+                  <label for="firstName">First name</label>
+                  <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name" required />
                 </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name *</label>
-                  <input type="text" id="lastName" class="form-input" placeholder="Smith" required />
+                <div class="field">
+                  <label for="lastName">Last name</label>
+                  <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name" required />
                 </div>
               </div>
-
-              <div class="form-group">
-                <label for="email">Work Email *</label>
-                <input type="email" id="email" class="form-input" placeholder="jane@company.com" required />
+              <div class="field">
+                <label for="email">Work email</label>
+                <input type="email" id="email" placeholder="jane@company.com" autocomplete="email" required />
               </div>
-
-              <div class="form-group">
-                <label for="company">Company *</label>
-                <input type="text" id="company" class="form-input" placeholder="Acme Inc." required />
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" placeholder="Acme Inc." autocomplete="organization" required />
               </div>
-
               <div class="form-row">
-                <div class="form-group">
-                  <label for="role">Your Role</label>
-                  <select id="role" class="form-select">
+                <div class="field">
+                  <label for="role">Your role <span class="opt">(optional)</span></label>
+                  <select id="role">
                     <option value="">Select...</option>
                     <option>Engineering / Data</option>
                     <option>Product</option>
@@ -171,9 +104,9 @@
                     <option>Other</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="size">Company Size</label>
-                  <select id="size" class="form-select">
+                <div class="field">
+                  <label for="size">Company size <span class="opt">(optional)</span></label>
+                  <select id="size">
                     <option value="">Select...</option>
                     <option>1–10</option>
                     <option>11–50</option>
@@ -183,84 +116,97 @@
                   </select>
                 </div>
               </div>
-
-              <div class="form-group">
-                <label for="message">What are your biggest data challenges?</label>
-                <textarea id="message" class="form-textarea" placeholder="Tell us about your current data stack, pain points, or goals..."></textarea>
+              <div class="field">
+                <label for="message">What are your biggest data challenges? <span class="opt">(optional)</span></label>
+                <textarea id="message" placeholder="Tell us about your current data stack, pain points, or goals."></textarea>
               </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
-                Send It Over <span>→</span>
-              </button>
+              <p class="form-error" id="formError" hidden>Please fill in your first name, last name, a valid work email, and company.</p>
+              <button type="submit" class="btn btn-primary">Send it over</button>
             </form>
           </div>
+          <div class="form-done" id="formSuccess" hidden>
+            <span class="tag tag-green">Received</span>
+            <h2>We'll be in touch</h2>
+            <p class="muted">We've received your message and will be in touch within 24 hours to set up a call.</p>
+            <a href="/" class="btn btn-soft">Back to home</a>
+          </div>
+        </div>
 
-          <!-- Success state -->
-          <div class="form-success" id="formSuccess">
-            <div class="checkmark">✓</div>
-            <h2>We'll be in touch!</h2>
-            <p style="color:var(--text-secondary); margin-top:0.8rem; font-size:1.05rem;">We've received your message and will be in touch within 24 hours to set up a call.</p>
-            <a href="/" class="btn btn-secondary" style="margin-top:2rem;">Back to Home</a>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Audit / <b>What happens next</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">What happens next</div>
+            <div class="window-sub">Free, and no sales deck</div>
+            <ol class="seq">
+              <li><div><b>You send this form</b><span>Tell us what you're dealing with, in as much or as little detail as you like.</span></div></li>
+              <li><div><b>We reply within 24 hours</b><span>We'll reach out to set up a call at a time that works for you.</span></div></li>
+              <li><div><b>A 45-minute audit call</b><span>An honest look at your instance and what it would take to get it right.</span></div></li>
+            </ol>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer" style="margin-top:4rem;">
-    <div class="container">
+  <footer class="footer">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo"><span class="logo-icon"><img src="/assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks</a>
-          <p>We align your teams, fix your data, and make sure your dashboards, automations, and AI actually work.</p>
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="/assets/logo-d-white.png" alt="" /></span>
+            Datahooks
+          </a>
+          <p>We build CRMs that do the right thing, so your teams can focus on creating value.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/solutions/#integrations">Data Sources</a></li>
-            <li><a href="/solutions/#process">Our Process</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="/#integrations">Data sources</a></li>
+            <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxxzlUaGbsiLkibvj5hmJJSvkmjPthBZQ--kiS3t0qo1Dj7LoiE7cso_0A6Dnzq7ke89g/exec';
 
-    async function handleSubmit(e) {
+    document.getElementById('demoForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
+      const form = e.target;
+      const err = document.getElementById('formError');
+      if (!form.checkValidity()) { err.hidden = false; form.reportValidity(); return; }
+      err.hidden = true;
+
+      const btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
-      btn.innerHTML = 'Sending… <span>⏳</span>';
+      btn.textContent = 'Sending...';
 
       const data = {
         firstName: document.getElementById('firstName').value,
@@ -275,18 +221,14 @@
       try {
         const formData = new FormData();
         Object.entries(data).forEach(([key, val]) => formData.append(key, val));
-        await fetch(GOOGLE_SHEETS_URL, {
-          method: 'POST',
-          body: formData
-        });
+        await fetch(GOOGLE_SHEETS_URL, { method: 'POST', body: formData });
       } catch (err) {
         // CORS error is expected but the data still posts successfully
       }
 
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-    }
+      document.getElementById('formContent').hidden = true;
+      document.getElementById('formSuccess').hidden = false;
+    });
   </script>
-
 </body>
 </html>
