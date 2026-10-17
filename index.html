@@ -7,27 +7,28 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datahooks | Your CRM Data Is Costing You More Than You Realize</title>
-  <meta name="description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. Datahooks fixes your data, builds trusted dashboards, and gets you AI-ready." />
+  <title>Datahooks | Your CRM Should Tell the Truth</title>
+  <meta name="description" content="Datahooks cleans up HubSpot and Salesforce, rebuilds the reporting on top, and keeps it accurate so your team and your AI tools can trust what they see." />
   <link rel="canonical" href="https://datahooks.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/" />
-  <meta property="og:title" content="Datahooks | Your CRM Data Is Costing You More Than You Realize" />
-  <meta property="og:description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. Datahooks fixes your data, builds trusted dashboards, and gets you AI-ready." />
+  <meta property="og:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta property="og:description" content="Datahooks cleans up HubSpot and Salesforce, rebuilds the reporting on top, and keeps it accurate so your team and your AI tools can trust what they see." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Datahooks | Your CRM Data Is Costing You More Than You Realize" />
-  <meta name="twitter:description" content="Most HubSpot and Salesforce instances are broken in ways that cost real money. Datahooks fixes your data, builds trusted dashboards, and gets you AI-ready." />
+  <meta name="twitter:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta name="twitter:description" content="Datahooks cleans up HubSpot and Salesforce, rebuilds the reporting on top, and keeps it accurate so your team and your AI tools can trust what they see." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="design.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Datahooks",
     "url": "https://datahooks.net",
-    "description": "Datahooks fixes your CRM data, builds trusted dashboards, and gets your business AI-ready.",
+    "description": "Datahooks cleans up CRM data, rebuilds the reporting on top, and keeps it accurate.",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",
@@ -36,544 +37,353 @@
     "sameAs": []
   }
   </script>
-  <style>
-    /* ===== HOMEPAGE STYLES — LIGHT THEME ===== */
-
-    /* --- Hero --- */
-    .hp-hero {
-      background: var(--bg-primary);
-      padding: 7rem 0 3.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hp-hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -100px;
-      width: 500px; height: 500px;
-      background: var(--accent);
-      border-radius: 50%;
-      filter: blur(160px);
-      opacity: 0.06;
-    }
-    .hp-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px; left: -100px;
-      width: 400px; height: 400px;
-      background: var(--navy);
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.04;
-    }
-    .hp-hero .container { position: relative; z-index: 1; max-width: 960px; }
-    .hp-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-    }
-    .hp-hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.15;
-      font-weight: 800;
-      margin-bottom: 1.2rem;
-      color: var(--navy);
-      max-width: 780px;
-    }
-    .hp-hero h1 em { font-style: italic; color: var(--accent); }
-    .hp-hero-sub {
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin-bottom: 1.8rem;
-    }
-    .hp-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
-
-    /* --- Hero proof blocks --- */
-    .hp-proof-block {
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-    }
-    .hp-proof-block + .hp-proof-block {
-      padding-top: 1.5rem;
-      border-top: none;
-    }
-    .hp-proof-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-    .hp-proof-label.data { color: var(--text-muted); }
-    .hp-proof-label.ai { color: var(--accent); }
-
-    /* Data stat cards */
-    .hp-stat-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.7rem;
-    }
-    .hp-stat-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 1.1rem 1rem;
-      transition: all 0.3s ease;
-    }
-    .hp-stat-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-    .hp-stat-num {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-    .hp-stat-num span { color: var(--accent); }
-    .hp-stat-label {
-      font-size: 0.66rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-      letter-spacing: 0.02em;
-    }
-
-    /* AI risk cards */
-    .hp-ai-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.7rem;
-    }
-    .hp-ai-card {
-      background: #fff;
-      border: 1px solid var(--border-color);
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      padding: 1.1rem 1rem;
-      transition: all 0.3s ease;
-    }
-    .hp-ai-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-    .hp-ai-card-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-    .hp-ai-card p {
-      font-size: 0.76rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    /* --- Promise --- */
-    .hp-promise { background: var(--bg-secondary); }
-    .hp-promise .container { max-width: 900px; }
-    .hp-promise-intro {
-      max-width: 680px;
-      margin-top: 1rem;
-    }
-    .hp-promise-intro p {
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-    .hp-def {
-      border-left: 3px solid var(--accent);
-      padding-left: 1.2rem;
-      margin-top: 1.5rem;
-    }
-    .hp-def-term { margin-bottom: 0.25rem; }
-    .hp-def-term strong { color: var(--navy); font-size: 1rem; }
-    .hp-def-term span { color: var(--text-muted); font-size: 0.8rem; font-style: italic; margin-left: 0.3rem; }
-    .hp-def-body { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin: 0; }
-
-    .hp-promise-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-    .hp-promise-card {
-      background: #fff;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 2rem 1.6rem;
-      transition: all var(--transition);
-      border-top: 3px solid var(--border-color);
-    }
-    .hp-promise-card:hover {
-      border-top-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .hp-promise-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.6rem;
-    }
-    .hp-promise-card p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin: 0;
-    }
-    .hp-promise-num {
-      display: inline-block;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-bg);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-
-    /* --- Calculator --- */
-    .hp-calc-section { background: var(--bg-primary); }
-    .hp-calc-section .container { max-width: 780px; }
-    .hp-calc {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      margin-top: 1.5rem;
-    }
-    .hp-calc h4 {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-    }
-    .hp-calc-controls { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1.5rem; }
-    .hp-calc-ctrl { flex: 1; min-width: 170px; }
-    .hp-calc-ctrl label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500; }
-    .hp-calc-ctrl input[type=range] { width: 100%; accent-color: var(--accent); height: 6px; }
-    .hp-calc-ctrl .val { font-size: 0.82rem; color: var(--navy); margin-top: 0.3rem; font-weight: 600; }
-    .hp-calc-output { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .hp-calc-out { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem 1.2rem; }
-    .hp-calc-out-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    .hp-calc-out-val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
-    .hp-calc-out-val.ok { color: #00b894; }
-
-    /* --- Integrations --- */
-    .hp-integrations { background: var(--bg-secondary); }
-    .hp-integrations .container { max-width: 900px; }
-
-    /* --- Read more link --- */
-    .hp-read-more {
-      text-align: center;
-      margin-top: 2.5rem;
-    }
-    .hp-read-more a {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-      transition: color var(--transition);
-    }
-    .hp-read-more a:hover { color: var(--accent-dark); }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      .hp-hero { padding: 6.5rem 0 2.5rem; }
-      .hp-hero h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
-      .hp-stat-grid { grid-template-columns: 1fr 1fr; }
-      .hp-ai-grid { grid-template-columns: 1fr 1fr; }
-      .hp-calc-output { grid-template-columns: 1fr; }
-      .hp-promise-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo">
-        <span class="logo-icon"><img src="assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark"><img src="assets/logo-d-white.png" alt="" /></span>
+        Datahooks
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/solutions/">What We Do</a></li>
+      <ul class="nav-links">
+        <li><a href="/solutions/">What we do</a></li>
+        <li><a href="#how">How we work</a></li>
+        <li><a href="/whitepaper/">Whitepaper</a></li>
         <li><a href="/about/">About</a></li>
-        <li><a href="/contact/" class="btn btn-primary" style="padding:0.6rem 1.4rem;">Let's Talk</a></li>
       </ul>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta">
+        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
+        <a href="/contact/" class="btn btn-dark btn-sm">Book a call</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hp-hero">
-    <div class="container">
-      <div class="hp-eyebrow">A Data Agency for the AI Era</div>
-      <h1>Your CRM data is costing you more than you realize, and <em>AI is about to make it worse</em></h1>
-      <p class="hp-hero-sub">Most HubSpot and Salesforce instances are broken in ways that cost real money. Duplicate records, missing attribution, sequences nobody owns. That was manageable before. It is not anymore.</p>
-      <!-- Proof: data problem stats -->
-      <div class="hp-proof-block">
-        <div class="hp-proof-label data">The data problem</div>
-        <div class="hp-stat-grid">
-          <div class="hp-stat-card">
-            <div class="hp-stat-num"><span>30</span>%</div>
-            <div class="hp-stat-label">of CRM contacts go stale every year</div>
-          </div>
-          <div class="hp-stat-card">
-            <div class="hp-stat-num"><span>27</span>%</div>
-            <div class="hp-stat-label">of rep time lost to manual work</div>
-          </div>
-          <div class="hp-stat-card">
-            <div class="hp-stat-num"><span>$12</span>M</div>
-            <div class="hp-stat-label">avg. annual cost of poor data quality</div>
-          </div>
-          <div class="hp-stat-card">
-            <div class="hp-stat-num"><span>2&times;</span></div>
-            <div class="hp-stat-label">faster growth with clean pipeline data</div>
-          </div>
-        </div>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <h1>Your CRM should tell the truth.</h1>
+      <p class="lead">Most HubSpot and Salesforce instances are full of duplicates, missing sources, and deals nobody owns. We clean them up, rebuild the reporting, and keep them that way.</p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-dark">Book a free audit</a>
+        <a href="/whitepaper/" class="btn btn-plain">Read the whitepaper</a>
       </div>
+      <p class="caption hero-note">45 minutes. No deck, no pitch.</p>
 
-      <!-- Proof: AI risk cards -->
-      <div class="hp-proof-block">
-        <div class="hp-proof-label ai">Why AI makes it worse</div>
-        <div class="hp-ai-grid">
-          <div class="hp-ai-card">
-            <div class="hp-ai-card-label">Lead Scoring</div>
-            <p>Models trained on contacts with missing source data misweight every channel</p>
+      <div class="hero-art">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Contacts / Merge review / <b>Sarah Chen</b></span>
           </div>
-          <div class="hp-ai-card">
-            <div class="hp-ai-card-label">Forecasting</div>
-            <p>Pipeline AI cannot tell active deals from ones that went stale six months ago</p>
-          </div>
-          <div class="hp-ai-card">
-            <div class="hp-ai-card-label">AI Assistants</div>
-            <p>Copilots surface duplicates, blank fields, and wrong attributions as fact</p>
-          </div>
-          <div class="hp-ai-card">
-            <div class="hp-ai-card-label">Personalization</div>
-            <p>Outreach tools generate generic or factually wrong content from bad profiles</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="hp-hero-actions">
-        <a href="/contact/" class="btn btn-primary">Start a Conversation <span>→</span></a>
-        <a href="/whitepaper/" class="btn btn-secondary">Read the Whitepaper</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== THE PROMISE ===== -->
-  <section class="hp-promise fade-in">
-    <div class="container">
-      <span class="section-label">What We Do</span>
-      <h2>We fix the data. Then we make it work for you.</h2>
-      <div class="hp-promise-intro">
-        <p>Most agencies hand you a dashboard and walk away. We stay. We remediate the data underneath, build reporting you can trust, wire up the automations that should have been running from day one, and get your systems AI-ready. Then we stick around to make sure it keeps working.</p>
-        <div class="hp-def">
-          <div class="hp-def-term"><strong>datahook</strong> <span>/ˈdeɪ.tə.hʊk/ noun</span></div>
-          <div class="hp-def-body">A connection that channels valuable data from one system into a place where it can be acted on.</div>
-        </div>
-      </div>
-
-      <div class="hp-promise-grid">
-        <div class="hp-promise-card">
-          <div class="hp-promise-num">Clean</div>
-          <h3>Fix what's broken</h3>
-          <p>Deduplicate records, correct attribution, standardize fields, remediate contacts and deals. Build the foundation everything else depends on.</p>
-        </div>
-        <div class="hp-promise-card">
-          <div class="hp-promise-num">Build</div>
-          <h3>Make it visible</h3>
-          <p>Dashboards that tell the truth. Pipeline health, campaign attribution, rep performance. Real numbers validated against clean data.</p>
-        </div>
-        <div class="hp-promise-card">
-          <div class="hp-promise-num">Scale</div>
-          <h3>Get AI-ready</h3>
-          <p>Automations that fire on their own, lead scoring you can trust, and AI tools that work because the inputs underneath them are reliable.</p>
-        </div>
-      </div>
-
-      <div class="hp-read-more">
-        <a href="/whitepaper/">Read the full whitepaper →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CALCULATOR ===== -->
-  <section class="hp-calc-section fade-in">
-    <div class="container">
-      <span class="section-label">The Cost</span>
-      <h2>How much is bad data costing you?</h2>
-      <p style="color:var(--text-secondary); line-height:1.8; margin-top:1rem;">On average, 12% of revenue pipeline is lost to data quality issues and manual overhead. Adjust the sliders to see your number.</p>
-
-      <div class="hp-calc">
-        <h4>Revenue leakage estimator</h4>
-        <div class="hp-calc-controls">
-          <div class="hp-calc-ctrl">
-            <label>Sales team size</label>
-            <input type="range" min="2" max="50" value="12" id="team-size" oninput="calcLeak()">
-            <div class="val" id="team-size-val">12 reps</div>
-          </div>
-          <div class="hp-calc-ctrl">
-            <label>Average deal value</label>
-            <input type="range" min="5000" max="150000" step="5000" value="35000" id="deal-val" oninput="calcLeak()">
-            <div class="val" id="deal-val-val">$35,000</div>
-          </div>
-          <div class="hp-calc-ctrl">
-            <label>Deals closed per rep per year</label>
-            <input type="range" min="4" max="40" value="12" id="deals-rep" oninput="calcLeak()">
-            <div class="val" id="deals-rep-val">12 deals</div>
-          </div>
-        </div>
-        <div class="hp-calc-output">
-          <div class="hp-calc-out">
-            <div class="hp-calc-out-label">Estimated pipeline lost to bad data and manual overhead</div>
-            <div class="hp-calc-out-val" id="leak-val">$1.5M</div>
-          </div>
-          <div class="hp-calc-out">
-            <div class="hp-calc-out-label">Recoverable revenue with a clean, automated CRM</div>
-            <div class="hp-calc-out-val ok" id="recover-val">$1.1M</div>
+          <div class="window-body">
+            <div class="window-title">Sarah Chen</div>
+            <div class="window-sub">3 records in 3 systems, merged into 1</div>
+            <div class="merge">
+              <div>
+                <div class="rec">
+                  <div class="rec-name">Sarah Chen <span class="pill tag-yellow">HubSpot</span></div>
+                  <dl>
+                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
+                    <dt>Lead source</dt><dd class="blank">Empty</dd>
+                    <dt>Owner</dt><dd class="blank">Empty</dd>
+                  </dl>
+                </div>
+                <div class="rec">
+                  <div class="rec-name">S. Chen <span class="pill tag-blue">Salesforce</span></div>
+                  <dl>
+                    <dt>Email</dt><dd>schen@northwind.io</dd>
+                    <dt>Lead source</dt><dd>Webinar</dd>
+                    <dt>Owner</dt><dd>J. Ortiz</dd>
+                  </dl>
+                </div>
+                <div class="rec">
+                  <div class="rec-name">Sarah Chen <span class="pill tag-pink">Marketo</span></div>
+                  <dl>
+                    <dt>Email</dt><dd>sarah@northwind.io</dd>
+                    <dt>First touch</dt><dd>Paid search, Jan 2025</dd>
+                    <dt>Owner</dt><dd class="blank">Empty</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="merge-arrow">&rarr;</div>
+              <div>
+                <div class="rec canonical">
+                  <div class="rec-name">Sarah Chen <span class="pill tag-green">One record</span></div>
+                  <dl>
+                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
+                    <dt>Lead source</dt><dd>Paid search (first touch)</dd>
+                    <dt>Last touch</dt><dd>Webinar</dd>
+                    <dt>Owner</dt><dd>J. Ortiz</dd>
+                    <dt>Company</dt><dd>Northwind</dd>
+                    <dt>Synced to</dt><dd>HubSpot, Salesforce, and Marketo</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ===== DATA SOURCES ===== -->
-  <section class="hp-integrations fade-in" id="integrations">
-    <div class="container">
-      <div style="text-align:center; margin-bottom:3rem;">
-        <span class="section-label">Data Sources</span>
-        <h2>If you have it, we can hook into it</h2>
-      </div>
-
-      <div class="integrations-grid">
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b1aac6b004333497bd_613293ea19b75f3fbc99ef86_Salesforce.svg" alt="Salesforce" /></div> Salesforce</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b27528a1f8efb3d519_613293e68413b6828fa52bea_Hubspot.svg" alt="HubSpot" /></div> HubSpot</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/63766a3e272c5a3cf422d5dd_google-analytics.svg" alt="Google Analytics" /></div> Google Analytics</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b0d6736d04e2c7a272_613293ec207945ebed3b8ca7_Property_1_GoogleAds.svg" alt="Google Ads" /></div> Google Ads</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3a07dd18b4e86f7b1e1_613294219b14d081782d5b50_Property_1_facebook.svg" alt="Meta Ads" /></div> Meta Ads</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a372ea8005f2f45e0157_613294c85c9f095071776155_Shopify.svg" alt="Shopify" /></div> Shopify</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/61b52e33b36e0c1026df3d8b_color%3Dcolor.svg" alt="PostgreSQL" /></div> PostgreSQL</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/65b80f59f8238b21dc0c6150_mysql.svg" alt="MySQL" /></div> MySQL</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a390ea80052bb25e02fa_613294634822a07a3789f6a4_Stripe.svg" alt="Stripe" /></div> Stripe</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3acdc1f697ac8b290e4_613293fc6f48627332b4d947_Amazon_S3.svg" alt="Amazon S3" /></div> Amazon S3</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/65b80f7aa7e05ffd0a44b711_bigQuery.svg" alt="BigQuery" /></div> BigQuery</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/63f4eac030e323beb8216901_snowflake.svg" alt="Snowflake" /></div> Snowflake</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a368aaba4d0de2d3d5f1_613294ee1f940c630cec3925_Marketo.svg" alt="Marketo" /></div> Marketo</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a36cd187500ebd7ccbed_613294e3b24273112539e806_MailChimp.svg" alt="Mailchimp" /></div> Mailchimp</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/63d84ff8bb232a77c275633a_activecampaign.svg" alt="ActiveCampaign" /></div> ActiveCampaign</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3901b4f74718ba3916a_613294646e81b85ff5c7a1ef_MongoDB.svg" alt="MongoDB" /></div> MongoDB</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/69729571ca7de01d31367ad5_redshift.png" alt="Redshift" /></div> Redshift</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a36644ab471e539c9937_613294f6c1525432b3f611cd_Mixpanel.svg" alt="Mixpanel" /></div> Mixpanel</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6198221a8e10fc428760c2c3_color%3Dcolor.svg" alt="Amplitude" /></div> Amplitude</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a358ea41ef29215348ea_6132952d19c808dfca774120_Intercom.svg" alt="Intercom" /></div> Intercom</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b11a9912c7c4c63be1_613293e85e476629514bfdef_NetSuite.svg" alt="NetSuite" /></div> NetSuite</div>
-        <div class="integration-item"><div class="integration-icon"><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a36c65c3fd62bbae6e38_613294e19506d6310ebb0a81_Segment.svg" alt="Segment" /></div> Segment</div>
-        <div class="integration-item"><div class="integration-icon" style="background:rgba(52,73,94,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="#34495e" stroke-width="2" stroke-linecap="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="#34495e" stroke-width="2" stroke-linecap="round"/></svg></div> REST APIs</div>
-        <div class="integration-item"><div class="integration-icon" style="background:rgba(33,115,70,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#217346"/><path d="M14 2v6h6" fill="#33a867"/><path d="M14 2L20 8H14V2Z" fill="#33a867"/><text x="10" y="17" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white" text-anchor="middle">X</text></svg></div> CSV / Excel</div>
-        <div class="integration-item"><div class="integration-icon" style="background:rgba(26,26,46,0.06);"><svg width="22" height="24" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="11" cy="5" rx="9" ry="4" fill="none" stroke="#1a1a2e" stroke-width="1.5"/><path d="M2 5v7c0 2.2 4 4 9 4s9-1.8 9-4V5" stroke="#1a1a2e" stroke-width="1.5" fill="none"/><ellipse cx="11" cy="17" rx="9" ry="4" fill="none" stroke="#1a1a2e" stroke-width="1.5"/><path d="M2 17v4c0 2.2 4 4 9 4s9-1.8 9-4v-4" stroke="#1a1a2e" stroke-width="1.5" fill="none"/></svg></div> Your Database</div>
+  <!-- Logos -->
+  <section class="logos" id="integrations">
+    <div class="wrap">
+      <p>Works with the systems you already run</p>
+      <div class="logo-row">
+        <span><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b1aac6b004333497bd_613293ea19b75f3fbc99ef86_Salesforce.svg" alt="" />Salesforce</span>
+        <span><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/6191a3b27528a1f8efb3d519_613293e68413b6828fa52bea_Hubspot.svg" alt="" />HubSpot</span>
+        <span><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a368aaba4d0de2d3d5f1_613294ee1f940c630cec3925_Marketo.svg" alt="" />Marketo</span>
+        <span><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/63f4eac030e323beb8216901_snowflake.svg" alt="" />Snowflake</span>
+        <span><img src="https://cdn.prod.website-files.com/6130fa1501794e37c21867cf/65b80f7aa7e05ffd0a44b711_bigQuery.svg" alt="" />BigQuery</span>
+        <span><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a36c65c3fd62bbae6e38_613294e19506d6310ebb0a81_Segment.svg" alt="" />Segment</span>
+        <span><img src="https://uploads-ssl.webflow.com/6130fa1501794e37c21867cf/6191a390ea80052bb25e02fa_613294634822a07a3789f6a4_Stripe.svg" alt="" />Stripe</span>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-box">
-        <h2>See what your CRM is <span class="gradient-text">really worth</span></h2>
-        <p>We start with a free 45-minute audit call. No deck, no pitch. Just an honest look at your instance and what it would take to get it right.</p>
-        <a href="/contact/" class="btn btn-primary">Start a Conversation <span>→</span></a>
+  <!-- Features -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="feature">
+        <div class="feature-text">
+          <span class="tag tag-pink">Clean</span>
+          <h2>Fix what's broken underneath.</h2>
+          <p>We deduplicate contacts and companies, recover lost lead sources, close out dead deals, and standardize the fields your reports depend on.</p>
+          <a href="/solutions/" class="link">What a cleanup covers &rarr;</a>
+        </div>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Audit / <b>Record health</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">Record health</div>
+            <div class="window-sub">Example HubSpot portal, 84,000 contacts</div>
+            <div class="ba">
+              <div class="before">
+                <div class="ba-head">Today</div>
+                <div class="ba-row"><span>Duplicate contacts</span><span>14.2%</span></div>
+                <div class="ba-row"><span>Contacts with a lead source</span><span>38%</span></div>
+                <div class="ba-row"><span>Open deals past close date</span><span>412</span></div>
+                <div class="ba-row"><span>Lifecycle stage filled in</span><span>51%</span></div>
+              </div>
+              <div class="after">
+                <div class="ba-head">After cleanup</div>
+                <div class="ba-row"><span>Duplicate contacts</span><span>0.3%</span></div>
+                <div class="ba-row"><span>Contacts with a lead source</span><span>94%</span></div>
+                <div class="ba-row"><span>Open deals past close date</span><span>0</span></div>
+                <div class="ba-row"><span>Lifecycle stage filled in</span><span>99%</span></div>
+              </div>
+            </div>
+            <p class="caption" style="margin-top:14px;">Example numbers. Your audit shows your own.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature flip">
+        <div class="feature-text">
+          <span class="tag tag-blue">Report</span>
+          <h2>Numbers you can show the board.</h2>
+          <p>Once the data underneath is right, we rebuild pipeline, attribution, and rep reports so marketing, sales, and finance finally see the same thing.</p>
+          <a href="/whitepaper/" class="link">Read how we approach attribution &rarr;</a>
+        </div>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Reports / <b>Pipeline by source</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">Pipeline by first touch</div>
+            <div class="window-sub">Q3, validated against closed-won in finance</div>
+            <div class="table-scroll">
+              <table class="t">
+                <thead><tr><th>Source</th><th class="num">Deals</th><th class="num">Pipeline</th><th class="num">Won</th></tr></thead>
+                <tbody>
+                  <tr><td>Paid search</td><td class="num">48</td><td class="num">$1.68M</td><td class="num">$412K</td></tr>
+                  <tr><td>Webinar</td><td class="num">31</td><td class="num">$1.09M</td><td class="num">$298K</td></tr>
+                  <tr><td>Partner referral</td><td class="num">17</td><td class="num">$820K</td><td class="num">$265K</td></tr>
+                  <tr><td>Outbound</td><td class="num">22</td><td class="num">$610K</td><td class="num">$96K</td></tr>
+                  <tr><td>Unknown <span class="pill tag-pink">was 41% of deals</span></td><td class="num">2</td><td class="num">$54K</td><td class="num">$0</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <span class="tag tag-green">Maintain</span>
+          <h2>Keep it clean while AI does the work.</h2>
+          <p>Bad data comes back. We check every week, fix problems at the source, and make sure your scoring, forecasts, and copilots run on records you would sign off on.</p>
+        </div>
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Maintenance / <b>This week</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">This week</div>
+            <div class="window-sub">Weekly data log, shared with your RevOps lead</div>
+            <ul class="log">
+              <li><time>Mon</time><span>Merged 37 duplicate contacts from the webinar import</span><span class="pill tag-green">Fixed</span></li>
+              <li><time>Tue</time><span>Lead source missing on 12 form fills. Traced to a broken hidden field.</span><span class="pill tag-yellow">Root cause</span></li>
+              <li><time>Wed</time><span>Updated the lifecycle rule for partner leads</span><span class="pill tag-blue">Rule</span></li>
+              <li><time>Thu</time><span>Flagged 4 stale deals to their owners before the forecast call</span><span class="pill tag-pink">Flagged</span></li>
+              <li><time>Fri</time><span>Weekly summary sent</span><span class="pill tag-green">Done</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="prose center">
+        <h2>How we work</h2>
+        <p class="lead" style="margin-top:16px;">Start small, prove it, then keep going.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="n">1</span>
+          <h3>A free audit</h3>
+          <p>A 45-minute look at your instance. You leave with an honest read on what's broken and what it's costing you.</p>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <h3>Fix the worst first</h3>
+          <p>We start with whatever is hurting revenue right now. A small first project, no long contract.</p>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <h3>Stay on to keep it right</h3>
+          <p>Once it's clean, we can stay on monthly to watch the data, fix it at the source, and keep reports honest.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="section">
+    <div class="wrap">
+      <div class="prose center">
+        <h2>What is bad data costing you?</h2>
+        <p class="lead" style="margin-top:16px;">Move the sliders. We assume 12% of annual sales leaks out through bad data and manual work, and that a clean CRM recovers about three quarters of it.</p>
+      </div>
+      <div class="calc">
+        <div class="calc-ctrl">
+          <label for="team-size">Sales reps <output id="team-size-val">12</output></label>
+          <input type="range" min="2" max="50" value="12" id="team-size" />
+        </div>
+        <div class="calc-ctrl">
+          <label for="deal-val">Average deal size <output id="deal-val-val">$35,000</output></label>
+          <input type="range" min="5000" max="150000" step="5000" value="35000" id="deal-val" />
+        </div>
+        <div class="calc-ctrl">
+          <label for="deals-rep">Deals per rep per year <output id="deals-rep-val">12</output></label>
+          <input type="range" min="4" max="40" value="12" id="deals-rep" />
+        </div>
+        <div class="calc-out">
+          <div><span>Lost each year</span><strong class="accent" id="leak-val">$605K</strong></div>
+          <div><span>Recoverable with a clean CRM</span><strong id="recover-val">$454K</strong></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- Definition -->
+  <section class="section">
+    <div class="wrap">
+      <div class="definition">
+        <div class="word">datahook</div>
+        <div class="pron">/ˈdeɪ.tə.hʊk/ &nbsp;noun</div>
+        <p>A connection that moves useful data out of one system and into the place where someone can act on it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing">
+    <div class="wrap">
+      <h2>See what your CRM is really worth.</h2>
+      <p class="lead">Start with a free 45-minute audit and an honest look at your instance.</p>
+      <a href="/contact/" class="btn btn-dark">Book a free audit</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo">
-            <span class="logo-icon"><img src="assets/logo-d-white.png" alt="Datahooks" /></span> Datahooks
+          <a href="/" class="brand">
+            <span class="brand-mark"><img src="assets/logo-d-white.png" alt="" /></span>
+            Datahooks
           </a>
-          <p>We fix your data, build trusted dashboards, and get your business AI-ready.</p>
+          <p>We clean up CRM data, rebuild the reporting on top, and keep it accurate.</p>
         </div>
         <div>
           <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="/solutions/">What We Do</a></li>
-            <li><a href="/#integrations">Data Sources</a></li>
+          <ul>
+            <li><a href="/solutions/">What we do</a></li>
+            <li><a href="#integrations">Data sources</a></li>
             <li><a href="/whitepaper/">Whitepaper</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/about/">About Us</a></li>
+          <ul>
+            <li><a href="/about/">About</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Service</a></li>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/security/">Security</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Datahooks. All rights reserved.</span>
-      </div>
+      <div class="footer-bottom">&copy; 2026 Datahooks</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('nav').classList.toggle('open');
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     function fmt(n) {
-      if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
-      if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+      if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
       return '$' + Math.round(n);
     }
     function calcLeak() {
-      var team = parseInt(document.getElementById('team-size').value);
-      var deal = parseInt(document.getElementById('deal-val').value);
-      var deals = parseInt(document.getElementById('deals-rep').value);
-      document.getElementById('team-size-val').textContent = team + ' reps';
+      var team = +document.getElementById('team-size').value;
+      var deal = +document.getElementById('deal-val').value;
+      var deals = +document.getElementById('deals-rep').value;
+      document.getElementById('team-size-val').textContent = team;
       document.getElementById('deal-val-val').textContent = '$' + deal.toLocaleString();
-      document.getElementById('deals-rep-val').textContent = deals + ' deals';
-      var total = team * deal * deals;
-      var leak = Math.round(total * 0.12);
-      var recover = Math.round(leak * 0.75);
+      document.getElementById('deals-rep-val').textContent = deals;
+      var leak = team * deal * deals * 0.12;
       document.getElementById('leak-val').textContent = fmt(leak);
-      document.getElementById('recover-val').textContent = fmt(recover);
+      document.getElementById('recover-val').textContent = fmt(leak * 0.75);
     }
+    ['team-size', 'deal-val', 'deals-rep'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', calcLeak);
+    });
     calcLeak();
   </script>
-
 </body>
 </html>
