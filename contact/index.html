@@ -196,6 +196,11 @@
       document.getElementById('nav').classList.toggle('open');
     });
 
+    (function () {
+      var e = new URLSearchParams(location.search).get('email');
+      if (e) document.getElementById('email').value = e;
+    })();
+
     const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxxzlUaGbsiLkibvj5hmJJSvkmjPthBZQ--kiS3t0qo1Dj7LoiE7cso_0A6Dnzq7ke89g/exec';
 
     document.getElementById('demoForm').addEventListener('submit', async function (e) {

@@ -8,470 +8,297 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Datahooks | Your CRM Should Tell the Truth</title>
-  <meta name="description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
+  <meta name="description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <link rel="canonical" href="https://datahooks.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/" />
   <meta property="og:title" content="Datahooks | Your CRM Should Tell the Truth" />
-  <meta property="og:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
+  <meta property="og:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Datahooks | Your CRM Should Tell the Truth" />
-  <meta name="twitter:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
+  <meta name="twitter:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="design.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="taste.css" />
+  <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Datahooks",
     "url": "https://datahooks.net",
-    "description": "Datahooks cleans up CRM data, rebuilds the reporting on top, and keeps it accurate.",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "url": "https://datahooks.net/contact/"
-    },
+    "description": "Datahooks rebuilds CRM data and pipelines and finds the signals that show what makes a business win.",
+    "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "url": "https://datahooks.net/contact/" },
     "sameAs": []
   }
   </script>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav class="nav" id="nav">
-    <div class="wrap">
-      <a href="/" class="brand">
-        <span class="brand-mark"><img src="assets/logo-d-white.png" alt="" /></span>
-        Datahooks
-      </a>
-      <ul class="nav-links">
+  <section class="hero">
+    <nav class="nav" aria-label="Main">
+      <a href="/" class="wordmark">Datahooks</a>
+      <a href="/solutions/" class="nav-link">What we do</a>
+      <a href="/datahooks/" class="nav-link">Datahooks</a>
+      <a href="/whitepaper/" class="nav-link">Whitepaper</a>
+      <a href="/about/" class="nav-link">About</a>
+      <a href="#more" class="nav-menu">Menu</a>
+      <a href="/contact/" class="action">Get a free audit</a>
+    </nav>
+
+    <div class="hero-body">
+      <h1 aria-label="Your CRM says the lead source was offline sources. It was a conference.">
+        <span class="word" aria-hidden="true">Your CRM says</span>
+        <span class="slot" id="slot" aria-hidden="true">
+          <span class="field" data-ui id="field">
+            <span class="f-label"><i></i>Lead source</span>
+            <span class="f-value"><span class="f-was">Offline sources</span><span class="f-now">Conference booth</span></span>
+            <span class="f-note" id="fieldNote">Set by a list import</span>
+          </span>
+        </span>
+      </h1>
+      <div class="hero-act"><a href="/contact/" class="action">Get a free audit</a></div>
+    </div>
+
+    <p class="hero-sub">Wrong lead sources and broken pipelines cost teams deals they never see. We rebuild your CRM data so it tells the truth.</p>
+  </section>
+
+  <section class="proof" aria-label="Brands our team has worked with, and the systems we work in">
+    <div class="run" id="runBrands">
+      <div class="item">
+        <span class="say">We've worked with</span>
+        <img src="assets/logos/unifyapps.svg" alt="UnifyApps" style="--h:52px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/meta.svg" alt="Meta" style="--h:44px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/intuit.svg" alt="Intuit" style="--h:38px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/cisco.svg" alt="Cisco" style="--h:52px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/american-express.svg" alt="American Express" style="--h:68px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/loreal.svg" alt="L'Oréal" style="--h:34px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/7-eleven.svg" alt="7-Eleven" style="--h:68px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/webmd.svg" alt="WebMD" style="--h:42px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/merck.svg" alt="Merck" style="--h:48px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/ez-texting.svg" alt="EZ Texting" style="--h:40px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/infobip.svg" alt="Infobip" style="--h:48px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/motive.svg" alt="Motive" style="--h:40px" />
+        <span class="dot" aria-hidden="true"></span>
+        <img src="assets/logos/placements-ai.svg" alt="Placements AI" style="--h:30px" />
+        <span class="dot" aria-hidden="true"></span>
+      </div>
+      <div class="item" aria-hidden="true"></div>
+    </div>
+    <div class="run slow" id="runSystems">
+      <div class="item">
+        <span class="say small">Inside the systems you already run</span>
+        <img src="assets/logos/salesforce.svg" alt="Salesforce" style="--h:56px" />
+        <img src="assets/logos/hubspot.svg" alt="HubSpot" style="--h:40px" />
+        <img src="assets/logos/highlevel.svg" alt="HighLevel" style="--h:40px" />
+        <img src="assets/logos/marketo.svg" alt="Marketo" style="--h:42px" />
+        <img src="assets/logos/snowflake.svg" alt="Snowflake" style="--h:40px" />
+        <img src="assets/logos/stripe.svg" alt="Stripe" style="--h:44px" />
+      </div>
+      <div class="item" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="leak-h">
+    <div class="grid">
+      <div class="say-col">
+        <h2 id="leak-h" class="rise">Where bad data costs you deals</h2>
+        <p class="rise" style="--d:80ms">It rarely looks like a data problem. It looks like a missed quarter. This is one deal, the way we usually find it.</p>
+      </div>
+      <div class="proof-col rise" style="--d:160ms">
+        <div class="record" data-ui>
+          <div class="r-top">
+            <div class="r-crumb">Deals / Northwind expansion</div>
+            <div class="r-name">Northwind expansion</div>
+            <div class="r-meta">$84,000, proposal sent, example record</div>
+          </div>
+          <div class="r-rows">
+            <div class="r-row"><span class="r-k">Stage</span><span class="r-v">Proposal sent</span></div>
+            <div class="r-row flag">
+              <span class="r-k">Lead source</span>
+              <span class="r-v"><b>Offline sources</b><small>First touch was paid search</small></span>
+              <span class="r-why"><em>Marketing:</em> a list import overwrote the source, so paid search never gets credit and next quarter its budget gets cut.</span>
+            </div>
+            <div class="r-row flag">
+              <span class="r-k">Owner</span>
+              <span class="r-v"><b>None</b><small>Last activity 97 days ago</small></span>
+              <span class="r-why"><em>Sales:</em> the rep left in June and nobody inherited the deal. The buyer kept opening emails no one was sending.</span>
+            </div>
+            <div class="r-row flag">
+              <span class="r-k">Close date</span>
+              <span class="r-v"><b>Sep 30</b><small>Already passed</small></span>
+              <span class="r-why"><em>Revenue:</em> still counted in the Q4 forecast. Finance wrote it off weeks ago, so the board sees two numbers.</span>
+            </div>
+            <div class="r-row"><span class="r-k">Amount</span><span class="r-v">$84,000</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" aria-label="What datahooks are">
+    <div class="intro-pin">
+      <p>Every business has datahooks: signals that unlock growth. We find yours. <a href="/datahooks/" class="textlink">What is a datahook?</a></p>
+    </div>
+    <div class="intro-photos">
+      <figure class="ph-a"><img src="assets/switchboard-bell-gray.jpg" width="1600" height="1270" alt="Rows of telephone operators at a Bell System switchboard" loading="lazy" decoding="async" /><figcaption>Bell System switchboard operators</figcaption></figure>
+      <figure class="ph-b"><video autoplay muted loop playsinline preload="metadata" poster="assets/switchboard-loop-poster.jpg" width="960" height="720" aria-hidden="true"><source src="assets/switchboard-loop.webm" type="video/webm" /><source src="assets/switchboard-loop.mp4" type="video/mp4" /></video><figcaption>From "Operator Toll Dialing: Teamwork," 1949</figcaption></figure>
+      <figure class="ph-c"><img src="assets/card-catalog-gray.jpg" width="1800" height="1200" alt="A drawer of index cards in the Library of Congress serials card catalog" loading="lazy" decoding="async" /><figcaption>Library of Congress serials card catalog</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="hook" aria-labelledby="hook-h">
+    <div class="grid">
+      <figure class="hook-photo rise">
+        <img src="assets/convention-1909-gray.jpg" width="1920" height="1211" alt="Souvenir card of a hardware dealers' convention at the Memorial Building, Columbus, Ohio" loading="lazy" decoding="async" />
+        <figcaption>Souvenir of a convention, Memorial Building, Columbus, Ohio, 1909</figcaption>
+      </figure>
+      <div class="hook-text">
+        <h2 id="hook-h" class="rise">Conferences won the deals</h2>
+        <p class="rise" style="--d:80ms">At one software company, attribution gave the credit to partners and sales, so next year's budget was headed there. Once the data was fixed, it showed most closed deals started at a conference. That was their datahook.</p>
+        <div class="compare rise" data-ui style="--d:160ms">
+          <table>
+            <thead><tr><th></th><th>What the CRM said</th><th>What the data showed</th></tr></thead>
+            <tbody>
+              <tr><td>Top source of wins</td><td>Partners and sales</td><td>Conferences</td></tr>
+              <tr><td>Credit for marketing</td><td>Small</td><td>Most of the wins</td></tr>
+              <tr><td>Next year's plan</td><td>More partner spend</td><td>More conferences</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="switches" aria-label="What we fix">
+    <div class="band on" data-field="coral">
+      <div class="b-text">
+        <p class="b-say">Every lead arrives with its real source.</p>
+        <p class="b-then">Lead source filled on 94% of contacts, up from 38%.</p>
+      </div>
+      <div class="b-switch"><button class="toggle" data-ui role="switch" aria-checked="true" aria-label="Every lead arrives with its real source"></button></div>
+    </div>
+    <div class="band on" data-field="navy">
+      <div class="b-text">
+        <p class="b-say">Every open deal has an owner and a next step.</p>
+        <p class="b-then">98% of open deals, up from 46%.</p>
+      </div>
+      <div class="b-switch"><button class="toggle" data-ui role="switch" aria-checked="true" aria-label="Every open deal has an owner and a next step"></button></div>
+    </div>
+    <div class="band" data-field="sage">
+      <div class="b-text">
+        <p class="b-say">Dead deals leave the forecast.</p>
+        <p class="b-then">412 deals past their close date, closed out in the first week.</p>
+      </div>
+      <div class="b-switch"><button class="toggle" data-ui role="switch" aria-checked="false" aria-label="Dead deals leave the forecast"></button></div>
+    </div>
+    <div class="band" data-field="stone">
+      <div class="b-text">
+        <p class="b-say">CRM revenue matches what finance books.</p>
+        <p class="b-then">99% of revenue matched, up from 82%.</p>
+      </div>
+      <div class="b-switch"><button class="toggle" data-ui role="switch" aria-checked="false" aria-label="CRM revenue matches what finance books"></button></div>
+    </div>
+    <div class="band" data-field="sky">
+      <div class="b-text">
+        <p class="b-say">Someone checks it every week.</p>
+        <p class="b-then">Fixes are logged and sent to your RevOps lead every Friday.</p>
+      </div>
+      <div class="b-switch"><button class="toggle" data-ui role="switch" aria-checked="false" aria-label="Someone checks it every week"></button></div>
+    </div>
+    <p class="switches-note">Figures are examples from a typical HubSpot audit. Your audit shows your own.</p>
+  </section>
+
+  <section class="ask" aria-label="Book a free audit">
+    <form action="/contact/" method="get" id="askForm">
+      <label for="askEmail" class="visually-hidden">Work email</label>
+      Leave your <input class="blank" type="email" id="askEmail" name="email" placeholder="work email" autocomplete="email" required /> and we'll <button class="go" type="submit">book it.</button>
+    </form>
+    <p class="after">We reply within 24 hours to set up a free 45-minute audit call. No deck, no pitch.</p>
+  </section>
+
+  <footer class="foot" id="more">
+    <div class="grid">
+      <div class="foot-invite">
+        <h2>Find your datahooks.</h2>
+        <a href="/contact/" class="action">Get a free audit</a>
+      </div>
+      <ul class="foot-links">
         <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/datahooks/">What is a datahook?</a></li>
         <li><a href="/whitepaper/">Whitepaper</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
-        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero">
-    <div class="wrap">
-      <h1>Your CRM should tell the truth.</h1>
-      <p class="lead">Broken pipelines and missing lead sources cost marketing and sales teams deals they never see. We rebuild your CRM data and pipelines, so your team spends its time creating value instead of arguing about the data.</p>
-      <div class="hero-actions">
-        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
-        <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
-      </div>
-      <p class="caption hero-note">45 minutes. No deck, no pitch.</p>
-
-      <div class="proof">
-        <p>We've worked with some great brands</p>
-        <div class="marquee">
-          <ul class="marquee-track">
-            <li><img src="assets/logos/unifyapps.svg" alt="UnifyApps" style="height:30px" /></li>
-            <li><img src="assets/logos/meta.svg" alt="Meta" style="height:24px" /></li>
-            <li><img src="assets/logos/intuit.svg" alt="Intuit" style="height:22px" /></li>
-            <li><img src="assets/logos/cisco.svg" alt="Cisco" style="height:30px" /></li>
-            <li><img src="assets/logos/american-express.svg" alt="American Express" style="height:40px" /></li>
-            <li><img src="assets/logos/loreal.svg" alt="L&#39;Oréal" style="height:20px" /></li>
-            <li><img src="assets/logos/7-eleven.svg" alt="7-Eleven" style="height:40px" /></li>
-            <li><img src="assets/logos/webmd.svg" alt="WebMD" style="height:24px" /></li>
-            <li><img src="assets/logos/merck.svg" alt="Merck" style="height:28px" /></li>
-            <li><img src="assets/logos/ez-texting.svg" alt="EZ Texting" style="height:24px" /></li>
-            <li><img src="assets/logos/infobip.svg" alt="Infobip" style="height:28px" /></li>
-            <li><img src="assets/logos/motive.svg" alt="Motive" style="height:24px" /></li>
-            <li><img src="assets/logos/placements-ai.svg" alt="Placements AI" style="height:18px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/unifyapps.svg" alt="" style="height:30px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/meta.svg" alt="" style="height:24px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/intuit.svg" alt="" style="height:22px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/cisco.svg" alt="" style="height:30px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/american-express.svg" alt="" style="height:40px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/loreal.svg" alt="" style="height:20px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/7-eleven.svg" alt="" style="height:40px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/webmd.svg" alt="" style="height:24px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/merck.svg" alt="" style="height:28px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/ez-texting.svg" alt="" style="height:24px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/infobip.svg" alt="" style="height:28px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/motive.svg" alt="" style="height:24px" /></li>
-            <li aria-hidden="true"><img src="assets/logos/placements-ai.svg" alt="" style="height:18px" /></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="hero-stage panel panel-navy">
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Contacts / Merge review / <b>Sarah Chen</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Sarah Chen</div>
-            <div class="window-sub">3 systems disagreed about one buyer. Now there is one answer.</div>
-            <div class="merge">
-              <div>
-                <div class="rec">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-yellow">HubSpot</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
-                    <dt>Lead source</dt><dd class="blank">Empty</dd>
-                    <dt>Owner</dt><dd class="blank">Empty</dd>
-                  </dl>
-                </div>
-                <div class="rec">
-                  <div class="rec-name">S. Chen <span class="pill tag-blue">Salesforce</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>schen@northwind.io</dd>
-                    <dt>Lead source</dt><dd>Webinar</dd>
-                    <dt>Owner</dt><dd>J. Ortiz</dd>
-                  </dl>
-                </div>
-                <div class="rec">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-pink">Marketo</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah@northwind.io</dd>
-                    <dt>First touch</dt><dd>Paid search, Jan 2025</dd>
-                    <dt>Owner</dt><dd class="blank">Empty</dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="merge-arrow">&rarr;</div>
-              <div>
-                <div class="rec canonical">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-green">One record</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
-                    <dt>Lead source</dt><dd>Paid search (first touch)</dd>
-                    <dt>Last touch</dt><dd>Webinar</dd>
-                    <dt>Owner</dt><dd>J. Ortiz</dd>
-                    <dt>Company</dt><dd>Northwind</dd>
-                    <dt>Synced to</dt><dd>HubSpot, Salesforce, and Marketo</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Systems -->
-  <section class="systems" id="integrations">
-    <div class="wrap center">
-      <h3>Works inside the systems you already run</h3>
-      <p class="muted">No new platform to buy. We fix and connect the tools you already pay for.</p>
-      <ul class="systems-row">
-        <li><img src="assets/logos/salesforce.svg" alt="Salesforce" style="height:44px" /></li>
-        <li><img src="assets/logos/hubspot.svg" alt="HubSpot" style="height:28px" /></li>
-        <li><img src="assets/logos/highlevel.svg" alt="HighLevel" style="height:28px" /></li>
-        <li><img src="assets/logos/marketo.svg" alt="Marketo" style="height:30px" /></li>
-        <li><img src="assets/logos/snowflake.svg" alt="Snowflake" style="height:30px" /></li>
-        <li><img src="assets/logos/stripe.svg" alt="Stripe" style="height:30px" /></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
-  </section>
-
-  <!-- Where it leaks -->
-  <section class="section leaks-section">
-    <div class="wrap">
-      <div class="leak-layout">
-        <div class="leak-intro">
-          <h2>Where bad data costs you deals</h2>
-          <p class="lead">It rarely looks like a data problem. It looks like a missed quarter. Here is one deal, exactly as we usually find it.</p>
-        </div>
-        <div class="window leak-window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Deals / <b>Northwind expansion</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Northwind expansion</div>
-            <div class="window-sub">$84,000 &middot; Proposal sent &middot; Example record</div>
-            <div class="leak-rows">
-              <div class="leak-row">
-                <span class="lf">Stage</span>
-                <span class="lv">Proposal sent</span>
-                <span class="ln"></span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Lead source</span>
-                <span class="lv"><span class="bad">Offline sources</span><span class="was">First touch was paid search</span></span>
-                <span class="ln"><span class="tag tag-pink">Marketing</span> A list import overwrote the source. Paid search never gets credit for the deal, so next quarter its budget gets cut.</span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Owner</span>
-                <span class="lv"><span class="bad">None</span><span class="was">Last activity 97 days ago</span></span>
-                <span class="ln"><span class="tag tag-blue">Sales</span> The rep left in June and nobody inherited the deal. The buyer kept opening emails that no one was sending.</span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Close date</span>
-                <span class="lv"><span class="bad">Sep 30</span><span class="was">Already passed</span></span>
-                <span class="ln"><span class="tag tag-yellow">Revenue</span> Still counted in the Q4 forecast. Finance wrote it off weeks ago, so the board sees two different numbers.</span>
-              </div>
-              <div class="leak-row">
-                <span class="lf">Amount</span>
-                <span class="lv">$84,000</span>
-                <span class="ln"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Datahooks. <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/security/">Security</a></span>
+      <span class="credits" id="credits">Pictures, all public domain: <a href="https://commons.wikimedia.org/wiki/File:Photograph_of_Women_Working_at_a_Bell_System_Telephone_Switchboard_(3660047829).jpg">Bell System switchboard</a> (U.S. National Archives), <a href="https://commons.wikimedia.org/wiki/File:Souvenir_of_Convention_in_Memorial_Building,_Columbus,_Ohio_-_DPLA_-_041abf776e7dc01e8e0a9452be08d9b6_(page_1).jpg">Columbus convention souvenir, 1909</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=162151910">Library of Congress serials card catalog</a>, and film from <a href="https://archive.org/details/Operator1949_4">"Operator Toll Dialing: Teamwork," 1949</a> (Internet Archive).</span>
     </div>
-  </section>
-
-  <!-- Datahooks -->
-  <section class="section hooks-section">
-    <div class="wrap">
-      <div class="leak-layout hooks-layout">
-        <div class="leak-intro">
-          <h2>Every business has datahooks. We find yours.</h2>
-          <p class="lead">Datahooks are signals that unlock growth. They are already in your data. Sometimes nobody can see them, and sometimes nobody can act on them. Once the data is right, they show you where to put your team and your budget.</p>
-          <a href="/datahooks/" class="link">What is a datahook? &rarr;</a>
-        </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Datahooks / <b>Conferences drive the wins</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Conferences drive the wins</div>
-            <div class="window-sub">From a recent engagement, details removed</div>
-            <div class="table-scroll">
-              <table class="t cmp">
-                <thead><tr><th></th><th>What the CRM said</th><th>What the data showed</th></tr></thead>
-                <tbody>
-                  <tr><td>Top source of closed deals</td><td class="was-cell">Partners and sales</td><td class="now-cell">Conferences</td></tr>
-                  <tr><td>Credit for marketing</td><td class="was-cell">Small</td><td class="now-cell">Most of the wins</td></tr>
-                  <tr><td>Next year's plan</td><td class="was-cell">More partner and sales spend</td><td class="now-cell">More conferences</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="caption" style="margin-top:14px;">Fixing attribution showed where to spend to grow faster.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="section">
-    <div class="wrap">
-      <div class="prose center" style="margin-bottom:56px;">
-        <h2>Build it right, report on it, keep it that way.</h2>
-      </div>
-
-      <div class="fpanel panel panel-coral">
-        <div class="feature-text">
-          <span class="tag">Build</span>
-          <h2>A CRM that does the right thing.</h2>
-          <p>Every lead arrives with the right source, owner, and stage. Deals move through a pipeline sales and marketing both agree on. The rules run on their own, so nobody spends Monday cleaning up.</p>
-          <a href="/solutions/" class="link">What we set up &rarr;</a>
-        </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Audit / <b>Record health</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Record health</div>
-            <div class="window-sub">Example HubSpot portal, 84,000 contacts</div>
-            <div class="ba">
-              <div class="before">
-                <div class="ba-head">Today</div>
-                <div class="ba-row"><span>Deals with an owner and next step</span><span>46%</span></div>
-                <div class="ba-row"><span>Contacts with a lead source</span><span>38%</span></div>
-                <div class="ba-row"><span>Open deals past close date</span><span>412</span></div>
-                <div class="ba-row"><span>CRM revenue that matches finance</span><span>82%</span></div>
-              </div>
-              <div class="after">
-                <div class="ba-head">After</div>
-                <div class="ba-row"><span>Deals with an owner and next step</span><span>98%</span></div>
-                <div class="ba-row"><span>Contacts with a lead source</span><span>94%</span></div>
-                <div class="ba-row"><span>Open deals past close date</span><span>0</span></div>
-                <div class="ba-row"><span>CRM revenue that matches finance</span><span>99%</span></div>
-              </div>
-            </div>
-            <p class="caption" style="margin-top:14px;">Example numbers. Your audit shows your own.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fpanel panel panel-navy">
-        <div class="feature-text">
-          <span class="tag">Report</span>
-          <h2>Numbers you can show the board.</h2>
-          <p>Once the data underneath is right, we rebuild pipeline, attribution, and rep reports so marketing, sales, and finance finally see the same thing.</p>
-          <a href="/whitepaper/" class="link">Read how we approach attribution &rarr;</a>
-        </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Reports / <b>Pipeline by source</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Pipeline by first touch</div>
-            <div class="window-sub">Q3, validated against closed-won in finance</div>
-            <div class="table-scroll">
-              <table class="t">
-                <thead><tr><th>Source</th><th class="num">Deals</th><th class="num">Pipeline</th><th class="num">Won</th></tr></thead>
-                <tbody>
-                  <tr><td>Paid search</td><td class="num">48</td><td class="num">$1.68M</td><td class="num">$412K</td></tr>
-                  <tr><td>Webinar</td><td class="num">31</td><td class="num">$1.09M</td><td class="num">$298K</td></tr>
-                  <tr><td>Partner referral</td><td class="num">17</td><td class="num">$820K</td><td class="num">$265K</td></tr>
-                  <tr><td>Outbound</td><td class="num">22</td><td class="num">$610K</td><td class="num">$96K</td></tr>
-                  <tr><td>Unknown <span class="pill tag-pink">was 41% of deals</span></td><td class="num">2</td><td class="num">$54K</td><td class="num">$0</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="fpanel panel panel-sand">
-        <div class="feature-text">
-          <span class="tag">Maintain</span>
-          <h2>Keep it clean while AI does the work.</h2>
-          <p>Bad data comes back. We check every week, fix problems at the source, and make sure your scoring, forecasts, and copilots run on records you would sign off on.</p>
-        </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Maintenance / <b>This week</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">This week</div>
-            <div class="window-sub">Weekly data log, shared with your RevOps lead</div>
-            <ul class="log">
-              <li><time>Mon</time><span>Routed 37 webinar leads to the right owners with source attached</span><span class="pill tag-green">Fixed</span></li>
-              <li><time>Tue</time><span>Lead source missing on 12 form fills. Traced to a broken hidden field.</span><span class="pill tag-yellow">Root cause</span></li>
-              <li><time>Wed</time><span>Updated the lifecycle rule for partner leads</span><span class="pill tag-blue">Rule</span></li>
-              <li><time>Thu</time><span>Flagged 4 stale deals to their owners before the forecast call</span><span class="pill tag-pink">Flagged</span></li>
-              <li><time>Fri</time><span>Weekly summary sent</span><span class="pill tag-green">Done</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Calculator -->
-  <section class="section">
-    <div class="wrap">
-      <div class="calc-panel panel panel-dark">
-        <div>
-          <h2>What is bad data costing you?</h2>
-          <p class="lead">Move the sliders. We assume 12% of annual sales leaks out through bad data and manual work, and that a clean CRM recovers about three quarters of it.</p>
-        </div>
-        <div class="calc">
-        <div class="calc-ctrl">
-          <label for="team-size">Sales reps <output id="team-size-val">12</output></label>
-          <input type="range" min="2" max="50" value="12" id="team-size" />
-        </div>
-        <div class="calc-ctrl">
-          <label for="deal-val">Average deal size <output id="deal-val-val">$35,000</output></label>
-          <input type="range" min="5000" max="150000" step="5000" value="35000" id="deal-val" />
-        </div>
-        <div class="calc-ctrl">
-          <label for="deals-rep">Deals per rep per year <output id="deals-rep-val">12</output></label>
-          <input type="range" min="4" max="40" value="12" id="deals-rep" />
-        </div>
-        <div class="calc-out">
-          <div><span>Lost each year</span><strong class="accent" id="leak-val">$605K</strong></div>
-          <div><span>Recoverable with a clean CRM</span><strong id="recover-val">$454K</strong></div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Closing -->
-  <section class="closing">
-    <div class="wrap">
-      <h2>See what your CRM is really worth.</h2>
-      <p class="lead">Start with a free 45-minute audit and an honest look at your instance.</p>
-      <div class="closing-actions">
-        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
-        <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="/" class="brand">
-            <span class="brand-mark"><img src="assets/logo-d-white.png" alt="" /></span>
-            Datahooks
-          </a>
-          <p>Signals that unlock growth.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/solutions/">What we do</a></li>
-            <li><a href="/#integrations">Data sources</a></li>
-            <li><a href="/datahooks/">What is a datahook?</a></li>
-            <li><a href="/whitepaper/">Whitepaper</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/contact/">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy/">Privacy</a></li>
-            <li><a href="/terms/">Terms</a></li>
-            <li><a href="/security/">Security</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">&copy; 2026 Datahooks</div>
-    </div>
+    <div class="foot-name" aria-hidden="true">Datahooks</div>
   </footer>
 
   <script>
-    document.getElementById('navToggle').addEventListener('click', function () {
-      document.getElementById('nav').classList.toggle('open');
-    });
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function fmt(n) {
-      if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-      if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
-      return '$' + Math.round(n);
-    }
-    function calcLeak() {
-      var team = +document.getElementById('team-size').value;
-      var deal = +document.getElementById('deal-val').value;
-      var deals = +document.getElementById('deals-rep').value;
-      document.getElementById('team-size-val').textContent = team;
-      document.getElementById('deal-val-val').textContent = '$' + deal.toLocaleString();
-      document.getElementById('deals-rep-val').textContent = deals;
-      var leak = team * deal * deals * 0.12;
-      document.getElementById('leak-val').textContent = fmt(leak);
-      document.getElementById('recover-val').textContent = fmt(leak * 0.75);
-    }
-    ['team-size', 'deal-val', 'deals-rep'].forEach(function (id) {
-      document.getElementById(id).addEventListener('input', calcLeak);
-    });
-    calcLeak();
+      // duplicate each running line so it loops without a gap
+      ['runBrands', 'runSystems'].forEach(function (id) {
+        var run = document.getElementById(id);
+        if (!run) return;
+        var first = run.querySelector('.item');
+        var copy = run.querySelector('.item[aria-hidden="true"]');
+        copy.innerHTML = first.innerHTML;
+        copy.querySelectorAll('img').forEach(function (i) { i.alt = ''; });
+      });
+
+      // hero: shutter opens, then the field flips to what actually happened
+      var slot = document.getElementById('slot');
+      var field = document.getElementById('field');
+      var note = document.getElementById('fieldNote');
+      function flip(on) {
+        field.classList.toggle('flipped', on);
+        note.textContent = on ? 'Corrected from the first touch' : 'Set by a list import';
+      }
+      requestAnimationFrame(function () { slot.classList.add('open'); });
+      setTimeout(function () { flip(true); }, reduce ? 0 : 2200);
+      slot.addEventListener('click', function () { flip(!field.classList.contains('flipped')); });
+
+      // entrances, once per element
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.rise, .band, .intro-photos figure').forEach(function (el) {
+        el.classList.add('rise');
+        io.observe(el);
+      });
+      document.querySelectorAll('.band').forEach(function (el, i) { el.style.setProperty('--d', (i * 70) + 'ms'); });
+
+      // switches
+      document.querySelectorAll('.toggle').forEach(function (t) {
+        t.addEventListener('click', function () {
+          var on = t.getAttribute('aria-checked') !== 'true';
+          t.setAttribute('aria-checked', on);
+          t.closest('.band').classList.toggle('on', on);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
