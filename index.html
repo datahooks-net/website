@@ -7,16 +7,16 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datahooks | Your CRM Should Tell the Truth</title>
+  <title>Datahooks | Growth Is Hiding in Your CRM</title>
   <meta name="description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <link rel="canonical" href="https://datahooks.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/" />
-  <meta property="og:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta property="og:title" content="Datahooks | Growth Is Hiding in Your CRM" />
   <meta property="og:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta name="twitter:title" content="Datahooks | Growth Is Hiding in Your CRM" />
   <meta name="twitter:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, then finds your datahooks: the signals that show what makes your business win." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,6 +39,11 @@
 
   <section class="hero">
     <canvas class="signal" id="signal" aria-hidden="true"></canvas>
+    <div class="tags" id="tags">
+      <p class="tag" data-v="1.5"><b>+$1.5M</b><span class="t-name">Event attendees on partner deals</span><span class="t-was">Credited before: $0</span></p>
+      <p class="tag" data-v="1.3"><b>+$1.3M</b><span class="t-name">Event attendees on deals sales sourced</span><span class="t-was">Credited before: $0.2M</span></p>
+      <p class="tag left" data-v="0.3"><b>+$0.3M</b><span class="t-name">Website forms on won deals</span><span class="t-was">Credited before: $0</span></p>
+    </div>
 
     <nav class="nav" aria-label="Main">
       <a href="/" class="wordmark"><img src="assets/logo-square-navy.png" alt="" width="30" height="30" />Datahooks</a>
@@ -53,10 +58,11 @@
     </nav>
 
     <div class="hero-body">
-      <h1>Your CRM is full of signals you can't see.</h1>
-      <p class="hero-sub">Duplicates, missing owners, dead deals, and wrong sources bury them. We rebuild your CRM data so you can see what makes you win.</p>
+      <h1>Growth is hiding in your CRM.</h1>
+      <p class="hero-sub">We fix your data and pipelines, so you can see the signals to win.</p>
       <div class="hero-act"><a href="/contact/" class="action">Get a free audit</a></div>
     </div>
+    <p class="hero-src">Figures from one client's HubSpot review, October 2026: closed-won revenue that was missing credit before the fix.</p>
   </section>
 
   <section class="proof" aria-label="Brands our team has worked with, and the systems we work in">
@@ -228,64 +234,86 @@
         copy.querySelectorAll('img').forEach(function (i) { i.alt = ''; });
       });
 
-      // hero: records drift as noise, then a handful find each other and draw
-      // one rising line across the whole screen, hold, and let go
+      // hero: records drift as noise, then groups gather one at a time into
+      // clusters, and each is named with the revenue it was missing credit for
       (function () {
         var cv = document.getElementById('signal');
         if (!cv || !cv.getContext) return;
         var c = cv.getContext('2d'), w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-        var on = true, N, SIG, pts = [], chosen = [], cycle = -1, t0 = performance.now(), CYCLE = 8000;
+        var on = true, N, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 9500, PER = 38;
+        var tags = Array.prototype.slice.call(document.querySelectorAll('#tags .tag'));
+        var phone = function () { return w < 700; };
+        function centres() {
+          return phone()
+            ? [{ x: .14, y: .19, side: 1 }, { x: .84, y: .4, side: -1 }, null]
+            : [{ x: .09, y: .24, side: 1 }, { x: .5, y: .17, side: 1 }, { x: .87, y: .5, side: -1 }];
+        }
         function size() {
           var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
           cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); c.setTransform(dpr, 0, 0, dpr, 0, 0);
         }
         function seed() {
-          N = w < 700 ? 700 : 1800; SIG = w < 700 ? 60 : 110; pts = [];
+          N = phone() ? 700 : 1800; pts = [];
           for (var i = 0; i < N; i++) pts.push({ x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .00024, vy: (Math.random() - .5) * .00024, r: .8 + Math.random() });
         }
+        var R = function () { return phone() ? 30 : 44; };
         function pick() {
-          var used = {}; chosen = [];
-          while (chosen.length < SIG) { var j = (Math.random() * N) | 0; if (!used[j]) { used[j] = 1; chosen.push(j); } }
-          chosen.sort(function (a, b) { return pts[a].x - pts[b].x; });
+          var used = {}; groups = [];
+          centres().forEach(function (ct, gi) {
+            var el = tags[gi];
+            if (!ct) { groups.push(null); el.hidden = true; return; }
+            el.hidden = false;
+            var ids = [];
+            while (ids.length < PER) { var j = (Math.random() * N) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
+            groups.push({ ct: ct, ids: ids });
+            var gap = R() + 18;
+            el.style.top = (ct.y * h - 22) + 'px';
+            el.classList.toggle('left', ct.side < 0);
+            if (ct.side > 0) { el.style.left = (ct.x * w + gap) + 'px'; el.style.right = 'auto'; }
+            else { el.style.right = (w - ct.x * w + gap) + 'px'; el.style.left = 'auto'; }
+          });
         }
-        // the story line: edge to edge, flat and noisy at first, then it climbs
-        var phone = function () { return w < 700; };
-        function target(k) {
-          var u = k / (SIG - 1), lo = phone() ? .44 : .42, hi = phone() ? .16 : .12;
-          return { x: -0.01 + u * 1.02, y: lo - (lo - hi) * Math.pow(u, 1.8) + Math.sin(u * 23) * .006 };
+        // the figure counts up as its label appears
+        function count(el) {
+          var b = el.querySelector('b'), v = parseFloat(el.dataset.v), start = performance.now();
+          if (reduce) { b.textContent = '+$' + v.toFixed(1) + 'M'; return; }
+          (function tick(now) {
+            var t = Math.min(1, (now - start) / 900);
+            b.textContent = '+$' + (v * (1 - Math.pow(1 - t, 3))).toFixed(1) + 'M';
+            if (t < 1 && el.classList.contains('on')) requestAnimationFrame(tick);
+          })(start);
         }
-        var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+        var ease = function (t) { t = Math.max(0, Math.min(1, t)); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
         size(); seed(); pick();
         window.addEventListener('resize', function () { size(); seed(); pick(); if (reduce) draw(performance.now()); });
         new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
         function draw(now) {
-          var p = reduce ? .6 : ((now - t0) % CYCLE) / CYCLE;
+          var p = reduce ? .75 : ((now - t0) % CYCLE) / CYCLE;
           var n = Math.floor((now - t0) / CYCLE);
           if (!reduce && n !== cycle) { cycle = n; pick(); }
-          // drift, gather, draw the line, hold, release
-          var g = p < .12 ? 0 : p < .42 ? ease((p - .12) / .3) : p < .8 ? 1 : 1 - ease((p - .8) / .2);
-          var reveal = p < .38 ? 0 : p < .56 ? ease((p - .38) / .18) : p < .8 ? 1 : 1 - ease((p - .8) / .2);
+          var out = p < .86 ? 0 : ease((p - .86) / .14);
           c.clearRect(0, 0, w, h);
-          c.fillStyle = 'rgba(26,26,46,' + (.2 - g * .08) + ')';
+          c.fillStyle = 'rgba(26,26,46,.18)';
           for (var i = 0; i < N; i++) {
             var q = pts[i];
             if (!reduce) { q.x += q.vx; q.y += q.vy; if (q.x < 0 || q.x > 1) q.vx *= -1; if (q.y < 0 || q.y > 1) q.vy *= -1; }
             c.beginPath(); c.arc(q.x * w, q.y * h, q.r, 0, 6.283); c.fill();
           }
-          var path = [];
-          for (var k = 0; k < SIG; k++) {
-            var s = pts[chosen[k]], t = target(k);
-            path.push([(s.x + (t.x - s.x) * g) * w, (s.y + (t.y - s.y) * g) * h]);
-          }
-          if (reveal > 0) {
-            var last = Math.max(1, Math.floor(reveal * (SIG - 1)));
-            c.strokeStyle = '#c93d62'; c.lineWidth = phone() ? 2 : 2.5; c.lineJoin = 'round'; c.lineCap = 'round';
-            c.beginPath();
-            for (var m = 0; m <= last; m++) { m ? c.lineTo(path[m][0], path[m][1]) : c.moveTo(path[m][0], path[m][1]); }
-            c.stroke();
-          }
-          c.fillStyle = '#c93d62';
-          for (var m = 0; m < SIG; m++) { c.beginPath(); c.arc(path[m][0], path[m][1], 2 + g * 1.2, 0, 6.283); c.fill(); }
+          var live = 0, rad = R();
+          groups.forEach(function (gr, gi) {
+            if (!gr) return;
+            var g = ease((p - (.08 + live * .14)) / .22) * (1 - out); live++;
+            var el = tags[gi], show = g > .92;
+            if (show && !el.classList.contains('on')) { el.classList.add('on'); count(el); }
+            else if (!show && el.classList.contains('on')) { el.classList.remove('on'); }
+            c.fillStyle = '#c93d62';
+            for (var k = 0; k < gr.ids.length; k++) {
+              var q = pts[gr.ids[k]];
+              var a = k * 2.39996, rr = rad * Math.sqrt((k + .5) / gr.ids.length) * (1 + Math.sin(now / 900 + k) * .04 * g);
+              var tx = gr.ct.x * w + Math.cos(a) * rr, ty = gr.ct.y * h + Math.sin(a) * rr;
+              c.beginPath(); c.arc(q.x * w + (tx - q.x * w) * g, q.y * h + (ty - q.y * h) * g, 1.6 + g * 1.4, 0, 6.283); c.fill();
+            }
+          });
         }
         function frame(now) { requestAnimationFrame(frame); if (on) draw(now); }
         if (reduce) { draw(performance.now()); } else { requestAnimationFrame(frame); }
