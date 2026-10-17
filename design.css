@@ -541,3 +541,21 @@ html:not(.js) .tags { display: none; }
 .fpanel .feature-text .ba-switch + .link, .leak-intro .ba-switch + .link { display: block; width: max-content; }
 @media (max-width: 760px) { .stage { padding: 24px 20px 0; } }
 @media (prefers-reduced-motion: reduce) { .screen .s-after { transition: none; } }
+
+/* Inner-page headers on the shared dot grid (signals.js draws the motion).
+   The headline keeps the left; the motion sits to its right, or in a band above it on phones. */
+.sig-head { position: relative; overflow: hidden; }
+.sig-head .signal { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sig-head .wrap { position: relative; z-index: 1; }
+.sig-head:not([data-signal="still"]) { min-height: 460px; display: flex; align-items: center; }
+.sig-head:not([data-signal="still"]) .wrap { width: 100%; }
+.sig-head:not([data-signal="still"]) h1 { max-width: 600px; }
+.sig-head:not([data-signal="still"]) .lead { max-width: 520px; }
+.sig-head .wp-meta { max-width: 600px; }
+.sig-head h1.def { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+.sig-head .def-term { font-family: 'Fraunces', Georgia, serif; font-size: 24px; color: var(--ink-3); }
+.sig-head .def-term i { color: var(--coral-btn); }
+.sig-head .def-term + h1 { margin-top: 8px; }
+@media (max-width: 900px) {
+  .sig-head:not([data-signal="still"]) { min-height: 0; display: block; padding-top: 220px; }
+}

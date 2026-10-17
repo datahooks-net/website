@@ -57,6 +57,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/datahooks/">Datahooks</a></li>
         <li><a href="/whitepaper/">Whitepaper</a></li>
         <li><a href="/blog/" class="active">Blog</a></li>
         <li><a href="/about/">About</a></li>
@@ -69,11 +70,12 @@
     </div>
   </nav>
 
-  <header class="page-head compact">
+  <header class="page-head sig-head" data-signal="still">
+    <canvas class="signal" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="inner">
-        <h1>Insights on data, infrastructure, and AI readiness</h1>
-        <p class="lead">Learn how leading companies are taking control of their data to fuel faster, more reliable AI initiatives.</p>
+        <h1>Notes from inside the CRM.</h1>
+        <p class="lead">What we learn fixing HubSpot and Salesforce for growing teams.</p>
       </div>
     </div>
   </header>
@@ -187,5 +189,6 @@
     });
 
   </script>
+  <script src="/signals.js" defer></script>
 </body>
 </html>

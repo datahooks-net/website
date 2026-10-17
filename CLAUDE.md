@@ -16,6 +16,7 @@ The **datahooks-net/website** repo is the marketing website for **Datahooks** (d
 /
 ├── index.html              # Homepage
 ├── design.css              # Single global stylesheet (all pages share this)
+├── signals.js              # Dot-grid header motion for inner pages
 ├── sitemap.xml             # SEO sitemap
 ├── robots.txt              # Search engine directives
 ├── favicon.ico             # Root-level favicon for browser default discovery
@@ -27,6 +28,7 @@ The **datahooks-net/website** repo is the marketing website for **Datahooks** (d
 │   ├── logo-square-coral.png  # 512px square logo on coral bg (also used as favicon-512)
 │   ├── logo-square-navy.png   # Square logo on navy bg
 │   ├── logos/              # Gray SVG logos for the brand and systems strips
+│   ├── screens/            # Before/after CRM screen replicas (webp)
 │   ├── favicon-16.png
 │   ├── favicon-32.png
 │   ├── favicon-512.png
@@ -80,9 +82,23 @@ Gradient blobs or glows, uppercase eyebrow labels, emoji or icon cards, grids of
 
 Every page shares the same head, nav, and footer (copy them from any existing page; there is no templating). Subpages use root-relative paths (`/design.css`, `/assets/...`). Fonts: Inter 400 to 700 plus Fraunces 400 and italic from Google Fonts. Mark the current page with `class="active"` on its nav link.
 
-Nav: What we do, Whitepaper, Blog, About, then a plain "Contact" link and a coral "Get a free audit" button. The mobile menu is toggled by `#navToggle`, which adds `.open` to `#nav`.
+Nav: What we do, Datahooks, Whitepaper, Blog, About, then a plain "Contact" link and a coral "Get a free audit" button. The mobile menu is toggled by `#navToggle`, which adds `.open` to `#nav`.
 
 Footer: light, four columns. The brand line is the tagline "Signals that unlock growth." (serif). Services lists What we do, Data sources, What is a datahook?, and Whitepaper; then Company and Legal (Privacy, Terms, Security).
+
+### Headers (the dot grid)
+
+Every header shares one look: navy dots on white, coral for signals. Three levels:
+
+- **Home**: full-screen hero (`.sig-hero`, script inline in `index.html`). Broken records are scanned into a clean grid, signals gather into labelled clusters with dollar figures, and the headline word is spelled in dots and cycles Growth, Efficiency, Revenue, Clarity, Vision.
+- **Moving inner headers**: `<header class="page-head sig-head" data-signal="...">` with a `<canvas class="signal">`, drawn by `/signals.js` (load it with `defer` at the end of the body). Modes: `teams` (What we do: Marketing, Sales, and Finance line up into one row), `hook` (Datahooks: one signal lights up at a time), `leak` (Whitepaper: records drain off the grid), `meet` (About: two views meet in one answer).
+- **Still headers**: `data-signal="still"` draws the grid once (Blog, Contact, Security). Privacy and Terms use a plain `.page-head.compact` with no grid.
+
+All motion respects `prefers-reduced-motion` and draws its resolved state instead.
+
+### CRM screens
+
+Homepage sections show before and after replicas of HubSpot and Salesforce screens (`assets/screens/*-bad.webp` and `*-fixed.webp`) in a `.screen` figure, switched by a `.ba-switch`. They are illustrations, not client records.
 
 ### The term "datahooks"
 

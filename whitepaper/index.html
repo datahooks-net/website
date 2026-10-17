@@ -61,6 +61,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="/solutions/">What we do</a></li>
+        <li><a href="/datahooks/">Datahooks</a></li>
         <li><a href="/whitepaper/" class="active">Whitepaper</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
@@ -73,12 +74,13 @@
     </div>
   </nav>
 
-  <header class="page-head compact">
+  <header class="page-head sig-head" data-signal="leak">
+    <canvas class="signal" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="inner">
         <span class="tag tag-pink">Whitepaper</span>
-        <h1>Your CRM data is costing you more than you realize, and AI is about to make it worse</h1>
-        <p class="lead">Most HubSpot and Salesforce instances are broken in ways that are not obvious until you look closely. Duplicate records, missing attribution, sequences nobody owns, and marketing tools that were never turned on. That was manageable before. It is not anymore.</p>
+        <h1>Your CRM data is costing you more than you realize.</h1>
+        <p class="lead">And AI is about to make it worse. Most HubSpot and Salesforce instances are broken in ways that are not obvious until you look closely: duplicate records, missing attribution, sequences nobody owns, and marketing tools that were never turned on. That was manageable before. It is not anymore.</p>
         <div class="wp-meta">
           <div><b>Prepared by</b>Datahooks, datahooks.net</div>
           <div><b>Published</b>March 2026</div>
@@ -319,5 +321,6 @@
       calcLeak();
     })();
   </script>
+  <script src="/signals.js" defer></script>
 </body>
 </html>
