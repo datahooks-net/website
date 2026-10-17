@@ -7,21 +7,22 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datahooks | Your CRM Should Tell the Truth</title>
+  <title>Datahooks | Growth Is Hiding in Your CRM</title>
   <meta name="description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
   <link rel="canonical" href="https://datahooks.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://datahooks.net/" />
-  <meta property="og:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta property="og:title" content="Datahooks | Growth Is Hiding in Your CRM" />
   <meta property="og:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
   <meta property="og:site_name" content="Datahooks" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Datahooks | Your CRM Should Tell the Truth" />
+  <meta name="twitter:title" content="Datahooks | Growth Is Hiding in Your CRM" />
   <meta name="twitter:description" content="Datahooks fixes broken pipelines and lead source attribution in HubSpot and Salesforce, so marketing, sales, and finance stop arguing about the data and start growing revenue." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="design.css" />
+  <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,17 +62,27 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="wrap">
-      <h1>Your CRM should tell the truth.</h1>
-      <p class="lead">Broken pipelines and missing lead sources cost marketing and sales teams deals they never see. We rebuild your CRM data and pipelines, so your team spends its time creating value instead of arguing about the data.</p>
+  <!-- Hero: broken records get fixed, signals gather, the headline word forms from the data -->
+  <header class="sig-hero">
+    <canvas class="signal" id="signal" aria-hidden="true"></canvas>
+    <div class="tags" id="tags">
+      <p class="tag" data-v="1.8"><b>+$1.8M</b><span class="t-name">Pipeline from one conference no one credited</span><span class="t-was">Visible before: $0.2M</span></p>
+      <p class="tag" data-v="0.9"><b>+$0.9M</b><span class="t-name">Expansion revenue split across duplicate accounts</span><span class="t-was">Visible before: $0</span></p>
+      <p class="tag left" data-v="0.6"><b>+$0.6M</b><span class="t-name">Demo requests lost at a broken form step</span><span class="t-was">Visible before: $0</span></p>
+    </div>
+    <div class="wrap sig-body">
+      <h1 aria-label="Growth is hiding in your CRM."><span class="hw" id="hw" aria-hidden="true">Growth</span><span class="h-rest" aria-hidden="true">is hiding in your CRM.</span></h1>
+      <p class="lead">We fix your data and pipelines, so you can see the signals to win.</p>
       <div class="hero-actions">
         <a href="/contact/" class="btn btn-primary">Get a free audit</a>
         <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
       </div>
-      <p class="caption hero-note">45 minutes. No deck, no pitch.</p>
+    </div>
+  </header>
 
+  <!-- Brands -->
+  <section class="proof-band">
+    <div class="wrap">
       <div class="proof">
         <p>We've worked with some great brands</p>
         <div class="marquee">
@@ -106,62 +117,9 @@
         </div>
       </div>
 
-      <div class="hero-stage panel panel-navy">
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Contacts / Merge review / <b>Sarah Chen</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Sarah Chen</div>
-            <div class="window-sub">3 systems disagreed about one buyer. Now there is one answer.</div>
-            <div class="merge">
-              <div>
-                <div class="rec">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-yellow">HubSpot</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
-                    <dt>Lead source</dt><dd class="blank">Empty</dd>
-                    <dt>Owner</dt><dd class="blank">Empty</dd>
-                  </dl>
-                </div>
-                <div class="rec">
-                  <div class="rec-name">S. Chen <span class="pill tag-blue">Salesforce</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>schen@northwind.io</dd>
-                    <dt>Lead source</dt><dd>Webinar</dd>
-                    <dt>Owner</dt><dd>J. Ortiz</dd>
-                  </dl>
-                </div>
-                <div class="rec">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-pink">Marketo</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah@northwind.io</dd>
-                    <dt>First touch</dt><dd>Paid search, Jan 2025</dd>
-                    <dt>Owner</dt><dd class="blank">Empty</dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="merge-arrow">&rarr;</div>
-              <div>
-                <div class="rec canonical">
-                  <div class="rec-name">Sarah Chen <span class="pill tag-green">One record</span></div>
-                  <dl>
-                    <dt>Email</dt><dd>sarah.chen@northwind.io</dd>
-                    <dt>Lead source</dt><dd>Paid search (first touch)</dd>
-                    <dt>Last touch</dt><dd>Webinar</dd>
-                    <dt>Owner</dt><dd>J. Ortiz</dd>
-                    <dt>Company</dt><dd>Northwind</dd>
-                    <dt>Synced to</dt><dd>HubSpot, Salesforce, and Marketo</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </header>
+  </section>
+
 
   <!-- Systems -->
   <section class="systems" id="integrations">
@@ -185,44 +143,17 @@
       <div class="leak-layout">
         <div class="leak-intro">
           <h2>Where bad data costs you deals</h2>
-          <p class="lead">It rarely looks like a data problem. It looks like a missed quarter. Here is one deal, exactly as we usually find it.</p>
+          <p class="lead">It rarely looks like a data problem. It looks like a missed quarter. Here is one deal, exactly as we usually find it, and the same deal after the fix.</p>
+          <div class="ba-switch" role="group" aria-label="Show the record before or after" data-for="scr-opp">
+            <button type="button" aria-pressed="true" data-show="before">Before</button>
+            <button type="button" aria-pressed="false" data-show="after">After</button>
+          </div>
         </div>
-        <div class="window leak-window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Deals / <b>Northwind expansion</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Northwind expansion</div>
-            <div class="window-sub">$84,000 &middot; Proposal sent &middot; Example record</div>
-            <div class="leak-rows">
-              <div class="leak-row">
-                <span class="lf">Stage</span>
-                <span class="lv">Proposal sent</span>
-                <span class="ln"></span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Lead source</span>
-                <span class="lv"><span class="bad">Offline sources</span><span class="was">First touch was paid search</span></span>
-                <span class="ln"><span class="tag tag-pink">Marketing</span> A list import overwrote the source. Paid search never gets credit for the deal, so next quarter its budget gets cut.</span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Owner</span>
-                <span class="lv"><span class="bad">None</span><span class="was">Last activity 97 days ago</span></span>
-                <span class="ln"><span class="tag tag-blue">Sales</span> The rep left in June and nobody inherited the deal. The buyer kept opening emails that no one was sending.</span>
-              </div>
-              <div class="leak-row flag">
-                <span class="lf">Close date</span>
-                <span class="lv"><span class="bad">Sep 30</span><span class="was">Already passed</span></span>
-                <span class="ln"><span class="tag tag-yellow">Revenue</span> Still counted in the Q4 forecast. Finance wrote it off weeks ago, so the board sees two different numbers.</span>
-              </div>
-              <div class="leak-row">
-                <span class="lf">Amount</span>
-                <span class="lv">$84,000</span>
-                <span class="ln"></span>
-              </div>
-            </div>
-          </div>
+        <div class="stage panel panel-gray">
+        <figure class="screen" id="scr-opp">
+          <img class="s-before" src="assets/screens/sf-opp-bad.webp" alt="A Salesforce opportunity with a close date four months past, an inactive owner, no lead source, and an amount that does not match finance" width="1920" height="1200" loading="lazy" />
+          <img class="s-after" src="assets/screens/sf-opp-fixed.webp" alt="The same opportunity fixed: real close date, a new owner, the lead source, a next step, and the amount finance billed" width="1920" height="1200" loading="lazy" />
+        </figure>
         </div>
       </div>
     </div>
@@ -235,28 +166,17 @@
         <div class="leak-intro">
           <h2>Every business has datahooks. We find yours.</h2>
           <p class="lead">Datahooks are signals that unlock growth. They are already in your data. Sometimes nobody can see them, and sometimes nobody can act on them. Once the data is right, they show you where to put your team and your budget.</p>
+          <div class="ba-switch" role="group" aria-label="Show the record before or after" data-for="scr-report">
+            <button type="button" aria-pressed="true" data-show="before">Before</button>
+            <button type="button" aria-pressed="false" data-show="after">After</button>
+          </div>
           <a href="/datahooks/" class="link">What is a datahook? &rarr;</a>
         </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Datahooks / <b>Conferences drive the wins</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Conferences drive the wins</div>
-            <div class="window-sub">From a recent engagement, details removed</div>
-            <div class="table-scroll">
-              <table class="t cmp">
-                <thead><tr><th></th><th>What the CRM said</th><th>What the data showed</th></tr></thead>
-                <tbody>
-                  <tr><td>Top source of closed deals</td><td class="was-cell">Partners and sales</td><td class="now-cell">Conferences</td></tr>
-                  <tr><td>Credit for marketing</td><td class="was-cell">Small</td><td class="now-cell">Most of the wins</td></tr>
-                  <tr><td>Next year's plan</td><td class="was-cell">More partner and sales spend</td><td class="now-cell">More conferences</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="caption" style="margin-top:14px;">Fixing attribution showed where to spend to grow faster.</p>
-          </div>
+        <div class="stage panel panel-sage">
+        <figure class="screen" id="scr-report">
+          <img class="s-before" src="assets/screens/hs-report-bad.webp" alt="A HubSpot report where offline sources get 41 percent of closed-won revenue and events get 4 percent" width="1920" height="900" loading="lazy" />
+          <img class="s-after" src="assets/screens/hs-report-fixed.webp" alt="The rebuilt report: events lead with 46 percent of closed-won revenue" width="1920" height="900" loading="lazy" />
+        </figure>
         </div>
       </div>
     </div>
@@ -274,66 +194,33 @@
           <span class="tag">Build</span>
           <h2>A CRM that does the right thing.</h2>
           <p>Every lead arrives with the right source, owner, and stage. Deals move through a pipeline sales and marketing both agree on. The rules run on their own, so nobody spends Monday cleaning up.</p>
+          <div class="ba-switch" role="group" aria-label="Show the record before or after" data-for="scr-contact">
+            <button type="button" aria-pressed="true" data-show="before">Before</button>
+            <button type="button" aria-pressed="false" data-show="after">After</button>
+          </div>
           <a href="/solutions/" class="link">What we set up &rarr;</a>
         </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Audit / <b>Record health</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Record health</div>
-            <div class="window-sub">Example HubSpot portal, 84,000 contacts</div>
-            <div class="ba">
-              <div class="before">
-                <div class="ba-head">Today</div>
-                <div class="ba-row"><span>Deals with an owner and next step</span><span>46%</span></div>
-                <div class="ba-row"><span>Contacts with a lead source</span><span>38%</span></div>
-                <div class="ba-row"><span>Open deals past close date</span><span>412</span></div>
-                <div class="ba-row"><span>CRM revenue that matches finance</span><span>82%</span></div>
-              </div>
-              <div class="after">
-                <div class="ba-head">After</div>
-                <div class="ba-row"><span>Deals with an owner and next step</span><span>98%</span></div>
-                <div class="ba-row"><span>Contacts with a lead source</span><span>94%</span></div>
-                <div class="ba-row"><span>Open deals past close date</span><span>0</span></div>
-                <div class="ba-row"><span>CRM revenue that matches finance</span><span>99%</span></div>
-              </div>
-            </div>
-            <p class="caption" style="margin-top:14px;">Example numbers. Your audit shows your own.</p>
-          </div>
-        </div>
+        <figure class="screen" id="scr-contact">
+          <img class="s-before" src="assets/screens/hs-contact-bad.webp" alt="A HubSpot contact with three duplicates, no owner, no lifecycle stage, and offline sources as its source" width="1920" height="1200" loading="lazy" />
+          <img class="s-after" src="assets/screens/hs-contact-fixed.webp" alt="The same contact merged into one record with paid search as its source, an owner, and its deal attached" width="1920" height="1200" loading="lazy" />
+        </figure>
       </div>
 
       <div class="fpanel panel panel-navy">
         <div class="feature-text">
           <span class="tag">Report</span>
           <h2>Numbers you can show the board.</h2>
-          <p>Once the data underneath is right, we rebuild pipeline, attribution, and rep reports so marketing, sales, and finance finally see the same thing.</p>
+          <p>Once the data underneath is right, we rebuild pipeline, forecast, and attribution reports so marketing, sales, and finance finally see the same number.</p>
+          <div class="ba-switch" role="group" aria-label="Show the record before or after" data-for="scr-forecast">
+            <button type="button" aria-pressed="true" data-show="before">Before</button>
+            <button type="button" aria-pressed="false" data-show="after">After</button>
+          </div>
           <a href="/whitepaper/" class="link">Read how we approach attribution &rarr;</a>
         </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Reports / <b>Pipeline by source</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">Pipeline by first touch</div>
-            <div class="window-sub">Q3, validated against closed-won in finance</div>
-            <div class="table-scroll">
-              <table class="t">
-                <thead><tr><th>Source</th><th class="num">Deals</th><th class="num">Pipeline</th><th class="num">Won</th></tr></thead>
-                <tbody>
-                  <tr><td>Paid search</td><td class="num">48</td><td class="num">$1.68M</td><td class="num">$412K</td></tr>
-                  <tr><td>Webinar</td><td class="num">31</td><td class="num">$1.09M</td><td class="num">$298K</td></tr>
-                  <tr><td>Partner referral</td><td class="num">17</td><td class="num">$820K</td><td class="num">$265K</td></tr>
-                  <tr><td>Outbound</td><td class="num">22</td><td class="num">$610K</td><td class="num">$96K</td></tr>
-                  <tr><td>Unknown <span class="pill tag-pink">was 41% of deals</span></td><td class="num">2</td><td class="num">$54K</td><td class="num">$0</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <figure class="screen" id="scr-forecast">
+          <img class="s-before" src="assets/screens/sf-forecast-bad.webp" alt="A Salesforce forecast with $4.2M in commit, $830K more than finance billed, and 16 deals past their close date" width="1920" height="1000" loading="lazy" />
+          <img class="s-after" src="assets/screens/sf-forecast-fixed.webp" alt="The reconciled forecast: $3.42M in commit, within $40K of finance, every deal clean" width="1920" height="1000" loading="lazy" />
+        </figure>
       </div>
 
       <div class="fpanel panel panel-sand">
@@ -341,24 +228,15 @@
           <span class="tag">Maintain</span>
           <h2>Keep it clean while AI does the work.</h2>
           <p>Bad data comes back. We check every week, fix problems at the source, and make sure your scoring, forecasts, and copilots run on records you would sign off on.</p>
-        </div>
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span class="window-crumb">Maintenance / <b>This week</b></span>
-          </div>
-          <div class="window-body">
-            <div class="window-title">This week</div>
-            <div class="window-sub">Weekly data log, shared with your RevOps lead</div>
-            <ul class="log">
-              <li><time>Mon</time><span>Routed 37 webinar leads to the right owners with source attached</span><span class="pill tag-green">Fixed</span></li>
-              <li><time>Tue</time><span>Lead source missing on 12 form fills. Traced to a broken hidden field.</span><span class="pill tag-yellow">Root cause</span></li>
-              <li><time>Wed</time><span>Updated the lifecycle rule for partner leads</span><span class="pill tag-blue">Rule</span></li>
-              <li><time>Thu</time><span>Flagged 4 stale deals to their owners before the forecast call</span><span class="pill tag-pink">Flagged</span></li>
-              <li><time>Fri</time><span>Weekly summary sent</span><span class="pill tag-green">Done</span></li>
-            </ul>
+          <div class="ba-switch" role="group" aria-label="Show the record before or after" data-for="scr-quality">
+            <button type="button" aria-pressed="true" data-show="before">Before</button>
+            <button type="button" aria-pressed="false" data-show="after">After</button>
           </div>
         </div>
+        <figure class="screen" id="scr-quality">
+          <img class="s-before" src="assets/screens/hs-quality-bad.webp" alt="A HubSpot data quality page with 4,182 duplicates, 31 percent of contacts missing a source, and seven broken workflows, last checked five months ago" width="1920" height="920" loading="lazy" />
+          <img class="s-after" src="assets/screens/hs-quality-fixed.webp" alt="The same page after the work: 12 duplicates, 1 percent missing a source, and a weekly log of fixes" width="1920" height="920" loading="lazy" />
+        </figure>
       </div>
 
     </div>
@@ -448,6 +326,236 @@
   </footer>
 
   <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // hero, in three acts:
+      // 1. broken records: scattered, jittering, some hollow (missing values), some doubled (duplicates)
+      // 2. a scan sweeps across and fixes them: duplicates merge, hollows fill, everything settles into rows
+      // 3. in the clean data, some records turn coral where they sit, then gather into named clusters
+      (function () {
+        var cv = document.getElementById('signal');
+        if (!cv || !cv.getContext) return;
+        var c = cv.getContext('2d'), w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var on = true, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 30000;
+        var CORAL = [201, 61, 98], INK = [26, 26, 46];
+        var tags = Array.prototype.slice.call(document.querySelectorAll('#tags .tag'));
+        var phone = function () { return w < 700; };
+
+        // the headline word: its dots hide in the noise, then spell the word as the results form,
+        // and reform into each word in turn while the results are held
+        var hw = document.getElementById('hw');
+        var WORDS = ['Growth', 'Efficiency', 'Revenue', 'Clarity', 'Vision'];
+        var wpts = [], targetCache = {}, shownWord = -1;
+        function seedWord() {
+          var count = phone() ? 700 : 1500; wpts = [];
+          for (var i = 0; i < count; i++) wpts.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, ph: Math.random() * 6.283 });
+          targetCache = {};
+        }
+        function targets(word) {
+          if (targetCache[word]) return targetCache[word];
+          var cs = getComputedStyle(hw), fs = parseFloat(cs.fontSize);
+          var off = document.createElement('canvas'), oc = off.getContext('2d');
+          var font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+          oc.font = font; if ('letterSpacing' in oc) oc.letterSpacing = cs.letterSpacing;
+          var m = oc.measureText(word), asc = m.fontBoundingBoxAscent || fs * .8, desc = m.fontBoundingBoxDescent || fs * .25;
+          off.width = Math.ceil(m.width + 20); off.height = Math.ceil(asc + desc);
+          oc.font = font; if ('letterSpacing' in oc) oc.letterSpacing = cs.letterSpacing;
+          oc.fillStyle = '#000'; oc.fillText(word, 0, asc);
+          var data = oc.getImageData(0, 0, off.width, off.height).data, step = Math.max(3, Math.round(fs / 30)), out = [];
+          for (var y = 0; y < off.height; y += step) for (var x = 0; x < off.width; x += step) {
+            if (data[(y * off.width + x) * 4 + 3] > 140) out.push([x, y]);
+          }
+          // shuffle so each particle lands on a random spot in the letters
+          for (var i = out.length - 1; i > 0; i--) { var j = (Math.random() * (i + 1)) | 0, t = out[i]; out[i] = out[j]; out[j] = t; }
+          targetCache[word] = { pts: out, r: Math.max(1.3, step * .42), box: asc + desc };
+          return targetCache[word];
+        }
+        function wordOrigin() {
+          var a = hw.getBoundingClientRect(), b = cv.getBoundingClientRect();
+          return { x: a.left - b.left, y: a.top - b.top, h: a.height };
+        }
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { targetCache = {}; });
+        function centres() {
+          return phone()
+            ? [{ x: .14, y: .19, side: 1 }, { x: .84, y: .4, side: -1 }, null]
+            : [{ x: .09, y: .24, side: 1 }, { x: .5, y: .17, side: 1 }, { x: .87, y: .5, side: -1 }];
+        }
+        function size() {
+          var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
+          cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function seed() {
+          var gap = phone() ? 22 : 26, cols = Math.ceil(w / gap), rows = Math.ceil(h / gap);
+          var ox = (w - (cols - 1) * gap) / 2, oy = (h - (rows - 1) * gap) / 2;
+          pts = [];
+          for (var r = 0; r < rows; r++) for (var k = 0; k < cols; k++) {
+            var roll = Math.random();
+            pts.push({
+              tx: ox + k * gap, ty: oy + r * gap,                       // tidy home
+              mx: Math.random() * w, my: Math.random() * h,             // where the broken copy sits
+              vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+              hollow: roll < .22, dup: roll > .84,                      // missing value / duplicate
+              da: Math.random() * 6.283, ph: Math.random() * 6.283
+            });
+          }
+        }
+        var R = function () { return phone() ? 30 : 44; };
+        function pick() {
+          var used = {}; groups = [];
+          centres().forEach(function (ct, gi) {
+            var el = tags[gi];
+            el.classList.remove('on');
+            if (!ct) { groups.push(null); el.hidden = true; return; }
+            el.hidden = false;
+            var ids = [], per = phone() ? 30 : 38;
+            while (ids.length < per) { var j = (Math.random() * pts.length) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
+            groups.push({ ct: ct, ids: ids });
+            var gap = R() + 18;
+            el.style.top = (ct.y * h - 22) + 'px';
+            el.classList.toggle('left', ct.side < 0);
+            if (ct.side > 0) { el.style.left = (ct.x * w + gap) + 'px'; el.style.right = 'auto'; }
+            else { el.style.right = (w - ct.x * w + gap) + 'px'; el.style.left = 'auto'; }
+          });
+          pts.forEach(function (q) { q.g = -1; });
+          groups.forEach(function (gr, gi) { if (gr) gr.ids.forEach(function (id) { pts[id].g = gi; }); });
+        }
+        function count(el) {
+          var b = el.querySelector('b'), v = parseFloat(el.dataset.v), start = performance.now();
+          if (reduce) { b.textContent = '+$' + v.toFixed(1) + 'M'; return; }
+          (function tick(now) {
+            var t = Math.min(1, (now - start) / 900);
+            b.textContent = '+$' + (v * (1 - Math.pow(1 - t, 3))).toFixed(1) + 'M';
+            if (t < 1 && el.classList.contains('on')) requestAnimationFrame(tick);
+          })(start);
+        }
+        var clamp = function (t) { return Math.max(0, Math.min(1, t)); };
+        var ease = function (t) { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+        var mix = function (a, b, t) { return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * t) + ',' + Math.round(a[1] + (b[1] - a[1]) * t) + ',' + Math.round(a[2] + (b[2] - a[2]) * t) + ')'; };
+        size(); seed(); seedWord(); pick();
+        window.addEventListener('resize', function () { size(); seed(); seedWord(); pick(); if (reduce) draw(performance.now()); });
+        new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
+
+        // timeline, as fractions of the cycle
+        var SWEEP0 = .04, SWEEP1 = .19, FIX = .03, LIGHT0 = .2, LIGHT1 = .23, GATHER0 = .24, STAGGER = .045, GDUR = .1, HOLD = .94;
+        function draw(now) {
+          var p = reduce ? .3 : ((now - t0) % CYCLE) / CYCLE;
+          var n = Math.floor((now - t0) / CYCLE);
+          if (!reduce && n !== cycle) { cycle = n; pick(); }
+          var fadeIn = reduce ? 1 : ease(p / .03), fadeOut = p < HOLD ? 0 : ease((p - HOLD) / (1 - HOLD) * 1.4);
+          var scan = SWEEP0 + 0, sx = ((p - SWEEP0) / (SWEEP1 - SWEEP0)) * (w + 160) - 80;
+          c.clearRect(0, 0, w, h);
+          c.globalAlpha = fadeIn * (1 - fadeOut);
+
+          // the scan line
+          if (p > SWEEP0 && p < SWEEP1 + .02) {
+            c.fillStyle = 'rgba(26,26,46,.35)';
+            c.fillRect(Math.round(sx), 0, 1, h);
+          }
+          var live = 0, rad = R(), gStart = [];
+          groups.forEach(function (gr) { if (gr) { gStart.push(GATHER0 + live * STAGGER); live++; } else gStart.push(1); });
+
+          for (var i = 0; i < pts.length; i++) {
+            var q = pts[i];
+            if (!reduce && p < SWEEP1 + FIX) {
+              q.mx += q.vx; q.my += q.vy;
+              if (q.mx < 0 || q.mx > w) q.vx *= -1; if (q.my < 0 || q.my > h) q.vy *= -1;
+            }
+            // fixed once the scan has passed its tidy home
+            var passT = SWEEP0 + (SWEEP1 - SWEEP0) * clamp((q.tx + 80) / (w + 160));
+            var f = reduce ? 1 : ease((p - passT) / FIX);
+            var jit = (1 - f) * 2.6;
+            var x = q.mx + (q.tx - q.mx) * f + Math.sin(now / 120 + q.ph) * jit;
+            var y = q.my + (q.ty - q.my) * f + Math.cos(now / 140 + q.ph) * jit;
+
+            // signal records light up in place, then gather
+            var lit = 0, g = 0;
+            if (q.g >= 0) {
+              lit = ease((p - LIGHT0) / (LIGHT1 - LIGHT0));
+              g = ease((p - gStart[q.g]) / GDUR);
+              var gr = groups[q.g], k = gr.ids.indexOf(i), a = k * 2.39996;
+              var rr = rad * Math.sqrt((k + .5) / gr.ids.length) * (1 + Math.sin(now / 900 + k) * .04 * g);
+              x += (gr.ct.x * w + Math.cos(a) * rr - x) * g;
+              y += (gr.ct.y * h + Math.sin(a) * rr - y) * g;
+            }
+            var col = lit > 0 ? mix(INK, CORAL, lit) : 'rgb(26,26,46)';
+            var alpha = lit > 0 ? .28 + .72 * lit : .5 - f * .32;
+            var r = lit > 0 ? 1.6 + lit * .4 + g * 1 : 1.6 + (1 - f) * .6;
+
+            c.globalAlpha = fadeIn * (1 - fadeOut) * alpha;
+            if (q.hollow && f < 1) {
+              // missing value: an empty ring that fills as it is fixed
+              c.strokeStyle = col; c.lineWidth = 1.2;
+              c.beginPath(); c.arc(x, y, r + .6, 0, 6.283); c.stroke();
+              if (f > 0) { c.fillStyle = col; c.globalAlpha *= f; c.beginPath(); c.arc(x, y, r, 0, 6.283); c.fill(); }
+            } else {
+              c.fillStyle = col; c.beginPath(); c.arc(x, y, r, 0, 6.283); c.fill();
+            }
+            if (q.dup && f < 1) {
+              // duplicate: a second copy that slides back into the first
+              var d = (1 - f) * 7;
+              c.fillStyle = col; c.globalAlpha = fadeIn * (1 - fadeOut) * alpha * (1 - f);
+              c.beginPath(); c.arc(x + Math.cos(q.da) * d, y + Math.sin(q.da) * d, r, 0, 6.283); c.fill();
+            }
+          }
+          // the word
+          var SLOT = (HOLD - GATHER0) / WORDS.length, wk = p < GATHER0 ? -1 : Math.min(WORDS.length - 1, Math.floor((p - GATHER0) / SLOT));
+          if (reduce) wk = 0;
+          var lt = reduce ? .5 : wk < 0 ? 0 : (p - GATHER0 - wk * SLOT) / SLOT;
+          var morph = reduce ? 1 : ease(lt / .3);
+          var solid = reduce ? 1 : wk < 0 ? 0 : clamp((lt - .3) / .08) * (wk < WORDS.length - 1 ? 1 - clamp((lt - .9) / .08) : 1);
+          if (wk !== shownWord) { shownWord = wk; hw.textContent = WORDS[Math.max(0, wk)]; }
+          hw.style.opacity = (solid * (1 - fadeOut)).toFixed(3);
+          var o = wordOrigin(), cur = targets(WORDS[Math.max(0, wk)]), prev = wk > 0 ? targets(WORDS[wk - 1]) : null;
+          o.y += (o.h - cur.box) / 2;  // the glyphs sit centred in the line box
+          var dotA = (1 - solid) * (1 - fadeOut) * fadeIn;
+          c.fillStyle = '#1a1a2e';
+          for (var i = 0; i < wpts.length; i++) {
+            var q = wpts[i];
+            if (!reduce && wk < 0) { q.x += q.vx; q.y += q.vy; if (q.x < 0 || q.x > w) q.vx *= -1; if (q.y < 0 || q.y > h) q.vy *= -1; }
+            var tp = cur.pts.length ? cur.pts[i % cur.pts.length] : [0, 0], tx = o.x + tp[0], ty = o.y + tp[1];
+            var fx, fy;
+            if (prev && prev.pts.length) { var pp = prev.pts[i % prev.pts.length]; fx = o.x + pp[0]; fy = o.y + pp[1]; }
+            else { fx = q.x + Math.sin(now / 120 + q.ph) * 2.6; fy = q.y + Math.cos(now / 140 + q.ph) * 2.6; }
+            var m2 = wk < 0 ? 0 : morph;
+            var x = fx + (tx - fx) * m2, y = fy + (ty - fy) * m2;
+            c.globalAlpha = dotA * (wk < 0 ? .5 : .5 + .5 * m2);
+            c.beginPath(); c.arc(x, y, wk < 0 ? 1.6 : 1.6 + (cur.r - 1.6) * m2, 0, 6.283); c.fill();
+          }
+          // scatter the word's dots again, unseen, before the next loop
+          if (fadeOut > .99) wpts.forEach(function (q) { q.x = Math.random() * w; q.y = Math.random() * h; });
+
+          c.globalAlpha = 1;
+
+          groups.forEach(function (gr, gi) {
+            if (!gr) return;
+            var el = tags[gi], show = p > gStart[gi] + GDUR * .85 && p < HOLD;
+            if (show && !el.classList.contains('on')) { el.classList.add('on'); count(el); }
+            else if (!show && el.classList.contains('on')) { el.classList.remove('on'); }
+          });
+        }
+        function frame(now) { requestAnimationFrame(frame); if (on) draw(now); }
+        if (reduce) { draw(performance.now()); } else { requestAnimationFrame(frame); }
+      })();
+
+      // before and after switches on the CRM screens; they flip on their own until someone clicks
+      document.querySelectorAll('.ba-switch').forEach(function (sw) {
+        var fig = document.getElementById(sw.dataset.for), btns = sw.querySelectorAll('button'), timer = null, seen = false;
+        function show(after) {
+          fig.classList.toggle('after', after);
+          btns[0].setAttribute('aria-pressed', !after); btns[1].setAttribute('aria-pressed', after);
+        }
+        btns.forEach(function (b) { b.addEventListener('click', function () { clearInterval(timer); timer = null; show(b.dataset.show === 'after'); }); });
+        if (reduce) return;
+        new IntersectionObserver(function (es) {
+          if (es[0].isIntersecting && !seen) {
+            seen = true;
+            timer = setInterval(function () { show(!fig.classList.contains('after')); }, 3200);
+          }
+        }, { threshold: 0.4 }).observe(fig);
+      });
+    })();
+
     document.getElementById('navToggle').addEventListener('click', function () {
       document.getElementById('nav').classList.toggle('open');
     });
