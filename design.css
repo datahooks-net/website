@@ -477,3 +477,8 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
   .page-head { padding: 56px 0 40px; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+/* Brand definition line above the homepage headline */
+.def-line { font-family: var(--serif); font-size: 18px; color: var(--ink-2); margin-bottom: 22px; text-wrap: balance; }
+.def-line i { color: var(--ink); }
+@media (max-width: 760px) { .def-line { font-size: 15px; margin-bottom: 16px; } }
