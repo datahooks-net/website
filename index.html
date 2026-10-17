@@ -49,20 +49,23 @@
     </nav>
 
     <div class="hero-body">
-      <h1 aria-label="Your CRM says the lead source was offline sources. It was a conference.">
-        <span class="word" aria-hidden="true">Your CRM says</span>
-        <span class="slot" id="slot" aria-hidden="true">
-          <span class="field" data-ui id="field">
-            <span class="f-label"><i></i>Lead source</span>
-            <span class="f-value"><span class="f-was">Offline sources</span><span class="f-now">Conference booth</span></span>
-            <span class="f-note" id="fieldNote">Set by a list import</span>
+      <h1 aria-label="Your CRM is full of signals you can't see.">
+        <span class="h-line" aria-hidden="true">
+          <span class="word">Your CRM is full of</span>
+          <span class="slot" id="slot">
+            <span class="field" data-ui id="field">
+              <span class="f-label"><i></i><span id="fLabel">Original source</span></span>
+              <span class="f-value"><span class="f-was" id="fWas">Offline sources</span><span class="f-now" id="fNow">Paid search</span></span>
+              <span class="f-note" id="fieldNote">Set by a list import</span>
+            </span>
           </span>
         </span>
+        <span class="h-line word" aria-hidden="true">signals you can't see.</span>
       </h1>
       <div class="hero-act"><a href="/contact/" class="action">Get a free audit</a></div>
     </div>
 
-    <p class="hero-sub">Wrong lead sources and broken pipelines cost teams deals they never see. We rebuild your CRM data so it tells the truth.</p>
+    <p class="hero-sub">Duplicates, missing owners, dead deals, and wrong sources bury them. We rebuild your CRM data so you can see what makes you win.</p>
   </section>
 
   <section class="proof" aria-label="Brands our team has worked with, and the systems we work in">
@@ -112,59 +115,27 @@
     </div>
   </section>
 
-  <section class="row" aria-labelledby="leak-h">
-    <div class="grid">
-      <div class="say-col">
-        <h2 id="leak-h" class="rise">Where bad data costs you deals</h2>
-        <p class="rise" style="--d:80ms">It rarely looks like a data problem. It looks like a missed quarter. This is one deal, the way we usually find it.</p>
-      </div>
-      <div class="proof-col rise" style="--d:160ms">
-        <div class="record" data-ui>
-          <div class="r-top">
-            <div class="r-crumb">Deals / Northwind expansion</div>
-            <div class="r-name">Northwind expansion</div>
-            <div class="r-meta">$84,000, proposal sent, example record</div>
-          </div>
-          <div class="r-rows">
-            <div class="r-row"><span class="r-k">Stage</span><span class="r-v">Proposal sent</span></div>
-            <div class="r-row flag">
-              <span class="r-k">Lead source</span>
-              <span class="r-v"><b>Offline sources</b><small>First touch was paid search</small></span>
-              <span class="r-why"><em>Marketing:</em> a list import overwrote the source, so paid search never gets credit and next quarter its budget gets cut.</span>
-            </div>
-            <div class="r-row flag">
-              <span class="r-k">Owner</span>
-              <span class="r-v"><b>None</b><small>Last activity 97 days ago</small></span>
-              <span class="r-why"><em>Sales:</em> the rep left in June and nobody inherited the deal. The buyer kept opening emails no one was sending.</span>
-            </div>
-            <div class="r-row flag">
-              <span class="r-k">Close date</span>
-              <span class="r-v"><b>Sep 30</b><small>Already passed</small></span>
-              <span class="r-why"><em>Revenue:</em> still counted in the Q4 forecast. Finance wrote it off weeks ago, so the board sees two numbers.</span>
-            </div>
-            <div class="r-row"><span class="r-k">Amount</span><span class="r-v">$84,000</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="intro" aria-label="What datahooks are">
-    <div class="intro-pin">
-      <p>Every business has datahooks: signals that unlock growth. We find yours. <a href="/datahooks/" class="textlink">What is a datahook?</a></p>
+  <section class="records" aria-labelledby="records-h">
+    <h2 id="records-h" class="visually-hidden">Broken records and the same records fixed</h2>
+    <p class="records-say rise">Every business has datahooks: signals that unlock growth. Most are buried in records like these. <a href="/datahooks/" class="textlink">What is a datahook?</a></p>
+    <div class="pair">
+      <figure class="rise" style="--d:80ms"><img src="assets/screens/hs-contact-bad.webp" width="1920" height="1200" alt="A HubSpot contact with three duplicates, no owner, no lifecycle stage, and its source set to Offline sources" loading="lazy" decoding="async" /><figcaption>Before: three duplicates of one buyer, no owner, no stage, and a source that says nothing.</figcaption></figure>
+      <figure class="rise" style="--d:160ms"><img src="assets/screens/hs-contact-fixed.webp" width="1920" height="1200" alt="The same HubSpot contact merged into one record, with a real source, an owner, and a lifecycle stage" loading="lazy" decoding="async" /><figcaption>After: one record, the real first touch, an owner, and a follow-up on the calendar.</figcaption></figure>
     </div>
-    <div class="intro-photos">
-      <figure class="ph-a"><img src="assets/switchboard-bell-gray.jpg" width="1600" height="1270" alt="Rows of telephone operators at a Bell System switchboard" loading="lazy" decoding="async" /><figcaption>Bell System switchboard operators</figcaption></figure>
-      <figure class="ph-b"><video autoplay muted loop playsinline preload="metadata" poster="assets/switchboard-loop-poster.jpg" width="960" height="720" aria-hidden="true"><source src="assets/switchboard-loop.webm" type="video/webm" /><source src="assets/switchboard-loop.mp4" type="video/mp4" /></video><figcaption>From "Operator Toll Dialing: Teamwork," 1949</figcaption></figure>
-      <figure class="ph-c"><img src="assets/card-catalog-gray.jpg" width="1800" height="1200" alt="A drawer of index cards in the Library of Congress serials card catalog" loading="lazy" decoding="async" /><figcaption>Library of Congress serials card catalog</figcaption></figure>
+    <div class="pair">
+      <figure class="rise" style="--d:80ms"><img src="assets/screens/sf-opp-bad.webp" width="1920" height="1200" alt="A Salesforce opportunity owned by an inactive user, with a close date four months past and an amount that does not match finance" loading="lazy" decoding="async" /><figcaption>Before: an inactive owner, a close date four months gone, and $24,000 more than finance billed.</figcaption></figure>
+      <figure class="rise" style="--d:160ms"><img src="assets/screens/sf-opp-fixed.webp" width="1920" height="1200" alt="The same Salesforce opportunity with a current close date, an active owner, and an amount that matches finance" loading="lazy" decoding="async" /><figcaption>After: a live close date, an active owner, a next step, and an amount finance agrees with.</figcaption></figure>
     </div>
+    <p class="screens-note">Screens are illustrations of HubSpot and Salesforce built with example data.</p>
   </section>
 
   <section class="hook" aria-labelledby="hook-h">
     <div class="grid">
       <figure class="hook-photo rise">
-        <img src="assets/convention-1909-gray.jpg" width="1920" height="1211" alt="Souvenir card of a hardware dealers' convention at the Memorial Building, Columbus, Ohio" loading="lazy" decoding="async" />
-        <figcaption>Souvenir of a convention, Memorial Building, Columbus, Ohio, 1909</figcaption>
+        <img class="rep-before" src="assets/screens/hs-report-bad.webp" width="1920" height="900" alt="Before: the report credits 41% of revenue to Offline sources and 4% to events" loading="lazy" decoding="async" />
+        <img class="rep-after" src="assets/screens/hs-report-fixed.webp" width="1920" height="900" alt="After: the rebuilt report shows events behind 46% of closed-won revenue" loading="lazy" decoding="async" />
+        <figcaption>The same revenue report, before and after the sources were rebuilt</figcaption>
       </figure>
       <div class="hook-text">
         <h2 id="hook-h" class="rise">Conferences won the deals</h2>
@@ -247,7 +218,7 @@
     </div>
     <div class="foot-legal">
       <span>&copy; 2026 Datahooks. <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/security/">Security</a></span>
-      <span class="credits" id="credits">Pictures, all public domain: <a href="https://commons.wikimedia.org/wiki/File:Photograph_of_Women_Working_at_a_Bell_System_Telephone_Switchboard_(3660047829).jpg">Bell System switchboard</a> (U.S. National Archives), <a href="https://commons.wikimedia.org/wiki/File:Souvenir_of_Convention_in_Memorial_Building,_Columbus,_Ohio_-_DPLA_-_041abf776e7dc01e8e0a9452be08d9b6_(page_1).jpg">Columbus convention souvenir, 1909</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=162151910">Library of Congress serials card catalog</a>, and film from <a href="https://archive.org/details/Operator1949_4">"Operator Toll Dialing: Teamwork," 1949</a> (Internet Archive).</span>
+      <span class="credits">HubSpot and Salesforce screens are illustrations built with example data. HubSpot and Salesforce are trademarks of their owners.</span>
     </div>
     <div class="foot-name" aria-hidden="true">Datahooks</div>
   </footer>
@@ -266,17 +237,31 @@
         copy.querySelectorAll('img').forEach(function (i) { i.alt = ''; });
       });
 
-      // hero: shutter opens, then the field flips to what actually happened
+      // hero: shutter opens, then the field cycles through broken records and their fixes
       var slot = document.getElementById('slot');
       var field = document.getElementById('field');
-      var note = document.getElementById('fieldNote');
-      function flip(on) {
-        field.classList.toggle('flipped', on);
-        note.textContent = on ? 'Corrected from the first touch' : 'Set by a list import';
+      var els = { label: document.getElementById('fLabel'), was: document.getElementById('fWas'), now: document.getElementById('fNow'), note: document.getElementById('fieldNote') };
+      var signals = [
+        ['Original source', 'Offline sources', 'Paid search', 'Set by a list import', 'Recovered from the first touch'],
+        ['Deal owner', 'Inactive user', 'Priya Nair', 'Rep left in June', 'Reassigned by territory'],
+        ['Close date', '6/30/2025', '11/15/2025', 'Four months past, still in forecast', 'Moved to the real date'],
+        ['Contact', '3 duplicates', '1 record', 'Same buyer, three emails', 'Merged, history kept'],
+        ['Amount', '$120,000', '$96,000', 'Finance billed less', 'Matches finance']
+      ];
+      var k = 0, timer;
+      function show(i, fixed) {
+        var s = signals[i];
+        els.label.textContent = s[0]; els.was.textContent = s[1]; els.now.textContent = s[2];
+        els.note.textContent = fixed ? s[4] : s[3];
+        field.classList.toggle('flipped', fixed);
+      }
+      function step() {
+        if (!field.classList.contains('flipped')) { show(k, true); }
+        else { k = (k + 1) % signals.length; field.classList.add('swap'); show(k, false); requestAnimationFrame(function () { field.classList.remove('swap'); }); }
       }
       requestAnimationFrame(function () { slot.classList.add('open'); });
-      setTimeout(function () { flip(true); }, reduce ? 0 : 2200);
-      slot.addEventListener('click', function () { flip(!field.classList.contains('flipped')); });
+      if (!reduce) { timer = setInterval(step, 2400); } else { show(0, true); }
+      slot.addEventListener('click', function () { clearInterval(timer); step(); });
 
       // entrances, once per element
       var io = new IntersectionObserver(function (entries) {
