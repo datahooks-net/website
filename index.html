@@ -38,34 +38,25 @@
 <body>
 
   <section class="hero">
+    <canvas class="signal" id="signal" aria-hidden="true"></canvas>
+
     <nav class="nav" aria-label="Main">
-      <a href="/" class="wordmark">Datahooks</a>
-      <a href="/solutions/" class="nav-link">What we do</a>
-      <a href="/datahooks/" class="nav-link">Datahooks</a>
-      <a href="/whitepaper/" class="nav-link">Whitepaper</a>
-      <a href="/about/" class="nav-link">About</a>
+      <a href="/" class="wordmark"><img src="assets/logo-square-navy.png" alt="" width="30" height="30" />Datahooks</a>
+      <div class="nav-links">
+        <a href="/solutions/" class="nav-link">What we do</a>
+        <a href="/datahooks/" class="nav-link">Datahooks</a>
+        <a href="/whitepaper/" class="nav-link">Whitepaper</a>
+        <a href="/about/" class="nav-link">About</a>
+      </div>
       <a href="#more" class="nav-menu">Menu</a>
       <a href="/contact/" class="action">Get a free audit</a>
     </nav>
 
     <div class="hero-body">
-      <h1 aria-label="Your CRM is full of signals you can't see.">
-        <span class="h-line" aria-hidden="true">
-          <span class="word">Your CRM is full of</span>
-          <span class="slot" id="slot">
-            <span class="field" data-ui id="field">
-              <span class="f-label"><i></i><span id="fLabel">Original source</span></span>
-              <span class="f-value"><span class="f-was" id="fWas">Offline sources</span><span class="f-now" id="fNow">Paid search</span></span>
-              <span class="f-note" id="fieldNote">Set by a list import</span>
-            </span>
-          </span>
-        </span>
-        <span class="h-line word" aria-hidden="true">signals you can't see.</span>
-      </h1>
+      <h1>Your CRM is full of signals you can't see.</h1>
+      <p class="hero-sub">Duplicates, missing owners, dead deals, and wrong sources bury them. We rebuild your CRM data so you can see what makes you win.</p>
       <div class="hero-act"><a href="/contact/" class="action">Get a free audit</a></div>
     </div>
-
-    <p class="hero-sub">Duplicates, missing owners, dead deals, and wrong sources bury them. We rebuild your CRM data so you can see what makes you win.</p>
   </section>
 
   <section class="proof" aria-label="Brands our team has worked with, and the systems we work in">
@@ -237,31 +228,68 @@
         copy.querySelectorAll('img').forEach(function (i) { i.alt = ''; });
       });
 
-      // hero: shutter opens, then the field cycles through broken records and their fixes
-      var slot = document.getElementById('slot');
-      var field = document.getElementById('field');
-      var els = { label: document.getElementById('fLabel'), was: document.getElementById('fWas'), now: document.getElementById('fNow'), note: document.getElementById('fieldNote') };
-      var signals = [
-        ['Original source', 'Offline sources', 'Paid search', 'Set by a list import', 'Recovered from the first touch'],
-        ['Deal owner', 'Inactive user', 'Priya Nair', 'Rep left in June', 'Reassigned by territory'],
-        ['Close date', '6/30/2025', '11/15/2025', 'Four months past, still in forecast', 'Moved to the real date'],
-        ['Contact', '3 duplicates', '1 record', 'Same buyer, three emails', 'Merged, history kept'],
-        ['Amount', '$120,000', '$96,000', 'Finance billed less', 'Matches finance']
-      ];
-      var k = 0, timer;
-      function show(i, fixed) {
-        var s = signals[i];
-        els.label.textContent = s[0]; els.was.textContent = s[1]; els.now.textContent = s[2];
-        els.note.textContent = fixed ? s[4] : s[3];
-        field.classList.toggle('flipped', fixed);
-      }
-      function step() {
-        if (!field.classList.contains('flipped')) { show(k, true); }
-        else { k = (k + 1) % signals.length; field.classList.add('swap'); show(k, false); requestAnimationFrame(function () { field.classList.remove('swap'); }); }
-      }
-      requestAnimationFrame(function () { slot.classList.add('open'); });
-      if (!reduce) { timer = setInterval(step, 2400); } else { show(0, true); }
-      slot.addEventListener('click', function () { clearInterval(timer); step(); });
+      // hero: records drift as noise, then a handful find each other and draw
+      // one rising line across the whole screen, hold, and let go
+      (function () {
+        var cv = document.getElementById('signal');
+        if (!cv || !cv.getContext) return;
+        var c = cv.getContext('2d'), w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var on = true, N, SIG, pts = [], chosen = [], cycle = -1, t0 = performance.now(), CYCLE = 8000;
+        function size() {
+          var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
+          cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function seed() {
+          N = w < 700 ? 700 : 1800; SIG = w < 700 ? 60 : 110; pts = [];
+          for (var i = 0; i < N; i++) pts.push({ x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .00024, vy: (Math.random() - .5) * .00024, r: .8 + Math.random() });
+        }
+        function pick() {
+          var used = {}; chosen = [];
+          while (chosen.length < SIG) { var j = (Math.random() * N) | 0; if (!used[j]) { used[j] = 1; chosen.push(j); } }
+          chosen.sort(function (a, b) { return pts[a].x - pts[b].x; });
+        }
+        // the story line: edge to edge, flat and noisy at first, then it climbs
+        var phone = function () { return w < 700; };
+        function target(k) {
+          var u = k / (SIG - 1), lo = phone() ? .44 : .42, hi = phone() ? .16 : .12;
+          return { x: -0.01 + u * 1.02, y: lo - (lo - hi) * Math.pow(u, 1.8) + Math.sin(u * 23) * .006 };
+        }
+        var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+        size(); seed(); pick();
+        window.addEventListener('resize', function () { size(); seed(); pick(); if (reduce) draw(performance.now()); });
+        new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
+        function draw(now) {
+          var p = reduce ? .6 : ((now - t0) % CYCLE) / CYCLE;
+          var n = Math.floor((now - t0) / CYCLE);
+          if (!reduce && n !== cycle) { cycle = n; pick(); }
+          // drift, gather, draw the line, hold, release
+          var g = p < .12 ? 0 : p < .42 ? ease((p - .12) / .3) : p < .8 ? 1 : 1 - ease((p - .8) / .2);
+          var reveal = p < .38 ? 0 : p < .56 ? ease((p - .38) / .18) : p < .8 ? 1 : 1 - ease((p - .8) / .2);
+          c.clearRect(0, 0, w, h);
+          c.fillStyle = 'rgba(26,26,46,' + (.2 - g * .08) + ')';
+          for (var i = 0; i < N; i++) {
+            var q = pts[i];
+            if (!reduce) { q.x += q.vx; q.y += q.vy; if (q.x < 0 || q.x > 1) q.vx *= -1; if (q.y < 0 || q.y > 1) q.vy *= -1; }
+            c.beginPath(); c.arc(q.x * w, q.y * h, q.r, 0, 6.283); c.fill();
+          }
+          var path = [];
+          for (var k = 0; k < SIG; k++) {
+            var s = pts[chosen[k]], t = target(k);
+            path.push([(s.x + (t.x - s.x) * g) * w, (s.y + (t.y - s.y) * g) * h]);
+          }
+          if (reveal > 0) {
+            var last = Math.max(1, Math.floor(reveal * (SIG - 1)));
+            c.strokeStyle = '#c93d62'; c.lineWidth = phone() ? 2 : 2.5; c.lineJoin = 'round'; c.lineCap = 'round';
+            c.beginPath();
+            for (var m = 0; m <= last; m++) { m ? c.lineTo(path[m][0], path[m][1]) : c.moveTo(path[m][0], path[m][1]); }
+            c.stroke();
+          }
+          c.fillStyle = '#c93d62';
+          for (var m = 0; m < SIG; m++) { c.beginPath(); c.arc(path[m][0], path[m][1], 2 + g * 1.2, 0, 6.283); c.fill(); }
+        }
+        function frame(now) { requestAnimationFrame(frame); if (on) draw(now); }
+        if (reduce) { draw(performance.now()); } else { requestAnimationFrame(frame); }
+      })();
 
       // entrances, once per element
       var io = new IntersectionObserver(function (entries) {
