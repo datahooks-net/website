@@ -557,5 +557,5 @@ html:not(.js) .tags { display: none; }
 .sig-head .def-term i { color: var(--coral-btn); }
 .sig-head .def-term + h1 { margin-top: 8px; }
 @media (max-width: 900px) {
-  .sig-head:not([data-signal="still"]) { min-height: 0; display: block; padding-top: 220px; }
+  .sig-head:not([data-signal="still"]) { min-height: 0; display: block; padding-top: 250px; }
 }

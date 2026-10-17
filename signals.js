@@ -28,7 +28,7 @@
 
   // where the motion lives
   function region() {
-    if (phone()) return { x: 20, y: 20, w: w - 40, h: Math.min(170, h * .3) };
+    if (phone()) return { x: 20, y: 24, w: w - 40, h: Math.min(196, h * .34) };
     var text = head.querySelector('.inner');
     var right = text ? text.getBoundingClientRect().left - cv.getBoundingClientRect().left + Math.min(640, text.offsetWidth) + 48 : w * .58;
     var x = Math.max(right, w * .56);
@@ -44,44 +44,131 @@
   }
   function drawGrid(a) { for (var i = 0; i < grid.length; i++) dot(grid[i].x, grid[i].y, 1.2, INK, a); }
 
-  /* ---------- teams: three groups pulling different ways line up into one row ---------- */
-  var teams;
+  /* ---------- teams: three groups pulling different ways become a checklist of insights ---------- */
+  var INSIGHTS = ['Americas sales team closed $5M', 'Paid ads drove $3M of pipeline', 'Techstars conference AOV: $50,200', 'Average time to close: 45 days'];
+  var teams, slots;
   function seedTeams() {
-    var names = [['Marketing', CORAL], ['Sales', SLATE], ['Finance', SAGE]], per = phone() ? 18 : 26;
+    var names = [['Marketing', CORAL], ['Sales', SLATE], ['Finance', SAGE]];
+    var box = phone() ? 18 : 26, gapRow = phone() ? R.h / INSIGHTS.length : Math.min(84, R.h / INSIGHTS.length);
+    var top = R.y + (R.h - gapRow * (INSIGHTS.length - 1)) / 2, bx = R.x + 6;
+    // targets: an outline of dots for each box, then a checkmark inside it
+    slots = [];
+    INSIGHTS.forEach(function (txt, i) {
+      var cy = top + i * gapRow, x0 = bx, y0 = cy - box / 2, n = phone() ? 16 : 22;
+      for (var k = 0; k < n; k++) {
+        var d = (k / n) * box * 4, side = Math.floor(d / box), o = d - side * box;
+        var px = side === 0 ? x0 + o : side === 1 ? x0 + box : side === 2 ? x0 + box - o : x0;
+        var py = side === 0 ? y0 : side === 1 ? y0 + o : side === 2 ? y0 + box : y0 + box - o;
+        slots.push({ x: px, y: py, row: i, check: false });
+      }
+      var path = [[.2, .52], [.42, .76], [.82, .22]], m = phone() ? 7 : 10;
+      for (var k = 0; k < m; k++) {
+        var u = k / (m - 1) * 2, seg = Math.min(1, Math.floor(u)), f = u - seg, A = path[seg], B = path[seg + 1];
+        slots.push({ x: x0 + (A[0] + (B[0] - A[0]) * f) * box, y: y0 + (A[1] + (B[1] - A[1]) * f) * box, row: i, check: true });
+      }
+    });
+    // the three teams, sized so every target gets a dot
+    var per = Math.ceil(slots.length / 3);
     teams = names.map(function (n, gi) {
-      var cx = R.x + R.w * (phone() ? [.18, .5, .82][gi] : [.2, .62, .4][gi]);
-      var cy = R.y + R.h * (phone() ? .42 : [.3, .38, .72][gi]);
+      var cx = R.x + R.w * (phone() ? [.18, .5, .82][gi] : [.22, .66, .44][gi]);
+      var cy = R.y + R.h * (phone() ? .45 : [.28, .36, .72][gi]);
       var pts = [];
       for (var i = 0; i < per; i++) {
-        var a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * (phone() ? 34 : 56);
-        pts.push({ hx: cx + Math.cos(a) * d, hy: cy + Math.sin(a) * d, ph: Math.random() * 6.283, sp: .6 + Math.random() * .8 });
+        var a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * (phone() ? 36 : 60);
+        pts.push({ hx: cx + Math.cos(a) * d, hy: cy + Math.sin(a) * d, ph: Math.random() * 6.283, sp: .6 + Math.random() * .8, team: gi });
       }
       return { name: n[0], col: n[1], cx: cx, cy: cy, pts: pts };
     });
-    // the shared row: every point gets a slot, interleaved across the three teams
-    var all = [], k = 0;
+    var all = [];
     for (var i = 0; i < per; i++) for (var g = 0; g < 3; g++) all.push(teams[g].pts[i]);
-    var rowY = R.y + R.h * (phone() ? .5 : .52), x0 = R.x + 8, step = (R.w - 16) / (all.length - 1);
-    all.forEach(function (p) { p.rx = x0 + (k++) * step; p.ry = rowY; });
+    all.forEach(function (q, k) { q.slot = slots[k] || null; });
+    teams.gapRow = gapRow; teams.box = box; teams.top = top; teams.bx = bx;
   }
   function drawTeams(now) {
-    var CYCLE = 9000, p = reduce ? .6 : ((now - t0) % CYCLE) / CYCLE;
-    var g = p < .25 ? 0 : p < .45 ? ease((p - .25) / .2) : p < .85 ? 1 : 1 - ease((p - .85) / .15);
+    var CYCLE = 12000, p = reduce ? .8 : ((now - t0) % CYCLE) / CYCLE;
+    var out = p < .88 ? 0 : ease((p - .88) / .12);
+    // each row: its box gathers, then its checkmark lands, then its insight shows
+    function rowT(i) { return .2 + i * .09; }
     drawGrid(.08);
-    teams.forEach(function (t, gi) {
-      var col = mixc(t.col, INK, g * .85);
+    teams.forEach(function (t) {
       t.pts.forEach(function (q) {
-        // apart, each team drifts on its own; together, they sit in one row
-        var dx = Math.sin(now / 900 * q.sp + q.ph) * 6, dy = Math.cos(now / 1100 * q.sp + q.ph) * 6;
-        if (reduce) { dx = dy = 0; }
-        var x = q.hx + dx + (q.rx - q.hx - dx) * g, y = q.hy + dy + (q.ry - q.hy - dy) * g;
-        dot(x, y, 2.6, col, .9);
+        var dx = reduce ? 0 : Math.sin(now / 900 * q.sp + q.ph) * 6, dy = reduce ? 0 : Math.cos(now / 1100 * q.sp + q.ph) * 6;
+        var hx = q.hx + dx, hy = q.hy + dy;
+        if (!q.slot) { dot(hx, hy, 2.4, t.col, .9 * (1 - ease((p - .2) / .2))); return; }
+        var s0 = rowT(q.slot.row) + (q.slot.check ? .05 : 0);
+        var g = ease((p - s0) / .1) * (1 - out);
+        var col = q.slot.check ? mixc(t.col, CORAL, g) : mixc(t.col, INK, g);
+        dot(hx + (q.slot.x - hx) * g, hy + (q.slot.y - hy) * g, q.slot.check ? 2.4 + g * .6 : 2.2, col, .9);
       });
-      var la = 1 - clamp(g * 2.5);
-      if (la > 0) label(t.name, t.cx, t.cy - (phone() ? 46 : 74), 'center', rgba(t.col, la), phone() ? 13 : 14, 600);
+      var la = 1 - clamp((p - .16) / .08) + clamp((p - .94) / .06);
+      if (la > 0) label(t.name, t.cx, t.cy - (phone() ? 48 : 78), 'center', rgba(t.col, clamp(la)), phone() ? 13 : 14, 600);
     });
-    var ra = clamp((g - .7) / .3);
-    if (ra > 0) label('One version of the truth', R.x + R.w / 2, R.y + R.h * (phone() ? .5 : .52) + (phone() ? 26 : 34), 'center', rgba(INK, ra), phone() ? 13 : 15, 600);
+    INSIGHTS.forEach(function (txt, i) {
+      var a = clamp((p - rowT(i) - .12) / .05) * (1 - out);
+      if (a > 0) label(txt, teams.bx + teams.box + (phone() ? 12 : 18), teams.top + i * teams.gapRow, 'left', rgba(INK, a), phone() ? 13 : 16, 600);
+    });
+  }
+
+  /* ---------- checks: the team dots become a checklist, one ticked box per insight ---------- */
+  var INSIGHTS = ['Americas sales team closed $5M', 'Paid ads drove $3M of pipeline', 'AOV from the Techstars conference: $50,200', 'Average time to close: 45 days'];
+  var chk;
+  function seedChecks() {
+    var names = [['Marketing', CORAL], ['Sales', SLATE], ['Finance', SAGE]], per = 34;
+    var S = phone() ? 16 : 28, rowGap = phone() ? 38 : Math.min(80, R.h / 4.4);
+    var bx = R.x + (phone() ? 4 : 12), by0 = R.y + (phone() ? 14 : (R.h - rowGap * 3 - S) / 2);
+    var boxes = INSIGHTS.map(function (text, i) {
+      var x = bx, y = by0 + i * rowGap, outline = [], check = [], n = 4;
+      for (var k = 0; k < n; k++) {      // square outline, four points per side
+        var u = k / n;
+        outline.push([x + u * S, y], [x + S, y + u * S], [x + S - u * S, y + S], [x, y + S - u * S]);
+      }
+      var path = [[.2, .52], [.42, .74], [.82, .26]];
+      for (var k = 0; k < 9; k++) {      // the tick
+        var t = k / 8, seg = t < .4 ? 0 : 1, lt = seg === 0 ? t / .4 : (t - .4) / .6;
+        var a = path[seg], b = path[seg + 1];
+        check.push([x + (a[0] + (b[0] - a[0]) * lt) * S, y + (a[1] + (b[1] - a[1]) * lt) * S]);
+      }
+      return { text: text, x: x, y: y, S: S, outline: outline, check: check };
+    });
+    var teams2 = names.map(function (n, gi) {
+      var cx = R.x + R.w * (phone() ? [.18, .5, .82][gi] : [.2, .62, .4][gi]);
+      var cy = R.y + R.h * (phone() ? .45 : [.3, .38, .72][gi]);
+      return { name: n[0], col: n[1], cx: cx, cy: cy };
+    });
+    // every dot belongs to a team cloud and has one place in the checklist
+    var slots = [];
+    boxes.forEach(function (b, i) {
+      b.outline.forEach(function (pt) { slots.push({ x: pt[0], y: pt[1], box: i, tick: false }); });
+      b.check.forEach(function (pt) { slots.push({ x: pt[0], y: pt[1], box: i, tick: true }); });
+    });
+    for (var i = slots.length - 1; i > 0; i--) { var j = (Math.random() * (i + 1)) | 0, tmp = slots[i]; slots[i] = slots[j]; slots[j] = tmp; }
+    var pts = [];
+    for (var i = 0; i < per * 3; i++) {
+      var tm = teams2[i % 3], a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * (phone() ? 34 : 56);
+      pts.push({ team: i % 3, hx: tm.cx + Math.cos(a) * d, hy: tm.cy + Math.sin(a) * d, ph: Math.random() * 6.283, sp: .6 + Math.random() * .8, slot: slots[i % slots.length] });
+    }
+    chk = { boxes: boxes, teams: teams2, pts: pts };
+  }
+  function drawChecks(now) {
+    var CYCLE = 13000, p = reduce ? .8 : ((now - t0) % CYCLE) / CYCLE;
+    var out = p < .9 ? 0 : ease((p - .9) / .1);
+    var form = ease((p - .18) / .14) * (1 - out);           // dots move into the box outlines
+    var tickAt = function (i) { return .36 + i * .1; };       // then each box is ticked in turn
+    drawGrid(.08);
+    chk.pts.forEach(function (q) {
+      var tm = chk.teams[q.team], sl = q.slot;
+      var dx = reduce ? 0 : Math.sin(now / 900 * q.sp + q.ph) * 6, dy = reduce ? 0 : Math.cos(now / 1100 * q.sp + q.ph) * 6;
+      var hx = q.hx + dx, hy = q.hy + dy;
+      var g = sl.tick ? ease((p - tickAt(sl.box)) / .06) * (1 - out) : form;
+      var col = sl.tick ? mixc(tm.col, CORAL, g) : mixc(tm.col, INK, g);
+      dot(hx + (sl.x - hx) * g, hy + (sl.y - hy) * g, sl.tick ? 2 + g * .6 : 2.2 - g * .6, col, .9);
+    });
+    var la = 1 - clamp(form * 2.5);
+    if (la > 0) chk.teams.forEach(function (t) { label(t.name, t.cx, t.cy - (phone() ? 46 : 74), 'center', rgba(t.col, la), phone() ? 13 : 14, 600); });
+    chk.boxes.forEach(function (b, i) {
+      var a = clamp((p - tickAt(i) - .03) / .05) * (1 - out);
+      if (a > 0) label(b.text, b.x + b.S + (phone() ? 12 : 18), b.y + b.S / 2, 'left', rgba(INK, a), phone() ? 13 : 19, 600);
+    });
   }
 
   /* ---------- hook: datahooks light up in the clean data, one at a time ---------- */
@@ -173,8 +260,8 @@
   }
 
   /* ---------- setup ---------- */
-  var draws = { teams: drawTeams, hook: drawHook, leak: drawLeak, meet: drawMeet, still: function () { drawGrid(.1); } };
-  var seeds = { teams: seedTeams, hook: seedHook, leak: seedLeak, meet: seedMeet, still: function () {} };
+  var draws = { checks: drawChecks, teams: drawTeams, hook: drawHook, leak: drawLeak, meet: drawMeet, still: function () { drawGrid(.1); } };
+  var seeds = { checks: seedChecks, teams: seedTeams, hook: seedHook, leak: seedLeak, meet: seedMeet, still: function () {} };
   if (!draws[mode]) mode = 'still';
   function size() {
     var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
