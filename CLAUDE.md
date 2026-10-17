@@ -34,6 +34,7 @@ The **datahooks-net/website** repo is the marketing website for **Datahooks** (d
 ├── about/index.html        # /about/ — Company about page
 ├── blog/index.html         # /blog/ — Blog listing page
 ├── contact/index.html      # /contact/ — Contact/lead capture form
+├── datahooks/index.html    # /datahooks/ — What is a datahook? (defines the brand term)
 ├── solutions/index.html    # /solutions/ — What We Do / services page
 ├── whitepaper/index.html   # /whitepaper/ — Interactive whitepaper with revenue leakage calculator
 ├── security/index.html     # /security/ — Security information page
@@ -81,7 +82,11 @@ Every page shares the same head, nav, and footer (copy them from any existing pa
 
 Nav: What we do, Whitepaper, Blog, About, then a plain "Contact" link and a coral "Get a free audit" button. The mobile menu is toggled by `#navToggle`, which adds `.open` to `#nav`.
 
-Footer: light, four columns (brand line, Services, Company, Legal with Privacy, Terms, and Security).
+Footer: light, four columns. The brand line is the tagline "Signals that unlock growth." (serif). Services lists What we do, Data sources, What is a datahook?, and Whitepaper; then Company and Legal (Privacy, Terms, Security).
+
+### The term "datahooks"
+
+Datahooks (plural, matching the brand) are *signals that unlock growth*. Following category-design practice, the homepage leads with the problem and introduces the term after it (the "Every business has datahooks. We find yours." section). The full explanation lives on /datahooks/. Do not put the definition above the homepage headline.
 
 ---
 
