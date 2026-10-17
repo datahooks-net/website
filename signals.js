@@ -19,7 +19,7 @@
   var ease = function (t) { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
   var rgba = function (col, a) { return 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + a + ')'; };
   var mixc = function (a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t].map(Math.round); };
-  var phone = function () { return w < 900; };
+  var phone = function () { return w < 1100; };  // below this the motion moves into a band above the headline
   function dot(x, y, r, col, a) { c.fillStyle = rgba(col, a); c.beginPath(); c.arc(x, y, r, 0, 6.283); c.fill(); }
   function label(text, x, y, align, col, size, weight) {
     c.font = (weight || 500) + ' ' + (size || 14) + 'px Inter, system-ui, sans-serif';
@@ -109,65 +109,84 @@
     });
   }
 
-  /* ---------- checks: the team dots become a checklist, one ticked box per insight ---------- */
+  /* ---------- checks: each team's dots become its own check beside every insight ---------- */
   var INSIGHTS = ['Americas sales team closed $5M', 'Paid ads drove $3M of pipeline', 'AOV from the Techstars conference: $50,200', 'Average time to close: 45 days'];
+  var TEAMS = [['Marketing', CORAL], ['Sales', SLATE], ['Finance', SAGE]];
   var chk;
-  function seedChecks() {
-    var names = [['Marketing', CORAL], ['Sales', SLATE], ['Finance', SAGE]], per = 34;
-    var S = phone() ? 16 : 28, rowGap = phone() ? 38 : Math.min(80, R.h / 4.4);
-    var bx = R.x + (phone() ? 4 : 12), by0 = R.y + (phone() ? 14 : (R.h - rowGap * 3 - S) / 2);
-    var boxes = INSIGHTS.map(function (text, i) {
-      var x = bx, y = by0 + i * rowGap, outline = [], check = [], n = 4;
-      for (var k = 0; k < n; k++) {      // square outline, four points per side
-        var u = k / n;
-        outline.push([x + u * S, y], [x + S, y + u * S], [x + S - u * S, y + S], [x, y + S - u * S]);
-      }
-      var path = [[.2, .52], [.42, .74], [.82, .26]];
-      for (var k = 0; k < 9; k++) {      // the tick
-        var t = k / 8, seg = t < .4 ? 0 : 1, lt = seg === 0 ? t / .4 : (t - .4) / .6;
-        var a = path[seg], b = path[seg + 1];
-        check.push([x + (a[0] + (b[0] - a[0]) * lt) * S, y + (a[1] + (b[1] - a[1]) * lt) * S]);
-      }
-      return { text: text, x: x, y: y, S: S, outline: outline, check: check };
-    });
-    var teams2 = names.map(function (n, gi) {
-      var cx = R.x + R.w * (phone() ? [.18, .5, .82][gi] : [.2, .62, .4][gi]);
-      var cy = R.y + R.h * (phone() ? .45 : [.3, .38, .72][gi]);
-      return { name: n[0], col: n[1], cx: cx, cy: cy };
-    });
-    // every dot belongs to a team cloud and has one place in the checklist
-    var slots = [];
-    boxes.forEach(function (b, i) {
-      b.outline.forEach(function (pt) { slots.push({ x: pt[0], y: pt[1], box: i, tick: false }); });
-      b.check.forEach(function (pt) { slots.push({ x: pt[0], y: pt[1], box: i, tick: true }); });
-    });
-    for (var i = slots.length - 1; i > 0; i--) { var j = (Math.random() * (i + 1)) | 0, tmp = slots[i]; slots[i] = slots[j]; slots[j] = tmp; }
-    var pts = [];
-    for (var i = 0; i < per * 3; i++) {
-      var tm = teams2[i % 3], a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * (phone() ? 34 : 56);
-      pts.push({ team: i % 3, hx: tm.cx + Math.cos(a) * d, hy: tm.cy + Math.sin(a) * d, ph: Math.random() * 6.283, sp: .6 + Math.random() * .8, slot: slots[i % slots.length] });
+  // fit a line of text into a width: shrink to a floor, then wrap onto two lines
+  function fit(text, maxW, big, small) {
+    for (var size = big; size >= small; size--) {
+      c.font = '600 ' + size + 'px Inter, system-ui, sans-serif';
+      if (c.measureText(text).width <= maxW) return { size: size, lines: [text] };
     }
-    chk = { boxes: boxes, teams: teams2, pts: pts };
+    c.font = '600 ' + small + 'px Inter, system-ui, sans-serif';
+    var words = text.split(' '), lines = [], cur = '';
+    words.forEach(function (wd) {
+      var t = cur ? cur + ' ' + wd : wd;
+      if (cur && c.measureText(t).width > maxW) { lines.push(cur); cur = wd; } else cur = t;
+    });
+    lines.push(cur);
+    return { size: small, lines: lines };
+  }
+  function seedChecks() {
+    var ph = phone(), S = ph ? 15 : 22, gapB = ph ? 5 : 8, rowGap = ph ? 40 : Math.min(84, R.h / 4.3);
+    var bx = R.x + (ph ? 0 : 8), by0 = R.y + (ph ? 8 : (R.h - rowGap * 3 - S) / 2);
+    var labelX = bx + 3 * S + 2 * gapB + (ph ? 10 : 16), labelW = (ph ? w - 16 : R.x + R.w) - labelX;
+    var teamPts = [[], [], []];
+    var rows = INSIGHTS.map(function (text, i) {
+      var y = by0 + i * rowGap;
+      for (var tmi = 0; tmi < 3; tmi++) {
+        var x = bx + tmi * (S + gapB), n = 3;
+        for (var k = 0; k < n; k++) {   // outline, three points per side
+          var u = k / n;
+          [[x + u * S, y], [x + S, y + u * S], [x + S - u * S, y + S], [x, y + S - u * S]].forEach(function (pt) { teamPts[tmi].push({ x: pt[0], y: pt[1], row: i, tick: false }); });
+        }
+        var path = [[.2, .52], [.42, .74], [.82, .26]];
+        for (var k = 0; k < 7; k++) {   // the tick
+          var t = k / 6, seg = t < .4 ? 0 : 1, lt = seg === 0 ? t / .4 : (t - .4) / .6, A = path[seg], B = path[seg + 1];
+          teamPts[tmi].push({ x: x + (A[0] + (B[0] - A[0]) * lt) * S, y: y + (A[1] + (B[1] - A[1]) * lt) * S, row: i, tick: true });
+        }
+      }
+      return { text: text, y: y };
+    });
+    // one shared size: the largest that fits every insight on one line, wrapping only below the floor
+    var big = ph ? 14 : 19, small = ph ? 12 : 15, common = big;
+    rows.forEach(function (r) { var f = fit(r.text, labelW, big, small); if (f.lines.length === 1) common = Math.min(common, f.size); else common = small; });
+    rows.forEach(function (r) { r.fitted = fit(r.text, labelW, common, common); });
+    var clouds = TEAMS.map(function (n, gi) {
+      return { name: n[0], col: n[1], cx: R.x + R.w * (ph ? [.18, .5, .82][gi] : [.2, .62, .4][gi]), cy: R.y + R.h * (ph ? .45 : [.3, .38, .72][gi]) };
+    });
+    var pts = [];
+    teamPts.forEach(function (list, gi) {
+      var cl = clouds[gi];
+      list.forEach(function (sl) {
+        var a = Math.random() * 6.283, d = Math.sqrt(Math.random()) * (ph ? 34 : 60);
+        pts.push({ team: gi, hx: cl.cx + Math.cos(a) * d, hy: cl.cy + Math.sin(a) * d, ph: Math.random() * 6.283, sp: .6 + Math.random() * .8, slot: sl });
+      });
+    });
+    chk = { rows: rows, clouds: clouds, pts: pts, S: S, labelX: labelX, labelW: labelW };
   }
   function drawChecks(now) {
     var CYCLE = 13000, p = reduce ? .8 : ((now - t0) % CYCLE) / CYCLE;
     var out = p < .9 ? 0 : ease((p - .9) / .1);
-    var form = ease((p - .18) / .14) * (1 - out);           // dots move into the box outlines
-    var tickAt = function (i) { return .36 + i * .1; };       // then each box is ticked in turn
+    var form = ease((p - .18) / .14) * (1 - out);                       // outlines form
+    var tickAt = function (row, team) { return .36 + row * .1 + team * .02; }; // each row ticks, team by team
     drawGrid(.08);
     chk.pts.forEach(function (q) {
-      var tm = chk.teams[q.team], sl = q.slot;
+      var cl = chk.clouds[q.team], sl = q.slot;
       var dx = reduce ? 0 : Math.sin(now / 900 * q.sp + q.ph) * 6, dy = reduce ? 0 : Math.cos(now / 1100 * q.sp + q.ph) * 6;
       var hx = q.hx + dx, hy = q.hy + dy;
-      var g = sl.tick ? ease((p - tickAt(sl.box)) / .06) * (1 - out) : form;
-      var col = sl.tick ? mixc(tm.col, CORAL, g) : mixc(tm.col, INK, g);
-      dot(hx + (sl.x - hx) * g, hy + (sl.y - hy) * g, sl.tick ? 2 + g * .6 : 2.2 - g * .6, col, .9);
+      var g = sl.tick ? ease((p - tickAt(sl.row, q.team)) / .06) * (1 - out) : form;
+      var r = sl.tick ? 1.9 + g * .5 : 1.9 - g * .5, a = sl.tick ? .9 : .9 - g * .35;
+      dot(hx + (sl.x - hx) * g, hy + (sl.y - hy) * g, r, cl.col, a);
     });
     var la = 1 - clamp(form * 2.5);
-    if (la > 0) chk.teams.forEach(function (t) { label(t.name, t.cx, t.cy - (phone() ? 46 : 74), 'center', rgba(t.col, la), phone() ? 13 : 14, 600); });
-    chk.boxes.forEach(function (b, i) {
-      var a = clamp((p - tickAt(i) - .03) / .05) * (1 - out);
-      if (a > 0) label(b.text, b.x + b.S + (phone() ? 12 : 18), b.y + b.S / 2, 'left', rgba(INK, a), phone() ? 13 : 19, 600);
+    if (la > 0) chk.clouds.forEach(function (t) { label(t.name, t.cx, t.cy - (phone() ? 46 : 78), 'center', rgba(t.col, la), phone() ? 13 : 14, 600); });
+    chk.rows.forEach(function (r, i) {
+      var a = clamp((p - tickAt(i, 2) - .03) / .05) * (1 - out);
+      if (a <= 0) return;
+      var f = r.fitted, lh = f.size * 1.25, y0 = r.y + chk.S / 2 - (f.lines.length - 1) * lh / 2;
+      f.lines.forEach(function (ln, k) { label(ln, chk.labelX, y0 + k * lh, 'left', rgba(INK, a), f.size, 600); });
     });
   }
 
@@ -275,7 +294,7 @@
   size();
   var still = reduce || mode === 'still';
   window.addEventListener('resize', function () { size(); if (still) frame(performance.now()); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (still) frame(performance.now()); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { seeds[mode](); if (still) frame(performance.now()); });
   if (still) { frame(performance.now()); return; }
   new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
   (function loop(now) { requestAnimationFrame(loop); if (on) frame(now); })(performance.now());

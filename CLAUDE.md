@@ -91,7 +91,7 @@ Footer: light, four columns. The brand line is the tagline "Signals that unlock 
 Every header shares one look: navy dots on white, coral for signals. Three levels:
 
 - **Home**: full-screen hero (`.sig-hero`, script inline in `index.html`). Broken records are scanned into a clean grid, signals gather into labelled clusters with dollar figures, and the headline word is spelled in dots and cycles Growth, Efficiency, Revenue, Clarity, Vision.
-- **Moving inner headers**: `<header class="page-head sig-head" data-signal="...">` with a `<canvas class="signal">`, drawn by `/signals.js` (load it with `defer` at the end of the body). Modes: `checks` (What we do: Marketing, Sales, and Finance dots become a checklist, one ticked box per insight), `teams` (spare: the three groups line up into one row), `hook` (Datahooks: one signal lights up at a time), `leak` (Whitepaper: records drain off the grid), `meet` (About: two views meet in one answer).
+- **Moving inner headers**: `<header class="page-head sig-head" data-signal="...">` with a `<canvas class="signal">`, drawn by `/signals.js` (load it with `defer` at the end of the body). Modes: `checks` (What we do: Marketing, Sales, and Finance dots each form a check in their team colour beside every insight), `teams` (spare: the three groups line up into one row), `hook` (Datahooks: one signal lights up at a time), `leak` (Whitepaper: records drain off the grid), `meet` (About: two views meet in one answer).
 - **Still headers**: `data-signal="still"` draws the grid once (Blog, Contact, Security). Privacy and Terms use a plain `.page-head.compact` with no grid.
 
 All motion respects `prefers-reduced-motion` and draws its resolved state instead.

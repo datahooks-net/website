@@ -556,6 +556,6 @@ html:not(.js) .tags { display: none; }
 .sig-head .def-term { font-family: 'Fraunces', Georgia, serif; font-size: 24px; color: var(--ink-3); }
 .sig-head .def-term i { color: var(--coral-btn); }
 .sig-head .def-term + h1 { margin-top: 8px; }
-@media (max-width: 900px) {
+@media (max-width: 1099px) {
   .sig-head:not([data-signal="still"]) { min-height: 0; display: block; padding-top: 250px; }
 }
