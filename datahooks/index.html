@@ -23,16 +23,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/design.css" />
   <style>
-    .term { padding: 48px 44px; }
-    .term-word { font-family: var(--serif); font-size: clamp(40px, 5vw, 56px); line-height: 1; color: var(--ink); }
-    .term-pos { color: var(--ink-3); font-size: 15px; margin: 10px 0 18px; }
-    .term-def { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 28px); line-height: 1.35; color: var(--ink); }
     .prose-head { max-width: var(--w-row); margin: 0 auto 32px; }
     .prose-head .lead { margin-top: 12px; }
     .fpanel h3 { font-size: 26px; letter-spacing: -0.02em; margin: 14px 0 12px; }
     .fpanel .window-body { padding-bottom: 32px; }
     .band .window { box-shadow: var(--shadow-window); }
-    @media (max-width: 760px) { .term { padding: 32px 24px; } }
   </style>
 </head>
 <body>
@@ -45,7 +40,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="/solutions/">What we do</a></li>
-        <li><a href="/datahooks/" class="active">Datahooks</a></li>
+        <li><a href="/datahooks/" class="active">What's a datahook?</a></li>
         <li><a href="/whitepaper/">Whitepaper</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/about/">About</a></li>
@@ -77,10 +72,8 @@
           <p>Growth teams talk about a product's magic moment: the point where a customer gets enough value that they stay for good. Some of the best-known startups found theirs in usage data, a specific action repeated over a specific stretch of time that predicted a customer for life.</p>
           <p>A datahook is the same idea for your whole business. It is the signal in your CRM, your marketing data, or your pipeline that tells you what makes you win.</p>
         </div>
-        <div class="panel panel-gray term">
-          <p class="term-word"><i>datahooks</i></p>
-          <p class="term-pos">noun</p>
-          <p class="term-def">Signals that unlock growth.</p>
+        <div class="panel panel-gray finder">
+          <canvas class="finder-canvas" role="img" aria-label="A search moves through rows of data points, stops on one, and marks it: datahook found."></canvas>
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ Gradient blobs or glows, uppercase eyebrow labels, emoji or icon cards, grids of
 
 Every page shares the same head, nav, and footer (copy them from any existing page; there is no templating). Subpages use root-relative paths (`/design.css`, `/assets/...`). Fonts: Inter 400 to 700 plus Fraunces 400 and italic from Google Fonts. Mark the current page with `class="active"` on its nav link.
 
-Nav: What we do, Datahooks, Whitepaper, Blog, About, then a plain "Contact" link and a coral "Get a free audit" button. The mobile menu is toggled by `#navToggle`, which adds `.open` to `#nav`.
+Nav: What we do, What's a datahook?, Whitepaper, Blog, About, then a plain "Contact" link and a coral "Get a free audit" button. The mobile menu is toggled by `#navToggle`, which adds `.open` to `#nav`.
 
 Footer: light, four columns. The brand line is the tagline "Signals that unlock growth." (serif). Services lists What we do, Data sources, What is a datahook?, and Whitepaper; then Company and Legal (Privacy, Terms, Security).
 
@@ -93,6 +93,8 @@ Every header shares one look: navy dots on white, coral for signals. Three level
 - **Home**: full-screen hero (`.sig-hero`, script inline in `index.html`). Broken records are scanned into a clean grid, signals gather into labelled clusters with dollar figures, and the headline word is spelled in dots and cycles Growth, Efficiency, Revenue, Clarity, Vision.
 - **Moving inner headers**: `<header class="page-head sig-head" data-signal="...">` with a `<canvas class="signal">`, drawn by `/signals.js` (load it with `defer` at the end of the body). Modes: `checks` (What we do: Marketing, Sales, and Finance dots each form a check in their team colour beside every insight), `teams` (spare: the three groups line up into one row), `hook` (Datahooks: one signal lights up at a time), `leak` (Whitepaper: records drain off the grid), `meet` (About: two views meet in one answer).
 - **Still headers**: `data-signal="still"` draws the grid once (Blog, Contact, Security). Privacy and Terms use a plain `.page-head.compact` with no grid.
+
+The datahooks page also has a `.finder` panel: a search moves through rows of dots, stops on one, blinks it, and labels it "Datahook found" (also in `signals.js`).
 
 All motion respects `prefers-reduced-motion` and draws its resolved state instead.
 

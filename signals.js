@@ -299,3 +299,70 @@
   new IntersectionObserver(function (es) { on = es[0].isIntersecting; }).observe(cv);
   (function loop(now) { requestAnimationFrame(loop); if (on) frame(now); })(performance.now());
 })();
+
+/* Datahooks page: a search runs through rows of data points, stops on one,
+   blinks it, and says "Datahook found". Then it starts again somewhere new. */
+(function () {
+  var cv = document.querySelector('.finder-canvas');
+  if (!cv || !cv.getContext) return;
+  var c = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), w = 0, h = 0;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var GAP, cols, rows, ox, oy, target, start, on = true;
+  var STEP = 38, BLINK = 1400, HOLD = 2200, FADE = 500;
+  function size() {
+    var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    GAP = w < 420 ? 22 : 28;
+    cols = Math.floor((w - 32) / GAP); rows = Math.floor((h - 32) / GAP);
+    ox = (w - (cols - 1) * GAP) / 2; oy = (h - (rows - 1) * GAP) / 2;
+    pick();
+  }
+  function pick() {
+    // somewhere in the middle half of the data, never on the edge, so the label has room
+    var n = cols * rows, lo = Math.floor(n * .4), hi = Math.floor(n * .75);
+    do { target = lo + Math.floor(Math.random() * (hi - lo)); } while (target % cols < 1 || target % cols > cols - 2);
+    start = performance.now();
+  }
+  function xy(i) { return [ox + (i % cols) * GAP, oy + Math.floor(i / cols) * GAP]; }
+  function draw(now) {
+    var t = reduce ? target * STEP + BLINK : now - start;
+    var scanEnd = target * STEP, cur = Math.min(target, Math.floor(t / STEP));
+    var found = t >= scanEnd, ft = t - scanEnd;
+    var fade = found && ft > BLINK + HOLD ? Math.min(1, (ft - BLINK - HOLD) / FADE) : 0;
+    if (!reduce && fade >= 1) { pick(); return draw(now); }
+    c.clearRect(0, 0, w, h);
+    c.globalAlpha = 1 - fade;
+    for (var i = 0; i < cols * rows; i++) {
+      var p = xy(i), checked = i < cur, a = checked ? .14 : .42;
+      if (i === target && found) continue;
+      c.fillStyle = 'rgba(26,26,46,' + a + ')'; c.beginPath(); c.arc(p[0], p[1], 2.4, 0, 6.283); c.fill();
+    }
+    var p = xy(cur);
+    if (!found) {
+      // the cursor reading each record
+      c.strokeStyle = 'rgba(26,26,46,.8)'; c.lineWidth = 1.5;
+      c.beginPath(); c.roundRect ? c.roundRect(p[0] - 9, p[1] - 9, 18, 18, 4) : c.rect(p[0] - 9, p[1] - 9, 18, 18); c.stroke();
+      c.fillStyle = '#1a1a2e'; c.beginPath(); c.arc(p[0], p[1], 3.2, 0, 6.283); c.fill();
+    } else {
+      // found: it blinks three times, then holds with its label
+      var blink = ft < BLINK ? (Math.cos(ft / BLINK * Math.PI * 6) * .5 + .5) : 1;
+      var ring = 10 + (ft < BLINK ? (1 - blink) * 10 : 0);
+      c.strokeStyle = 'rgba(201,61,98,' + (.35 + .65 * blink) + ')'; c.lineWidth = 2;
+      c.beginPath(); c.arc(p[0], p[1], ring, 0, 6.283); c.stroke();
+      c.fillStyle = 'rgba(201,61,98,' + (.4 + .6 * blink) + ')'; c.beginPath(); c.arc(p[0], p[1], 5, 0, 6.283); c.fill();
+      var la = Math.min(1, ft / 300);
+      c.font = '600 ' + (w < 420 ? 14 : 16) + 'px Inter, system-ui, sans-serif'; c.textBaseline = 'middle';
+      var txt = 'Datahook found', tw = c.measureText(txt).width, right = p[0] + 22 + tw + 12 < w;
+      var lx = right ? p[0] + 22 : p[0] - 22 - tw, ly = p[1];
+      c.fillStyle = 'rgba(255,255,255,' + (.92 * la) + ')';
+      c.beginPath(); c.roundRect ? c.roundRect(lx - 8, ly - 15, tw + 16, 30, 6) : c.rect(lx - 8, ly - 15, tw + 16, 30); c.fill();
+      c.fillStyle = 'rgba(201,61,98,' + la + ')'; c.textAlign = 'left'; c.fillText(txt, lx, ly + 1);
+    }
+    c.globalAlpha = 1;
+  }
+  size();
+  window.addEventListener('resize', function () { size(); if (reduce) draw(performance.now()); });
+  if (reduce) { draw(performance.now()); return; }
+  new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) start = performance.now(); }).observe(cv);
+  (function loop(now) { requestAnimationFrame(loop); if (on) draw(now); })(performance.now());
+})();

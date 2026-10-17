@@ -559,3 +559,7 @@ html:not(.js) .tags { display: none; }
 @media (max-width: 1099px) {
   .sig-head:not([data-signal="still"]) { min-height: 0; display: block; padding-top: 250px; }
 }
+
+/* Datahooks page: the search that finds a datahook (drawn by signals.js) */
+.finder { padding: 0; overflow: hidden; align-self: stretch; min-height: 340px; }
+.finder-canvas { display: block; width: 100%; height: 100%; min-height: 340px; }
