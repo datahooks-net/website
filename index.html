@@ -55,7 +55,7 @@
       </ul>
       <div class="nav-cta">
         <a href="/contact/" class="btn btn-plain btn-sm">Contact</a>
-        <a href="/contact/" class="btn btn-dark btn-sm">Book a call</a>
+        <a href="/contact/" class="btn btn-primary btn-sm">Get a free audit</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
     </div>
@@ -67,12 +67,12 @@
       <h1>Your CRM should tell the truth.</h1>
       <p class="lead">Most HubSpot and Salesforce instances are full of duplicates, missing sources, and deals nobody owns. We clean them up, rebuild the reporting, and keep them that way.</p>
       <div class="hero-actions">
-        <a href="/contact/" class="btn btn-dark">Book a free audit</a>
-        <a href="/whitepaper/" class="btn btn-plain">Read the whitepaper</a>
+        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+        <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
       </div>
       <p class="caption hero-note">45 minutes. No deck, no pitch.</p>
 
-      <div class="hero-art">
+      <div class="hero-stage panel panel-navy">
         <div class="window">
           <div class="window-bar">
             <span class="dots"><i></i><i></i><i></i></span>
@@ -148,10 +148,13 @@
   <!-- Features -->
   <section class="section">
     <div class="wrap">
+      <div class="prose center" style="margin-bottom:56px;">
+        <h2>Clean, report, and keep it that way.</h2>
+      </div>
 
-      <div class="feature">
+      <div class="fpanel panel panel-coral">
         <div class="feature-text">
-          <span class="tag tag-pink">Clean</span>
+          <span class="tag">Clean</span>
           <h2>Fix what's broken underneath.</h2>
           <p>We deduplicate contacts and companies, recover lost lead sources, close out dead deals, and standardize the fields your reports depend on.</p>
           <a href="/solutions/" class="link">What a cleanup covers &rarr;</a>
@@ -185,9 +188,9 @@
         </div>
       </div>
 
-      <div class="feature flip">
+      <div class="fpanel panel panel-navy">
         <div class="feature-text">
-          <span class="tag tag-blue">Report</span>
+          <span class="tag">Report</span>
           <h2>Numbers you can show the board.</h2>
           <p>Once the data underneath is right, we rebuild pipeline, attribution, and rep reports so marketing, sales, and finance finally see the same thing.</p>
           <a href="/whitepaper/" class="link">Read how we approach attribution &rarr;</a>
@@ -216,9 +219,9 @@
         </div>
       </div>
 
-      <div class="feature">
+      <div class="fpanel panel panel-sand">
         <div class="feature-text">
-          <span class="tag tag-green">Maintain</span>
+          <span class="tag">Maintain</span>
           <h2>Keep it clean while AI does the work.</h2>
           <p>Bad data comes back. We check every week, fix problems at the source, and make sure your scoring, forecasts, and copilots run on records you would sign off on.</p>
         </div>
@@ -245,7 +248,7 @@
   </section>
 
   <!-- How we work -->
-  <section class="section" id="how">
+  <section class="band band-gray" id="how">
     <div class="wrap">
       <div class="prose center">
         <h2>How we work</h2>
@@ -274,11 +277,12 @@
   <!-- Calculator -->
   <section class="section">
     <div class="wrap">
-      <div class="prose center">
-        <h2>What is bad data costing you?</h2>
-        <p class="lead" style="margin-top:16px;">Move the sliders. We assume 12% of annual sales leaks out through bad data and manual work, and that a clean CRM recovers about three quarters of it.</p>
-      </div>
-      <div class="calc">
+      <div class="calc-panel panel panel-dark">
+        <div>
+          <h2>What is bad data costing you?</h2>
+          <p class="lead">Move the sliders. We assume 12% of annual sales leaks out through bad data and manual work, and that a clean CRM recovers about three quarters of it.</p>
+        </div>
+        <div class="calc">
         <div class="calc-ctrl">
           <label for="team-size">Sales reps <output id="team-size-val">12</output></label>
           <input type="range" min="2" max="50" value="12" id="team-size" />
@@ -295,6 +299,7 @@
           <div><span>Lost each year</span><strong class="accent" id="leak-val">$605K</strong></div>
           <div><span>Recoverable with a clean CRM</span><strong id="recover-val">$454K</strong></div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -315,7 +320,10 @@
     <div class="wrap">
       <h2>See what your CRM is really worth.</h2>
       <p class="lead">Start with a free 45-minute audit and an honest look at your instance.</p>
-      <a href="/contact/" class="btn btn-dark">Book a free audit</a>
+      <div class="closing-actions">
+        <a href="/contact/" class="btn btn-primary">Get a free audit</a>
+        <a href="/whitepaper/" class="btn btn-soft">Read the whitepaper</a>
+      </div>
     </div>
   </section>
 

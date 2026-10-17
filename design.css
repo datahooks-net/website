@@ -13,8 +13,18 @@
   --paper-2: #f7f6f3;
   --line: #e9e8e4;
   --navy: #1a1a2e;
-  --coral: #d6456b;
-  --coral-ink: #b83a5a;
+  --coral: #d6456b;          /* brand coral: logo, accents, large numbers */
+  --coral-btn: #c93d62;      /* coral deepened just enough for white button text (4.8:1) */
+  --coral-btn-hover: #b83a5a;
+  --coral-ink: #a8334f;      /* coral text on light tints */
+  --coral-tint: #fdeef2;     /* secondary button, coral panels */
+
+  /* Panel backgrounds (Notion-style colored sections) */
+  --panel-gray: #f6f5f4;
+  --panel-coral: #fdf0f3;
+  --panel-navy: #eef0f7;
+  --panel-sand: #fbf3e4;
+  --panel-sage: #edf5ef;
 
   --tag-blue: #e7f0fb;   --tag-blue-ink: #1f5fa8;
   --tag-yellow: #fbf3db; --tag-yellow-ink: #8a6100;
@@ -65,8 +75,14 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
   font: 500 16px/1 var(--font); cursor: pointer; border: 0;
   transition: background-color .15s ease;
 }
+.btn-primary { background: var(--coral-btn); color: #fff; }
+.btn-primary:hover { background: var(--coral-btn-hover); }
+.btn-soft { background: var(--coral-tint); color: var(--coral-ink); }
+.btn-soft:hover { background: #fbe1e8; }
 .btn-dark { background: var(--ink); color: #fff; }
 .btn-dark:hover { background: #33322f; }
+.btn-light { background: #fff; color: var(--navy); }
+.btn-light:hover { background: #f1f1f5; }
 .btn-plain { background: transparent; color: var(--ink); }
 .btn-plain:hover { background: var(--paper-2); }
 .btn-sm { height: 36px; padding: 0 14px; font-size: 15px; }
@@ -127,6 +143,36 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
 .feature-text h2 { margin: 16px 0 16px; }
 .feature-text p { color: var(--ink-2); }
 .feature-text .link { display: inline-block; margin-top: 20px; }
+
+/* ---------- Color panels ---------- */
+.panel { border-radius: 20px; overflow: hidden; position: relative; }
+.panel-gray { background: var(--panel-gray); }
+.panel-coral { background: var(--panel-coral); }
+.panel-navy { background: var(--panel-navy); }
+.panel-sand { background: var(--panel-sand); }
+.panel-sage { background: var(--panel-sage); }
+.panel-dark { background: var(--navy); color: #fff; }
+
+/* Hero stage: the merge window sits on a navy-tinted panel and bleeds off the bottom */
+.hero-stage { max-width: var(--w-row); margin: 72px auto 0; padding: 56px 56px 0; }
+.hero-stage .window { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 0; }
+
+/* Feature panels: text on top, artifact cropped at the bottom edge */
+.fpanel { max-width: var(--w-row); margin: 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 48px; padding: 56px 0 0 56px; align-items: start; }
+.fpanel + .fpanel { margin-top: 24px; }
+.fpanel .feature-text { padding-bottom: 56px; }
+.fpanel .feature-text h2 { margin: 16px 0 16px; }
+.fpanel .feature-text p { color: var(--ink-2); }
+.fpanel .feature-text .link { display: inline-block; margin-top: 20px; }
+.fpanel .window { border-right: 0; border-bottom: 0; border-radius: 12px 0 0 0; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 16px 40px rgba(26,26,46,.08); align-self: end; }
+.panel-coral .tag { background: #fff; color: var(--coral-ink); }
+.panel-navy .tag { background: #fff; color: #33407a; }
+.panel-sand .tag { background: #fff; color: var(--tag-yellow-ink); }
+
+/* Band: full-width colored section */
+.band { padding: var(--section) 0; }
+.band-gray { background: var(--panel-gray); }
+.band-coral { background: var(--panel-coral); }
 
 /* ---------- Artifact window ---------- */
 .window {
@@ -192,11 +238,21 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
 .steps p { color: var(--ink-2); margin-top: 8px; font-size: 16px; }
 
 /* ---------- Calculator ---------- */
-.calc { max-width: var(--w-prose); margin: 48px auto 0; background: var(--paper-2); border-radius: var(--r); padding: 36px 40px; text-align: left; }
+.calc-panel { max-width: var(--w-row); margin: 0 auto; padding: 64px 56px; display: grid; grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
+.calc-panel h2 { color: #fff; }
+.calc-panel .lead { color: rgba(255,255,255,.72); margin-top: 16px; font-size: 18px; }
+.calc { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r); padding: 32px; text-align: left; }
+.calc .calc-ctrl label { color: rgba(255,255,255,.72); }
+.calc .calc-ctrl label output { color: #fff; }
+.calc input[type=range] { accent-color: var(--coral); }
+.calc .calc-out { border-top-color: rgba(255,255,255,.14); }
+.calc .calc-out div span { color: rgba(255,255,255,.72); }
+.calc .calc-out strong { color: #fff; }
+.calc .calc-out .accent { color: #f07a98; }
 .calc-ctrl + .calc-ctrl { margin-top: 24px; }
 .calc-ctrl label { display: flex; justify-content: space-between; font-size: 15px; color: var(--ink-2); margin-bottom: 10px; }
 .calc-ctrl label output { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-.calc input[type=range] { width: 100%; accent-color: var(--ink); }
+.calc input[type=range] { width: 100%; }
 .calc-out { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
 .calc-out div span { display: block; font-size: 14px; color: var(--ink-2); margin-bottom: 6px; }
 .calc-out strong { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
@@ -209,11 +265,13 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
 .definition p { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.4; }
 
 /* ---------- Closing CTA ---------- */
-.closing { text-align: center; padding: var(--section) 0; border-top: 1px solid var(--line); }
+.closing { text-align: center; padding: var(--section) 0; background: var(--panel-coral); }
+.closing-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.closing .btn-soft { background: #fff; }
 .closing p { margin: 16px auto 32px; max-width: 520px; }
 
 /* ---------- Footer ---------- */
-.footer { border-top: 1px solid var(--line); padding: 64px 0 48px; font-size: 14px; color: var(--ink-2); }
+.footer { padding: 64px 0 48px; font-size: 14px; color: var(--ink-2); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
 .footer h4 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
 .footer ul { list-style: none; display: grid; gap: 8px; }
@@ -227,6 +285,10 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
   .feature, .feature.flip { grid-template-columns: 1fr; gap: 36px; }
   .feature.flip .feature-text { order: 0; }
   .steps { grid-template-columns: 1fr; gap: 32px; }
+  .fpanel { grid-template-columns: 1fr; gap: 0; padding: 40px 0 0 28px; }
+  .fpanel .feature-text { padding: 0 28px 32px 0; }
+  .calc-panel { grid-template-columns: 1fr; gap: 32px; padding: 40px 28px; }
+  .hero-stage { padding: 32px 24px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
@@ -244,10 +306,25 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
   .ba { grid-template-columns: 1fr; }
   .ba > div + div { border-left: 0; border-top: 1px solid var(--line); }
   .calc { padding: 24px 20px; }
+  .hero-stage { padding: 20px 12px 0; border-radius: 16px; }
+  .fpanel { padding: 32px 0 0 20px; border-radius: 16px; }
+  .fpanel .feature-text { padding: 0 20px 28px 0; }
+  .calc-panel { padding: 32px 20px; border-radius: 16px; }
   .calc-out { grid-template-columns: 1fr; }
   .calc-out strong { font-size: 32px; }
   .log li { grid-template-columns: 64px 1fr; }
   .log li .pill { grid-column: 2; justify-self: start; }
   .t { font-size: 13px; }
   .table-scroll { overflow-x: auto; }
+}
+
+/* Links inside tinted panels use the deeper coral for contrast */
+.link { color: var(--coral-btn); }
+.panel .link { color: var(--coral-ink); }
+
+/* On phones the feature window stops bleeding off the right edge so tables stay readable */
+@media (max-width: 760px) {
+  .fpanel { padding: 32px 16px 0; }
+  .fpanel .feature-text { padding: 0 4px 28px; }
+  .fpanel .window { border-right: 1px solid var(--line); border-radius: 12px 12px 0 0; }
 }
