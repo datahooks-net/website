@@ -343,3 +343,24 @@ h3 { font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01e
 }
 .btn { white-space: nowrap; }
 @media (max-width: 760px) { .nav .wrap { gap: 12px; } .nav-toggle { order: 4; margin-left: 0; } .nav-cta { margin-left: auto; } }
+
+/* Scrolling logo strip (Notion-style marquee) */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { list-style: none; display: flex; align-items: center; width: max-content; animation: marquee 45s linear infinite; }
+.marquee-track li { flex: none; padding: 0 32px; display: flex; align-items: center; height: 48px; }
+.marquee-track img { width: auto; max-width: none; display: block; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
+  .marquee-track li[aria-hidden="true"] { display: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+}
+@media (max-width: 760px) { .marquee-track li { padding: 0 20px; } .marquee-track img { transform: scale(.85); } }
+
+/* Where bad data costs you deals */
+.leaks { max-width: var(--w-row); margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.leaks > div { border-top: 1px solid var(--line); padding-top: 24px; }
+.leaks h3 { margin: 14px 0 8px; }
+.leaks p { color: var(--ink-2); font-size: 16px; }
+@media (max-width: 900px) { .leaks { grid-template-columns: 1fr; gap: 32px; } }
