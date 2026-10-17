@@ -180,25 +180,47 @@
   <!-- Where it leaks -->
   <section class="section leaks-section">
     <div class="wrap">
-      <div class="prose center">
-        <h2>Where bad data costs you deals</h2>
-        <p class="lead" style="margin-top:16px;">The problem rarely looks like a data problem. It looks like missed targets.</p>
-      </div>
-      <div class="leaks">
-        <div>
-          <span class="tag tag-pink">Marketing</span>
-          <h3>Attribution you can't trust</h3>
-          <p>Lead source is blank or overwritten on a big share of contacts. Budget follows the channels that look good in reports, not the ones that actually close.</p>
+      <div class="leak-layout">
+        <div class="leak-intro">
+          <h2>Where bad data costs you deals</h2>
+          <p class="lead">It rarely looks like a data problem. It looks like a missed quarter. Here is one deal, exactly as we usually find it.</p>
         </div>
-        <div>
-          <span class="tag tag-blue">Sales</span>
-          <h3>A pipeline full of noise</h3>
-          <p>Stale deals, missing next steps, and opportunities with no owner. Reps work the wrong accounts while real buyers go cold.</p>
-        </div>
-        <div>
-          <span class="tag tag-yellow">Revenue</span>
-          <h3>Growth decisions on bad numbers</h3>
-          <p>The forecast doesn't match finance, the board deck gets rebuilt by hand, and nobody can say which programs drive revenue.</p>
+        <div class="window leak-window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="window-crumb">Deals / <b>Northwind expansion</b></span>
+          </div>
+          <div class="window-body">
+            <div class="window-title">Northwind expansion</div>
+            <div class="window-sub">$84,000 &middot; Proposal sent &middot; Example record</div>
+            <div class="leak-rows">
+              <div class="leak-row">
+                <span class="lf">Stage</span>
+                <span class="lv">Proposal sent</span>
+                <span class="ln"></span>
+              </div>
+              <div class="leak-row flag">
+                <span class="lf">Lead source</span>
+                <span class="lv"><span class="bad">Offline sources</span><span class="was">First touch was paid search</span></span>
+                <span class="ln"><span class="tag tag-pink">Marketing</span> A list import overwrote the source. Paid search never gets credit for the deal, so next quarter its budget gets cut.</span>
+              </div>
+              <div class="leak-row flag">
+                <span class="lf">Owner</span>
+                <span class="lv"><span class="bad">None</span><span class="was">Last activity 97 days ago</span></span>
+                <span class="ln"><span class="tag tag-blue">Sales</span> The rep left in June and nobody inherited the deal. The buyer kept opening emails that no one was sending.</span>
+              </div>
+              <div class="leak-row flag">
+                <span class="lf">Close date</span>
+                <span class="lv"><span class="bad">Sep 30</span><span class="was">Already passed</span></span>
+                <span class="ln"><span class="tag tag-yellow">Revenue</span> Still counted in the Q4 forecast. Finance wrote it off weeks ago, so the board sees two different numbers.</span>
+              </div>
+              <div class="leak-row">
+                <span class="lf">Amount</span>
+                <span class="lv">$84,000</span>
+                <span class="ln"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
