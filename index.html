@@ -338,7 +338,7 @@
         var cv = document.getElementById('signal');
         if (!cv || !cv.getContext) return;
         var c = cv.getContext('2d'), w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-        var on = true, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 30000;
+        var on = true, pts = [], groups = [], cycle = -1, t0 = performance.now(), CYCLE = 24000;
         var CORAL = [201, 61, 98], INK = [26, 26, 46];
         var tags = Array.prototype.slice.call(document.querySelectorAll('#tags .tag'));
         var phone = function () { return w < 700; };
@@ -376,11 +376,17 @@
           var a = hw.getBoundingClientRect(), b = cv.getBoundingClientRect();
           return { x: a.left - b.left, y: a.top - b.top, h: a.height };
         }
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { targetCache = {}; });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { targetCache = {}; if (typeof pick === 'function' && w) pick(); });
+        // y is a share of the open space above the headline, not of the whole hero,
+        // so labels never land on the words whatever the screen height
         function centres() {
           return phone()
-            ? [{ x: .14, y: .19, side: 1 }, { x: .84, y: .4, side: -1 }, null]
-            : [{ x: .09, y: .24, side: 1 }, { x: .5, y: .17, side: 1 }, { x: .87, y: .5, side: -1 }];
+            ? [{ x: .14, y: 0, side: 1 }, { x: .84, y: 0, side: -1 }, null]
+            : [{ x: .09, y: .32, side: 1 }, { x: .5, y: .2, side: 1 }, { x: .87, y: .62, side: -1 }];
+        }
+        function openSpace() {
+          var h1 = hw.parentNode.getBoundingClientRect(), b = cv.getBoundingClientRect();
+          return h1.top - b.top - 16;   // everything above the headline, less a margin
         }
         function size() {
           var r = cv.getBoundingClientRect(); w = r.width; h = r.height;
@@ -403,20 +409,27 @@
         }
         var R = function () { return phone() ? 30 : 44; };
         function pick() {
-          var used = {}; groups = [];
+          var used = {}, band = openSpace(), nextTop = 20, prevBottom = -1e9;
+          groups = [];
           centres().forEach(function (ct, gi) {
             var el = tags[gi];
             el.classList.remove('on');
             if (!ct) { groups.push(null); el.hidden = true; return; }
             el.hidden = false;
+            var gap = R() + 18, x = ct.x * w;
+            el.classList.toggle('left', ct.side < 0);
+            if (ct.side > 0) { el.style.left = (x + gap) + 'px'; el.style.right = 'auto'; }
+            else { el.style.right = (w - x + gap) + 'px'; el.style.left = 'auto'; }
+            var lh = el.offsetHeight, top;
+            if (phone()) { top = nextTop; nextTop = top + Math.max(lh, R() * 2) + 28; }   // stack down from the top
+            else top = ct.y * band - 22;
+            top = Math.min(top, band - lh);            // keep the whole label above the headline
+            if (top < 8 || (phone() && top < prevBottom + 16)) { groups.push(null); el.hidden = true; return; }   // no room: skip it
+            prevBottom = top + lh;
+            el.style.top = top + 'px';
             var ids = [], per = phone() ? 30 : 38;
             while (ids.length < per) { var j = (Math.random() * pts.length) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
-            groups.push({ ct: ct, ids: ids });
-            var gap = R() + 18;
-            el.style.top = (ct.y * h - 22) + 'px';
-            el.classList.toggle('left', ct.side < 0);
-            if (ct.side > 0) { el.style.left = (ct.x * w + gap) + 'px'; el.style.right = 'auto'; }
-            else { el.style.right = (w - ct.x * w + gap) + 'px'; el.style.left = 'auto'; }
+            groups.push({ ct: { x: ct.x, y: (top + 22) / h }, ids: ids });
           });
           pts.forEach(function (q) { q.g = -1; });
           groups.forEach(function (gr, gi) { if (gr) gr.ids.forEach(function (id) { pts[id].g = gi; }); });
