@@ -381,7 +381,7 @@
         // so labels never land on the words whatever the screen height
         function centres() {
           return phone()
-            ? [{ x: .14, y: 0, side: 1 }, { x: .84, y: 0, side: -1 }, null]
+            ? [{ x: .14, y: 0, side: 1 }, { x: .84, y: 0, side: -1 }, { x: .32, y: 0, side: 1 }]   // phones: one at a time, same height
             : [{ x: .09, y: .32, side: 1 }, { x: .5, y: .2, side: 1 }, { x: .87, y: .62, side: -1 }];
         }
         function openSpace() {
@@ -409,7 +409,7 @@
         }
         var R = function () { return phone() ? 30 : 44; };
         function pick() {
-          var used = {}, band = openSpace(), nextTop = 20, prevBottom = -1e9;
+          var used = {}, band = openSpace();
           groups = [];
           centres().forEach(function (ct, gi) {
             var el = tags[gi];
@@ -421,11 +421,10 @@
             if (ct.side > 0) { el.style.left = (x + gap) + 'px'; el.style.right = 'auto'; }
             else { el.style.right = (w - x + gap) + 'px'; el.style.left = 'auto'; }
             var lh = el.offsetHeight, top;
-            if (phone()) { top = nextTop; nextTop = top + Math.max(lh, R() * 2) + 28; }   // stack down from the top
+            if (phone()) top = 20;                    // phones show them in turn, so they share one spot
             else top = ct.y * band - 22;
             top = Math.min(top, band - lh);            // keep the whole label above the headline
-            if (top < 8 || (phone() && top < prevBottom + 16)) { groups.push(null); el.hidden = true; return; }   // no room: skip it
-            prevBottom = top + lh;
+            if (top < 8) { groups.push(null); el.hidden = true; return; }   // no room above the headline: skip it
             el.style.top = top + 'px';
             var ids = [], per = phone() ? 30 : 38;
             while (ids.length < per) { var j = (Math.random() * pts.length) | 0; if (!used[j]) { used[j] = 1; ids.push(j); } }
@@ -466,8 +465,16 @@
             c.fillStyle = 'rgba(26,26,46,.35)';
             c.fillRect(Math.round(sx), 0, 1, h);
           }
-          var live = 0, rad = R(), gStart = [];
-          groups.forEach(function (gr) { if (gr) { gStart.push(GATHER0 + live * STAGGER); live++; } else gStart.push(1); });
+          // desktop: clusters gather a beat apart and all hold together.
+          // phones: they take turns in the same spot, each gathering, holding, and letting go before the next.
+          var seq = phone(), live = 0, rad = R(), gStart = [], gEnd = [], REL = .03, GD = seq ? .07 : GDUR;
+          var nLive = groups.filter(Boolean).length, slot = (HOLD - GATHER0) / Math.max(1, nLive);
+          groups.forEach(function (gr) {
+            if (!gr) { gStart.push(1); gEnd.push(1); return; }
+            if (seq) { gStart.push(GATHER0 + live * slot); gEnd.push(live === nLive - 1 ? HOLD : GATHER0 + (live + 1) * slot - REL); }
+            else { gStart.push(GATHER0 + live * STAGGER); gEnd.push(HOLD); }
+            live++;
+          });
 
           for (var i = 0; i < pts.length; i++) {
             var q = pts[i];
@@ -485,8 +492,8 @@
             // signal records light up in place, then gather
             var lit = 0, g = 0;
             if (q.g >= 0) {
-              lit = ease((p - LIGHT0) / (LIGHT1 - LIGHT0));
-              g = ease((p - gStart[q.g]) / GDUR);
+              g = ease((p - gStart[q.g]) / GD) * (1 - ease((p - gEnd[q.g]) / REL));
+              lit = seq ? clamp(g * 1.6) : ease((p - LIGHT0) / (LIGHT1 - LIGHT0));
               var gr = groups[q.g], k = gr.ids.indexOf(i), a = k * 2.39996;
               var rr = rad * Math.sqrt((k + .5) / gr.ids.length) * (1 + Math.sin(now / 900 + k) * .04 * g);
               x += (gr.ct.x * w + Math.cos(a) * rr - x) * g;
@@ -543,7 +550,7 @@
 
           groups.forEach(function (gr, gi) {
             if (!gr) return;
-            var el = tags[gi], show = p > gStart[gi] + GDUR * .85 && p < HOLD;
+            var el = tags[gi], show = p > gStart[gi] + GD * .85 && p < Math.min(gEnd[gi], HOLD);
             if (show && !el.classList.contains('on')) { el.classList.add('on'); count(el); }
             else if (!show && el.classList.contains('on')) { el.classList.remove('on'); }
           });
